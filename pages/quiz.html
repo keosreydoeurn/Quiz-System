@@ -10,20 +10,6 @@
 </head>
 
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="contact-info">
-                <span><i class="fas fa-envelope"></i> info@techquiz.com</span>
-                <span><i class="fas fa-phone"></i> +1 234 567 890</span>
-            </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </div>
-    </div>
 
     <!-- Header -->
     <header class="header">
@@ -55,7 +41,7 @@
         <div class="container">
             <div class="filter-options">
                 <div class="search-box">
-                    <input type="text" placeholder="Search quizzes...">
+                    <input type="text" placeholder="Search quizzes..." aria-label="Search quizzes">
                     <button><i class="fas fa-search"></i></button>
                 </div>
                 <div class="filter-dropdown">
@@ -81,7 +67,7 @@
 
     <!-- Quizzes Grid -->
     <section class="quizzes-container">
-        <div class="container">
+        <div class="container quizzes-grid">
             <!-- HTML Quiz -->
             <div class="quiz-card" id="html">
                 <div class="quiz-card-header">
@@ -128,8 +114,7 @@
                 </div>
                 <div class="quiz-card-body">
                     <h3>JavaScript Basics</h3>
-                    <p>Test your understanding of JavaScript fundamentals, including variables, functions, and control
-                        flow.</p>
+                    <p>Test your understanding of JavaScript fundamentals, including variables, functions, and control flow.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 15 Questions</span>
                         <span><i class="far fa-clock"></i> 10 min</span>
@@ -156,45 +141,6 @@
                 </div>
                 <div class="quiz-card-footer">
                     <a href="quiz-react.html" class="btn-small">Start Quiz</a>
-                </div>
-            </div>
-
-            <!-- Advanced JavaScript Quiz -->
-            <div class="quiz-card" id="advanced-js">
-                <div class="quiz-card-header">
-                    <span class="quiz-category">JavaScript</span>
-                    <span class="quiz-level advanced">Advanced</span>
-                </div>
-                <div class="quiz-card-body">
-                    <h3>Advanced JavaScript</h3>
-                    <p>Challenge yourself with advanced JavaScript concepts like closures, promises, and async/await.
-                    </p>
-                    <div class="quiz-meta">
-                        <span><i class="far fa-question-circle"></i> 25 Questions</span>
-                        <span><i class="far fa-clock"></i> 20 min</span>
-                    </div>
-                </div>
-                <div class="quiz-card-footer">
-                    <a href="quiz-advanced-js.html" class="btn-small">Start Quiz</a>
-                </div>
-            </div>
-
-            <!-- Responsive Design Quiz -->
-            <div class="quiz-card" id="responsive">
-                <div class="quiz-card-header">
-                    <span class="quiz-category">CSS</span>
-                    <span class="quiz-level intermediate">Intermediate</span>
-                </div>
-                <div class="quiz-card-body">
-                    <h3>Responsive Web Design</h3>
-                    <p>Test your skills in creating responsive layouts with CSS Grid, Flexbox, and media queries.</p>
-                    <div class="quiz-meta">
-                        <span><i class="far fa-question-circle"></i> 15 Questions</span>
-                        <span><i class="far fa-clock"></i> 10 min</span>
-                    </div>
-                </div>
-                <div class="quiz-card-footer">
-                    <a href="quiz-responsive.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -244,8 +190,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>About TechQuiz</h3>
-                    <p>TechQuiz is your premier destination for testing and improving your IT and Web Development
-                        knowledge through interactive quizzes.</p>
+                    <p>TechQuiz is your premier destination for testing and improving your IT and Web Development knowledge through interactive quizzes.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -254,7 +199,6 @@
                         <li class="active"><a href="quiz.html">Quizzes</a></li>
                         <li><a href="result.html">Results</a></li>
                         <li><a href="help.html">Help</a></li>
-                        <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -264,10 +208,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 TechQuiz. All rights reserved.</p>
+                <p>&copy; 2025 TechQuiz. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
 </body>
 
 </html>
