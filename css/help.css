@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 :root {
     --primary-color: #007bff;
     --secondary-color: #0056b3;
@@ -223,3 +222,4 @@ body {
      font-size: 0.9rem;
      color: #bbb;
  }
+
