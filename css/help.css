@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* Help Page Specific Styles */
         .help-header {
             background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
@@ -215,13 +216,18 @@
      box-sizing: border-box;
  }
 =======
+=======
+>>>>>>> f9a3a31ac133c20b2ba9057ae2de72f05e66fd49
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+<<<<<<< HEAD
 >>>>>>> ee6a9b68098a15a973f56853f57c23c52df18023
 
+=======
+>>>>>>> f9a3a31ac133c20b2ba9057ae2de72f05e66fd49
 :root {
     --primary-color: #007bff;
     --secondary-color: #0056b3;
@@ -441,4 +447,4 @@ body {
      font-size: 0.9rem;
      color: #bbb;
  }
->>>>>>> 6474ff7f7c565a2eed9bcf7a43991e85ef31a36d
+
