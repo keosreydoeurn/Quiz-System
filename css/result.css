@@ -90,7 +90,7 @@
  }
 
  .results-header {
-     background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    background-color: #4f46e5;
      color: white;
      padding: 60px 0;
      text-align: center;
