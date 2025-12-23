@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - TechQuiz</title>
+    <link rel="stylesheet" href="../css/quizhtml1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>TechQuiz</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="active"><a href="quiz.html">Quizzes</a></li>
+                    <li><a href="result.html">Results</a></li>
+                    <li><a href="help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Quiz Content -->
+    <div class="container">
+        <div class="quiz-container">
+            <h1>HTML Basics Quiz</h1>
+            <p class="text-muted">Test your knowledge of HTML fundamentals</p>
+            <form id="quizForm" class="quiz-form">
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <div class="question-text">1. What does HTML stand for?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1" value="a" id="q1a">
+                            <label for="q1a">Hyper Text Markup Language</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1" value="b" id="q1b">
+                            <label for="q1b">Hyperlinks and Text Markup Language</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1" value="c" id="q1c">
+                            <label for="q1c">Home Tool Markup Language</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Hyper Text Markup Language<br>
+                        <strong>Explanation:</strong> HTML stands for Hyper Text Markup Language, which is the standard
+                        markup language for creating web pages.
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <div class="question-text">2. Which HTML element is used to define a paragraph?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q2" value="a" id="q2a">
+                            <label for="q2a">&lt;paragraph&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q2" value="b" id="q2b">
+                            <label for="q2b">&lt;para&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q2" value="c" id="q2c">
+                            <label for="q2c">&lt;p&gt;</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> &lt;p&gt;<br>
+                        <strong>Explanation:</strong> The &lt;p&gt; tag is used to define a paragraph in HTML.
+                    </div>
+                </div>
+
+
+                <!-- quiz3 -->
+                <div class="quiz-question">
+                    <div class="question-text">3. Which HTML tag is used to create a hyperlink?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3" value="a" id="q3a">
+                            <label for="q3a">&lt;link&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3" value="b" id="q3b">
+                            <label for="q3b">&lt;a&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3" value="c" id="q3c">
+                            <label for="q3c">&lt;href&gt;</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> &lt;a&gt;<br>
+                        <strong>Explanation:</strong> The &lt;a&gt; (anchor) tag is used to create hyperlinks.
+                    </div>
+                </div>
+
+
+                <!-- quiz4 -->
+
+                <div class="quiz-question">
+                    <div class="question-text">4. Which tag is used to display an image?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q4" value="a" id="q4a">
+                            <label for="q4a">&lt;image&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q4" value="b" id="q4b">
+                            <label for="q4b">&lt;img&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q4" value="c" id="q4c">
+                            <label for="q4c">&lt;src&gt;</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> &lt;img&gt;<br>
+                        <strong>Explanation:</strong> The &lt;img&gt; tag is used to embed images in HTML.
+                    </div>
+                </div>
+
+
+                <!-- quiz5 -->
+
+                <div class="quiz-question">
+                    <div class="question-text">5. What attribute is used to provide alternative text for an image?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5" value="a" id="q5a">
+                            <label for="q5a">title</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5" value="b" id="q5b">
+                            <label for="q5b">alt</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5" value="c" id="q5c">
+                            <label for="q5c">src</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> alt<br>
+                        <strong>Explanation:</strong> The alt attribute provides alternative text for images.
+                    </div>
+                </div>
+
+
+                <!-- quiz6 -->
+
+                <div class="quiz-question">
+                    <div class="question-text">6. Which HTML tag creates an unordered list?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q6" value="a" id="q6a">
+                            <label for="q6a">&lt;ol&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q6" value="b" id="q6b">
+                            <label for="q6b">&lt;ul&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q6" value="c" id="q6c">
+                            <label for="q6c">&lt;li&gt;</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> &lt;ul&gt;<br>
+                        <strong>Explanation:</strong> The &lt;ul&gt; tag defines an unordered (bulleted) list.
+                    </div>
+                </div>
+
+
+                <!-- quiz7 -->
+
+
+                <div class="quiz-question">
+                    <div class="question-text">7. Which tag is used for the largest heading?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7" value="a" id="q7a">
+                            <label for="q7a">&lt;h6&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7" value="b" id="q7b">
+                            <label for="q7b">&lt;heading&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7" value="c" id="q7c">
+                            <label for="q7c">&lt;h1&gt;</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> &lt;h1&gt;<br>
+                        <strong>Explanation:</strong> &lt;h1&gt; defines the most important heading.
+                    </div>
+                </div>
+
+
+                <!-- quiz8 -->
+
+                <div class="quiz-question">
+                    <div class="question-text">8. Which tag is used to create a line break?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q8" value="a" id="q8a">
+                            <label for="q8a">&lt;br&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q8" value="b" id="q8b">
+                            <label for="q8b">&lt;break&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q8" value="c" id="q8c">
+                            <label for="q8c">&lt;lb&gt;</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> &lt;br&gt;<br>
+                        <strong>Explanation:</strong> &lt;br&gt; inserts a single line break.
+                    </div>
+                </div>
+
+                <!-- quiz9 -->
+
+                <div class="quiz-question">
+                    <div class="question-text">9. Which HTML tag is used to make text bold?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9" value="a" id="q9a">
+                            <label for="q9a">&lt;bold&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9" value="b" id="q9b">
+                            <label for="q9b">&lt;b&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9" value="c" id="q9c">
+                            <label for="q9c">&lt;stronger&gt;</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> &lt;b&gt;<br>
+                        <strong>Explanation:</strong> &lt;b&gt; makes text bold visually.
+                    </div>
+                </div>
+                <!-- quiz10 -->
+
+                <div class="quiz-question">
+                    <div class="question-text">10. Which HTML element contains metadata?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10" value="a" id="q10a">
+                            <label for="q10a">&lt;body&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10" value="b" id="q10b">
+                            <label for="q10b">&lt;head&gt;</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10" value="c" id="q10c">
+                            <label for="q10c">&lt;footer&gt;</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> &lt;head&gt;<br>
+                        <strong>Explanation:</strong> The &lt;head&gt; element contains metadata about the document.
+                    </div>
+                </div>
+
+                <!-- Add more questions as needed -->
+
+                <div class="quiz-navigation">
+                    <button type="button" class="btn btn-outline" onclick="previousQuestion()">Previous</button>
+                    <div>
+                        <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About TechQuiz</h3>
+                    <p>TechQuiz helps you test and improve your IT and Web Development knowledge through interactive
+                        quizzes.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="quiz.html">Quizzes</a></li>
+                        <li><a href="result.html">Results</a></li>
+                        <li><a href="help.html">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@techquiz.com</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 TechQuiz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/quiz.js"></script>
+    <script>
+        // Function to handle option selection
+        function selectOption(element) {
+            // Remove selected class from all options in this question
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            // Add selected class to clicked option
+            element.classList.add('selected');
+
+            // Check the radio input
+            const radio = element.querySelector('input[type="radio"]');
+            if (radio) {
+                radio.checked = true;
+            }
+        }
+
+        // Navigation functions
+        function nextQuestion() {
+            // Add logic to go to next question
+            alert('Next question');
+        }
+
+        function previousQuestion() {
+            // Add logic to go to previous question
+            alert('Previous question');
+        }
+
+        function submitQuiz() {
+            // Add quiz submission logic
+            if (confirm('Are you sure you want to submit the quiz?')) {
+                // Show all answers
+                document.querySelectorAll('.show-answer-btn').forEach(btn => {
+                    btn.click();
+                });
+                alert('Quiz submitted! Check your answers.');
+            }
+        }
+    </script>
+</body>
+
+</html>
