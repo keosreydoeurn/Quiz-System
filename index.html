@@ -1,14 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz System</title>
+    <title>TechQuiz - Test Your IT Knowledge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
-    
-    <h1>Welcome to the Quiz System</h1>
-    <p>DEVELOPER</p>
-    
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>TechQuiz</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="active"><a href="./index.html">Home</a></li>
+                    <li><a href="./pages/quiz.html">Quizzes</a></li>
+                    <li><a href="./pages/result.html">Results</a></li>
+                    <li><a href="./pages/help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Test Your <br><span>IT Knowledge</span></h1>
+                <p>Challenge yourself with our comprehensive collection of IT and Web Development quizzes. Perfect for
+                    beginners and experts alike!</p>
+                <a href="pages/quiz.html" class="btn">Start Quizzing</a>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <h2>50+</h2>
+                        <p>Quizzes</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2>1000+</h2>
+                        <p>Learners</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2>3</h2>
+                        <p>Levels</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="./img/home.png" alt="IT Quiz">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2>Quiz Categories</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML5</h3>
+                    <p>Test your knowledge of HTML5 elements, attributes, and best practices.</p>
+                    <a href="pages/quiz.html#html" class="btn-small">Start Quiz</a>
+                </div>
+                <div class="category-card">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS3</h3>
+                    <p>Master CSS3 selectors, layouts, and animations with our challenging quizzes.</p>
+                    <a href="pages/quiz.html#css" class="btn-small">Start Quiz</a>
+                </div>
+                <div class="category-card">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Challenge yourself with JavaScript fundamentals and advanced concepts.</p>
+                    <a href="pages/quiz.html#javascript" class="btn-small">Start Quiz</a>
+                </div>
+                <div class="category-card">
+                    <i class="fab fa-react"></i>
+                    <h3>React.js</h3>
+                    <p>Test your React.js knowledge with our comprehensive quizzes.</p>
+                    <a href="pages/quiz.html#react" class="btn-small">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Quizzes -->
+    <section class="featured-quizzes">
+        <div class="container">
+            <h2>Featured Quizzes</h2>
+            <div class="quiz-grid">
+                <div class="quiz-card">
+                    <img src="./img/basic.png" alt="Web Basics">
+                    <div class="quiz-info">
+                        <h3>Web Development Basics</h3>
+                        <p>Test your fundamental knowledge of web development concepts.</p>
+                        <div class="quiz-meta">
+                            <span><i class="far fa-question-circle"></i> 20 Questions</span>
+                            <span><i class="far fa-clock"></i> 15 min</span>
+                        </div>
+                        <a href="pages/quiz.html#web-basics" class="btn-small">Start Quiz</a>
+                    </div>
+                </div>
+                <div class="quiz-card">
+                    <img src="./img/advance.png" alt="JavaScript Advanced">
+                    <div class="quiz-info">
+                        <h3>Advanced JavaScript</h3>
+                        <p>Challenge yourself with advanced JavaScript concepts and patterns.</p>
+                        <div class="quiz-meta">
+                            <span><i class="far fa-question-circle"></i> 25 Questions</span>
+                            <span><i class="far fa-clock"></i> 20 min</span>
+                        </div>
+                        <a href="pages/quiz.html#js-advanced" class="btn-small">Start Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About TechQuiz</h3>
+                    <p>TechQuiz is your premier destination for testing and improving your IT and Web Development
+                        knowledge through interactive quizzes.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/quiz.html">Quizzes</a></li>
+                        <li><a href="pages/result.html">Results</a></li>
+                        <li><a href="pages/help.html">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@techquiz.com</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 TechQuiz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
