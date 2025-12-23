@@ -1,4 +1,7 @@
 /* Reset and Base Styles */
+
+/* Homepage */
+
 * {
     margin: 0;
     padding: 0;
@@ -437,3 +440,5 @@ body {
         padding: 10px 20px;
     }
 }
+
+
