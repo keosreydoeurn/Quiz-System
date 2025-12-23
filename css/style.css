@@ -168,7 +168,7 @@ body {
 /* Hero Section */
 .hero {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    background: linear-gradient(135deg, #fff 0%, #e4e8f0 100%);
 }
 
 .hero .container {
@@ -206,9 +206,8 @@ body {
 
 .hero-image img {
     max-width: 100%;
-    height: auto;
+    height: 400px;
     border-radius: 10px;
-    box-shadow: var(--box-shadow);
 }
 
 /* Categories Section */
