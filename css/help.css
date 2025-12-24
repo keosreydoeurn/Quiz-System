@@ -256,7 +256,6 @@ body {
     font-weight: 500;
 }
 
-<<<<<<< HEAD
  .footer-bottom {
      text-align: center;
      padding: 20px 0;
@@ -264,74 +263,3 @@ body {
      font-size: 0.9rem;
      color: #bbb;
  }
-=======
-.form-control {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-textarea.form-control {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.btn-block {
-    display: block;
-    width: 100%;
-}
-
-.footer {
-    background-color: #343a40;
-    color: #fff;
-    padding: 60px 0 0;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.footer-section h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.footer-section h3::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 2px;
-    background-color: #007bff;
-}
-
-.footer-section p,
-.footer-section a {
-    color: #bbb;
-}
-
-.footer-section a {
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-section a:hover {
-    color: #007bff;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 20px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 14px;
-    color: #bbb;
-}
->>>>>>> 95502c1cacf3759ce96a0b4d968bda8bf839707a
