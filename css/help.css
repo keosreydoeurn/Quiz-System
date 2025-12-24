@@ -1,18 +1,8 @@
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-:root {
-    --primary-color: #007bff;
-    --secondary-color: #0056b3;
-    --dark-color: #343a40;
-    --light-color: #f8f9fa;
-    --success-color: #28a745;
-    --danger-color: #dc3545;
-    --border-radius: 5px;
-    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -29,7 +19,6 @@ body {
     padding: 0 15px;
 }
 
-/* ===================== Navbar/Header (Home Page Style) ===================== */
 .header {
     padding: 20px 0;
     background-color: #fff;
@@ -45,9 +34,21 @@ body {
     align-items: center;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    color: #007bff;
+    font-size: 30px;
+    font-weight: 700;
+}
+
 .logo h1 {
-    color: var(--primary-color);
-    font-size: 1.8rem;
+    color: #007bff;
+    font-size: 30px;
     font-weight: 700;
 }
 
@@ -62,7 +63,7 @@ body {
 
 .main-nav a {
     text-decoration: none;
-    color: var(--dark-color);
+    color: #343a40;
     font-weight: 500;
     padding: 5px 0;
     position: relative;
@@ -71,7 +72,7 @@ body {
 
 .main-nav a:hover,
 .main-nav .active a {
-    color: var(--primary-color);
+    color: #007bff;
 }
 
 .main-nav a:after {
@@ -81,7 +82,7 @@ body {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--primary-color);
+    background-color: #007bff;
     transition: width 0.3s;
 }
 
@@ -90,7 +91,6 @@ body {
     width: 100%;
 }
 
-/* Page Header */
 .page-header {
     background: #4f46e5;
     color: #fff;
@@ -98,16 +98,33 @@ body {
     padding: 50px 0;
 }
 
-/* Help Sections */
 .help-section {
-    margin: 40px 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-bottom: 40px;
 }
 
 .help-section h2 {
-    margin-bottom: 15px;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 32px;
+    position: relative;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
 }
 
-/* Lists */
+.help-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: #007bff;
+}
+
 .guide-list {
     list-style: none;
 }
@@ -121,7 +138,6 @@ body {
     margin-right: 8px;
 }
 
-/* Steps */
 .step {
     display: flex;
     gap: 15px;
@@ -136,9 +152,15 @@ body {
     border-radius: 50%;
     text-align: center;
     line-height: 35px;
+    font-weight: bold;
 }
 
-/* Tips */
+.step-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
 .tips-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -152,74 +174,144 @@ body {
     text-align: center;
 }
 
-/* FAQ */
-.faq-item {
+.tip-card i {
+    font-size: 24px;
+    color: #007bff;
     margin-bottom: 10px;
 }
 
-.faq-question {
-    font-weight: 600;
-    cursor: pointer;
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
 }
 
+.faq-item:hover {
+    border-color: #007bff;
+    box-shadow: 0 3px 10px rgba(0, 123, 255, 0.1);
+}
 
-  .footer {
-     background-color: var(--dark-color);
-     color: #fff;
-     padding: 60px 0 0;
- }
+.faq-question {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
 
- .footer-content {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-     gap: 30px;
-     margin-bottom: 40px;
- }
+.faq-question:hover {
+    background: #f1f3f5;
+}
 
- .footer-section h3 {
-     font-size: 1.3rem;
-     margin-bottom: 20px;
-     position: relative;
-     padding-bottom: 10px;
- }
+.faq-question::after {
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    transition: transform 0.3s;
+}
 
- .footer-section h3:after {
-     content: '';
-     position: absolute;
-     left: 0;
-     bottom: 0;
-     width: 50px;
-     height: 2px;
-     background-color: var(--primary-color);
- }
+.faq-item.active .faq-question::after {
+    transform: rotate(180deg);
+}
 
- .footer-section p {
-     margin-bottom: 15px;
-     color: #bbb;
- }
+.faq-answer {
+    padding-left: 20px;
+    border-left: 3px solid #007bff;
+    margin-top: 10px;
+    display: none;
+    color: #555;
+    line-height: 1.6;
+}
 
- .footer-section ul {
-     list-style: none;
- }
+.faq-answer.show {
+    display: block;
+}
 
- .footer-section ul li {
-     margin-bottom: 10px;
- }
+.contact-form {
+    margin-top: 30px;
+}
 
- .footer-section a {
-     color: #bbb;
-     text-decoration: none;
-     transition: color 0.3s;
- }
+.form-group {
+    margin-bottom: 20px;
+}
 
- .footer-section a:hover {
-     color: var(--primary-color);
- }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
 
- .footer-bottom {
-     text-align: center;
-     padding: 20px 0;
-     border-top: 1px solid rgba(255, 255, 255, 0.1);
-     font-size: 0.9rem;
-     color: #bbb;
- }
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 60px 0 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #007bff;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #bbb;
+}
+
+.footer-section a {
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #007bff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    color: #bbb;
+}
