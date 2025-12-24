@@ -1,16 +1,4 @@
-function selectOption(option) {
-    // Highlight selected option
-    const allOptions = option.parentElement.querySelectorAll('.option');
-    allOptions.forEach(opt => opt.classList.remove('selected'));
-    option.classList.add('selected');
-
-    // Check the radio button
-    const radio = option.querySelector('input[type="radio"]');
-    radio.checked = true;
-}
-
 function submitQuiz() {
-    // Define correct answers
     const correctAnswers = {
         q1: "a",
         q2: "c",
@@ -24,34 +12,39 @@ function submitQuiz() {
         q10: "b"
     };
 
-    // Loop through each question
+    let score = 0;
+    let total = Object.keys(correctAnswers).length;
+
     for (let q in correctAnswers) {
         const selected = document.querySelector(`input[name="${q}"]:checked`);
         const options = document.querySelectorAll(`input[name="${q}"]`);
 
-        // Reset borders first
         options.forEach(opt => opt.parentElement.style.border = "none");
 
-        if (!selected) continue; // skip if no selection
+        if (!selected) continue;
 
         if (selected.value === correctAnswers[q]) {
-            selected.parentElement.style.border = "2px solid green"; // correct
+            selected.parentElement.style.border = "2px solid green";
+            score++; // count correct
         } else {
-            selected.parentElement.style.border = "2px solid red";   // wrong
+            selected.parentElement.style.border = "2px solid red";
         }
 
-        // Enable Show Answer button
         const quizDiv = selected.closest(".quiz-question");
         const showBtn = quizDiv.querySelector(".show-answer-btn");
         showBtn.disabled = false;
 
-        // Show answer on button click
-        showBtn.addEventListener("click", function() {
-            const answerDiv = quizDiv.querySelector(".answer-explanation");
-            answerDiv.style.display = "block";
-        });
+        showBtn.onclick = function () {
+            quizDiv.querySelector(".answer-explanation").style.display = "block";
+        };
     }
+
+    // Save result
+    const percentage = Math.round((score / total) * 100);
+    localStorage.setItem("score", score);
+    localStorage.setItem("total", total);
+    localStorage.setItem("percentage", percentage);
+
+    // Go to result page
+    window.location.href = "result.html";
 }
-
-
-
