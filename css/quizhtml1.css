@@ -128,5 +128,10 @@
  .btn-outline:hover {
      background: #f8f9fa;
  }
+.new{
+    /* background: #000; */
+    margin-left: 670px; 
+    padding: 15px;
 
+}
 

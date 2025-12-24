@@ -22,21 +22,21 @@
                 <div class="quiz-question">
                     <div class="question-text">1. What does HTML stand for?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" id="answer1" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="a" id="q1a">
                             <label for="q1a">Hyper Text Markup Language</label>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" id="answer2" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="b" id="q1b">
                             <label for="q1b">Hyperlinks and Text Markup Language</label>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" id="answer3" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="c" id="q1c">
                             <label for="q1c">Home Tool Markup Language</label>
                         </div>
                     </div>
-                    <button type="button" class="show-answer-btn">Show Answer</button>
-                    <div class="answer-explanation">
+                    <button type="button" id="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation" id="answer-explanation">
                         <strong>Correct Answer:</strong> Hyper Text Markup Language<br>
                         <strong>Explanation:</strong> HTML stands for Hyper Text Markup Language, which is the standard
                         markup language for creating web pages.
@@ -276,13 +276,12 @@
 
                 <div class="quiz-navigation">
                     <div>
-                        <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
+                        <button type="button" class="show-answer-btn new" onclick="submitQuiz()">Submit Quiz</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>
-
-
     <script src="../js/Quiz.js"></script>
     
 </body>
