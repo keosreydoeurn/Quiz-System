@@ -15,6 +15,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
                 <h1>TechQuiz</h1>
             </div>
             <nav class="main-nav">
@@ -40,12 +41,12 @@
     <section class="quiz-filter">
         <div class="container">
             <div class="filter-options">
-                <div class="search-box">
+                <div class="search-box" id="search-box">
                     <input type="text" placeholder="Search quizzes..." aria-label="Search quizzes">
-                    <button><i class="fas fa-search"></i></button>
+                    <button><i class="fas fa-search" id="fa-search"></i></button>
                 </div>
                 <div class="filter-dropdown">
-                    <select>
+                    <select id="categorySelect">
                         <option value="">All Categories</option>
                         <option value="html">HTML</option>
                         <option value="css">CSS</option>
@@ -143,6 +144,24 @@
                     <a href="quiz-react.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
+            <!-- new -->
+             <div class="quiz-card" id="html">
+                <div class="quiz-card-header">
+                    <span class="quiz-category">HTML</span>
+                    <span class="quiz-level beginner">Intermediate</span>
+                </div>
+                <div class="quiz-card-body">
+                    <h3>HTML5 Fundamentals</h3>
+                    <p>Test your knowledge of HTML5 elements, attributes, and semantic markup.</p>
+                    <div class="quiz-meta">
+                        <span><i class="far fa-question-circle"></i> 15 Questions</span>
+                        <span><i class="far fa-clock"></i> 10 min</span>
+                    </div>
+                </div>
+                <div class="quiz-card-footer">
+                    <a href="quiz-html.html" class="btn-small">Start Quiz</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -212,7 +231,7 @@
             </div>
         </div>
     </footer>
-
+<script src="/js/main.js"></script>
 </body>
 
 </html>
