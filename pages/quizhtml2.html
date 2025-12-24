@@ -21,15 +21,15 @@
                     <div class="question-text">1. What is the main purpose of the HTML &lt;section&gt; element?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q1">
+                            <input type="radio" name="q1" value="a">
                             <label>To style content</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q1">
+                            <input type="radio" name="q1" value="b">
                             <label>To group related content semantically</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q1">
+                            <input type="radio" name="q1" value="c">
                             <label>To create navigation links</label>
                         </div>
                     </div>
@@ -46,11 +46,11 @@
                     </div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q2">
+                            <input type="radio" name="q2" value="a">
                             <label>True</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q2">
+                            <input type="radio" name="q2" value="b">
                             <label>False</label>
                         </div>
                     </div>
@@ -72,9 +72,8 @@
                     </div>
                 </div>
 
-
-
                 <!-- quiz4 -->
+
 
                 <div class="quiz-question">
                     <div class="question-text">4. Which CSS property is used to change text color?</div>
@@ -161,6 +160,7 @@
 
                 <!-- quiz8 -->
 
+
                 <div class="quiz-question">
                     <div class="question-text">8. True or False: CSS Flexbox is one-dimensional.</div>
                     <div class="options">
@@ -227,48 +227,7 @@
             </form>
         </div>
     </div>
-
-
-    <script src="../js/quiz.js"></script>
-    <script>
-        // Function to handle option selection
-        function selectOption(element) {
-            // Remove selected class from all options in this question
-            const options = element.parentElement.querySelectorAll('.option');
-            options.forEach(opt => opt.classList.remove('selected'));
-
-            // Add selected class to clicked option
-            element.classList.add('selected');
-
-            // Check the radio input
-            const radio = element.querySelector('input[type="radio"]');
-            if (radio) {
-                radio.checked = true;
-            }
-        }
-
-        // Navigation functions
-        function nextQuestion() {
-            // Add logic to go to next question
-            alert('Next question');
-        }
-
-        function previousQuestion() {
-            // Add logic to go to previous question
-            alert('Previous question');
-        }
-
-        function submitQuiz() {
-            // Add quiz submission logic
-            if (confirm('Are you sure you want to submit the quiz?')) {
-                // Show all answers
-                document.querySelectorAll('.show-answer-btn').forEach(btn => {
-                    btn.click();
-                });
-                alert('Quiz submitted! Check your answers.');
-            }
-        }
-    </script>
+    <script src="../js/html2.js"></script>
 </body>
 
 </html>
