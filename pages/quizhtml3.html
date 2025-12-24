@@ -12,266 +12,228 @@
 <body>
     <div class="container">
         <div class="quiz-container">
-            <h1>HTML Advanced Quiz</h1>
-            <p class="text-muted">Test your advanced knowledge of HTML elements</p>
+            <h1>Advanced Tech Quiz</h1>
+            <p class="text-muted">Test your knowledge with 15 questions</p>
             <form id="quizForm" class="quiz-form">
 
                 <!-- Question 1 - Multiple Choice -->
                 <div class="quiz-question">
-                    <div class="question-text">1. Which HTML element is used to define a self-contained composition, like a blog post?</div>
+                    <div class="question-text">1. Which HTML element is used for a self-contained composition like a
+                        blog post?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q1">
-                            <label>&lt;article&gt;</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q1">
-                            <label>&lt;section&gt;</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q1">
-                            <label>&lt;div&gt;</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q1"><label>&lt;article&gt;</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q1"><label>&lt;section&gt;</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q1"><label>&lt;div&gt;</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> &lt;article&gt;
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> &lt;article&gt;</div>
                 </div>
 
                 <!-- Question 2 - True/False -->
                 <div class="quiz-question">
-                    <div class="question-text">2. True or False: The HTML &lt;picture&gt; element allows responsive images based on device width.</div>
+                    <div class="question-text">2. True or False: The HTML &lt;picture&gt; element allows responsive
+                        images based on device width.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q2">
-                            <label>True</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q2">
-                            <label>False</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q2"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q2"><label>False</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> True
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> True</div>
                 </div>
 
-                <!-- Question 3 - Fill in the blank -->
+                <!-- Question 3 - Multiple Choice -->
                 <div class="quiz-question">
-                    <div class="question-text">3. Which JavaScript method is used to parse a string to an integer?</div>
-                    <input type="text" class="text-answer" placeholder="Your answer here">
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> parseInt
-                    </div>
-                </div>
-
-                <!-- Question 4 - Multiple Choice -->
-                <div class="quiz-question">
-                    <div class="question-text">4. Which CSS unit is relative to the font-size of the root element?</div>
+                    <div class="question-text">3. Which CSS unit is relative to the font-size of the root element?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q4">
-                            <label>em</label>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><label>em</label>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q4">
-                            <label>rem</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q4">
-                            <label>px</label>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q3"><label>rem</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><label>px</label>
                         </div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> rem
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> rem</div>
                 </div>
 
-                <!-- Question 5 - True/False -->
+                <!-- Question 4 - True/False -->
                 <div class="quiz-question">
-                    <div class="question-text">5. True or False: CSS Grid allows for two-dimensional layout designs.</div>
+                    <div class="question-text">4. True or False: CSS Grid allows for two-dimensional layout designs.
+                    </div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q5">
-                            <label>True</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q5">
-                            <label>False</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q4"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q4"><label>False</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> True
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> True</div>
                 </div>
 
-                <!-- Question 6 - Fill in the blank -->
+                <!-- Question 5 - Multiple Choice -->
                 <div class="quiz-question">
-                    <div class="question-text">6. Which HTML attribute is used to provide a tooltip when hovering over an element?</div>
-                    <input type="text" class="text-answer" placeholder="Your answer here">
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> title
+                    <div class="question-text">5. Which JavaScript keyword declares a block-scoped variable?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q5"><label>var</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q5"><label>let</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q5"><label>const</label></div>
                     </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> let</div>
+                </div>
+
+                <!-- Question 6 - True/False -->
+                <div class="quiz-question">
+                    <div class="question-text">6. True or False: The CSS pseudo-class :nth-child() selects elements
+                        based on their position in the parent.</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q6"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q6"><label>False</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> True</div>
                 </div>
 
                 <!-- Question 7 - Multiple Choice -->
                 <div class="quiz-question">
-                    <div class="question-text">7. Which JavaScript keyword declares a block-scoped variable?</div>
+                    <div class="question-text">7. Which HTML element defines a container for SVG graphics?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q7">
-                            <label>var</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q7">
-                            <label>let</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q7">
-                            <label>const</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q7"><label>&lt;svg&gt;</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q7"><label>&lt;canvas&gt;</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q7"><label>&lt;img&gt;</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> let
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> &lt;svg&gt;</div>
                 </div>
 
                 <!-- Question 8 - True/False -->
                 <div class="quiz-question">
-                    <div class="question-text">8. True or False: The CSS pseudo-class :nth-child() selects elements based on their position in the parent.</div>
+                    <div class="question-text">8. True or False: The 'position: sticky' property allows an element to
+                        stick to the viewport when scrolling.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q8">
-                            <label>True</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q8">
-                            <label>False</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q8"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q8"><label>False</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> True
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> True</div>
                 </div>
 
-                <!-- Question 9 - Fill in the blank -->
+                <!-- Question 9 - Multiple Choice -->
                 <div class="quiz-question">
-                    <div class="question-text">9. What HTML5 API allows you to store key-value pairs in the browser?</div>
-                    <input type="text" class="text-answer" placeholder="Your answer here">
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> localStorage
+                    <div class="question-text">9. Which HTML element is used to embed a JavaScript file?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q9"><label>&lt;script&gt;</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q9"><label>&lt;link&gt;</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q9"><label>&lt;javascript&gt;</label></div>
                     </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> &lt;script&gt;</div>
                 </div>
 
-                <!-- Question 10 - Multiple Choice -->
+                <!-- Question 10 - True/False -->
                 <div class="quiz-question">
-                    <div class="question-text">10. Which CSS property is used to create smooth transitions between property changes?</div>
+                    <div class="question-text">10. True or False: The localStorage API stores key-value pairs in the
+                        browser.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q10">
-                            <label>animation</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q10">
-                            <label>transition</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q10">
-                            <label>transform</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q10"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q10"><label>False</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> transition
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> True</div>
                 </div>
 
                 <!-- Question 11 - Multiple Choice -->
                 <div class="quiz-question">
-                    <div class="question-text">11. Which HTML element defines a container for SVG graphics?</div>
+                    <div class="question-text">11. Which CSS property creates smooth transitions between property
+                        changes?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q11">
-                            <label>&lt;svg&gt;</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q11">
-                            <label>&lt;canvas&gt;</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q11">
-                            <label>&lt;img&gt;</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q11"><label>animation</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q11"><label>transition</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q11"><label>transform</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> &lt;svg&gt;
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> transition</div>
                 </div>
 
                 <!-- Question 12 - True/False -->
                 <div class="quiz-question">
-                    <div class="question-text">12. True or False: In JavaScript, arrow functions bind their own 'this' context.</div>
+                    <div class="question-text">12. True or False: Arrow functions in JavaScript bind their own 'this'
+                        context.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q12">
-                            <label>True</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q12">
-                            <label>False</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q12"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q12"><label>False</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> False
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> False</div>
                 </div>
 
-                <!-- Question 13 - Fill in the blank -->
+                <!-- Question 13 - Multiple Choice -->
                 <div class="quiz-question">
-                    <div class="question-text">13. Which CSS property allows you to control the visibility of overflow content?</div>
-                    <input type="text" class="text-answer" placeholder="Your answer here">
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> overflow
+                    <div class="question-text">13. Which CSS property controls the visibility of overflow content?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q13"><label>overflow</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q13"><label>visibility</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q13"><label>display</label></div>
                     </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> overflow</div>
                 </div>
 
-                <!-- Question 14 - Multiple Choice -->
+                <!-- Question 14 - True/False -->
                 <div class="quiz-question">
-                    <div class="question-text">14. Which HTML element is used for embedding external JavaScript files?</div>
+                    <div class="question-text">14. True or False: The CSS flexbox property 'justify-content' aligns
+                        items horizontally.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q14">
-                            <label>&lt;script&gt;</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q14">
-                            <label>&lt;javascript&gt;</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q14">
-                            <label>&lt;link&gt;</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q14"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q14"><label>False</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> &lt;script&gt;
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> True</div>
                 </div>
 
-                <!-- Question 15 - True/False -->
+                <!-- Question 15 - Multiple Choice -->
                 <div class="quiz-question">
-                    <div class="question-text">15. True or False: The 'position: sticky' property allows an element to stick to the viewport when scrolling.</div>
+                    <div class="question-text">15. Which HTML element is used to create a clickable button?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q15">
-                            <label>True</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q15">
-                            <label>False</label>
-                        </div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q15"><label>&lt;button&gt;</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q15"><label>&lt;a&gt;</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q15"><label>&lt;input&gt;</label></div>
                     </div>
-                    <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> True
-                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation"><strong>Correct Answer:</strong> &lt;button&gt;</div>
                 </div>
 
                 <div class="quiz-navigation">
@@ -279,6 +241,7 @@
                         <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
                     </div>
                 </div>
+
             </form>
         </div>
     </div>
@@ -293,16 +256,12 @@
             if (radio) radio.checked = true;
         }
 
-        function nextQuestion() { alert('Next question'); }
-        function previousQuestion() { alert('Previous question'); }
         function submitQuiz() {
             if (confirm('Are you sure you want to submit the quiz?')) {
-                document.querySelectorAll('.show-answer-btn').forEach(btn => btn.click());
                 alert('Quiz submitted! Check your answers.');
             }
         }
-
-        
     </script>
 </body>
+
 </html>
