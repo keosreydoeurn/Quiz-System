@@ -20,21 +20,21 @@
                 <div class="quiz-question">
                     <div class="question-text">1. What does HTML stand for?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" id="answer1" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="a" id="q1a">
                             <label for="q1a">Hyper Text Markup Language</label>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" id="answer2" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="b" id="q1b">
                             <label for="q1b">Hyperlinks and Text Markup Language</label>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" id="answer3" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="c" id="q1c">
                             <label for="q1c">Home Tool Markup Language</label>
                         </div>
                     </div>
-                    <button type="button" class="show-answer-btn">Show Answer</button>
-                    <div class="answer-explanation">
+                    <button type="button" id="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation" id="answer-explanation">
                         <strong>Correct Answer:</strong> Hyper Text Markup Language<br>
                         <strong>Explanation:</strong> HTML stands for Hyper Text Markup Language, which is the standard
                         markup language for creating web pages.
@@ -273,57 +273,17 @@
                 <!-- Add more questions as needed -->
 
                 <div class="quiz-navigation">
-                    <button type="button" class="btn btn-outline" onclick="previousQuestion()">Previous</button>
-                    <div>
-                        <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                    <a href="/pages/quiz.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                    <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
+                    <a href="" class="btn btn-outline">View Result</a>
                 </div>
             </form>
         </div>
     </div>
+    <script src="../js/Quiz.js"></script>
 
-
-    <script src="../js/quiz.js"></script>
-    <script>
-        // Function to handle option selection
-        function selectOption(element) {
-            // Remove selected class from all options in this question
-            const options = element.parentElement.querySelectorAll('.option');
-            options.forEach(opt => opt.classList.remove('selected'));
-
-            // Add selected class to clicked option
-            element.classList.add('selected');
-
-            // Check the radio input
-            const radio = element.querySelector('input[type="radio"]');
-            if (radio) {
-                radio.checked = true;
-            }
-        }
-
-        // Navigation functions
-        function nextQuestion() {
-            // Add logic to go to next question
-            alert('Next question');
-        }
-
-        function previousQuestion() {
-            // Add logic to go to previous question
-            alert('Previous question');
-        }
-
-        function submitQuiz() {
-            // Add quiz submission logic
-            if (confirm('Are you sure you want to submit the quiz?')) {
-                // Show all answers
-                document.querySelectorAll('.show-answer-btn').forEach(btn => {
-                    btn.click();
-                });
-                alert('Quiz submitted! Check your answers.');
-            }
-        }
-    </script>
 </body>
 
 </html>
