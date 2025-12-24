@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,7 +95,6 @@
 
                 <!-- quiz4 -->
 
-
                 <div class="quiz-question">
                     <div class="question-text">4. Which CSS property is used to change text color?</div>
                     <div class="options">
@@ -153,6 +153,8 @@
 
                 <!-- quiz6 -->
 
+
+
                 <div class="quiz-question">
                     <div class="question-text">6. Which CSS property is used to create space inside an element?</div>
                     <input type="text" class="text-answer" placeholder="Your answer here">
@@ -201,7 +203,6 @@
 
                 <!-- quiz8 -->
 
-
                 <div class="quiz-question">
                     <div class="question-text">8. True or False: CSS Flexbox is one-dimensional.</div>
                     <div class="options">
@@ -227,6 +228,9 @@
 
 
                 <!-- quiz9 -->
+
+
+
 
                 <div class="quiz-question">
                     <div class="question-text">9. Which HTML tag is used to define navigation links?</div>
@@ -271,19 +275,60 @@
                 </div>
 
 
-                <!-- Add more questions as needed -->
-
-                <div class="quiz-navigation">
-                    <button type="button" class="btn btn-outline" onclick="previousQuestion()">Previous</button>
-                    <div>
-                        <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                 <div class="quiz-navigation">
+                    <a href="/pages/quiz.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                    <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
+                    <a href="" class="btn btn-outline">View Result</a>
                 </div>
             </form>
         </div>
     </div>
-    <script src="../js/html2.js"></script>
+
+
+    <script src="../js/quiz.js"></script>
+    <script>
+        // Function to handle option selection
+        function selectOption(element) {
+            // Remove selected class from all options in this question
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            // Add selected class to clicked option
+            element.classList.add('selected');
+
+            // Check the radio input
+            const radio = element.querySelector('input[type="radio"]');
+            if (radio) {
+                radio.checked = true;
+            }
+        }
+
+        // Navigation functions
+        function nextQuestion() {
+            // Add logic to go to next question
+            alert('Next question');
+        }
+
+        function previousQuestion() {
+            // Add logic to go to previous question
+            alert('Previous question');
+        }
+
+
+
+        function submitQuiz() {
+            // Add quiz submission logic
+            if (confirm('Are you sure you want to submit the quiz?')) {
+                // Show all answers
+                document.querySelectorAll('.show-answer-btn').forEach(btn => {
+                    btn.click();
+                });
+                alert('Quiz submitted! Check your answers.');
+            }
+        }
+    </script>
 </body>
 
 </html>
