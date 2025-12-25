@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - CSS Basics</title>
+    <link rel="stylesheet" href="../css/quizcss2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="quiz-container">
+            <h1>CSS Basics Quiz</h1>
+            <p class="text-muted">Test your knowledge of CSS fundamentals</p>
+            <form id="quizForm" class="quiz-form">
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <div class="question-text">1. Which CSS property controls the stacking order of elements?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1" value="a">
+                            <label>a. position</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1" value="b">
+                            <label>b. z-index</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1" value="c">
+                            <label>c. display</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1" value="d">
+                            <label>d. overflow</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> z-index<br>
+                        <strong>Explanation:</strong> z-index controls which element appears on top when elements
+                        overlap.
+                    </div>
+                </div>
+
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <div class="question-text">2. Flexbox is mainly used for one-dimensional layouts.</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q2" value="true">
+                            <label>True</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q2" value="false">
+                            <label>False</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> True<br>
+                        <strong>Explanation:</strong> Flexbox works in one direction: row or column.
+                    </div>
+                </div>
+
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <div class="question-text">3. Which unit is relative to the root element’s font size?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3" value="a">
+                            <label>a. em</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3" value="b">
+                            <label>b. rem</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3" value="c">
+                            <label>c. px</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3" value="d">
+                            <label>d. %</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> rem<br>
+                        <strong>Explanation:</strong> rem is based on the root (html) font size.
+                    </div>
+                </div>
+
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <div class="question-text">4. position: absolute removes an element from the normal document flow.
+                    </div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q4" value="true">
+                            <label>True</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q4" value="false">
+                            <label>False</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> True<br>
+                        <strong>Explanation:</strong> Absolutely positioned elements don’t affect other elements’
+                        layout.
+                    </div>
+                </div>
+
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <div class="question-text">5. Which CSS property adds space between flex items?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5" value="a">
+                            <label>a. padding</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5" value="b">
+                            <label>b. margin</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5" value="c">
+                            <label>c. gap</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5" value="d">
+                            <label>d. space</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> gap<br>
+                        <strong>Explanation:</strong> gap controls spacing between flex or grid items.
+                    </div>
+                </div>
+
+
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <div class="question-text">6. z-index works only on positioned elements.</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q6" value="true">
+                            <label>True</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q6" value="false">
+                            <label>False</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> True<br>
+                        <strong>Explanation:</strong> z-index only works when position is relative, absolute, fixed, or
+                        sticky.
+                    </div>
+                </div>
+
+
+                <!-- Question 7 -->
+                <div class="quiz-question">
+                    <div class="question-text">7. Which property aligns items vertically in Flexbox?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7" value="a">
+                            <label>a. justify-content</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7" value="b">
+                            <label>b. align-items</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7" value="c">
+                            <label>c. text-align</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7" value="d">
+                            <label>d. vertical-align</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> align-items<br>
+                        <strong>Explanation:</strong> align-items aligns items along the cross axis.
+                    </div>
+                </div>
+
+
+                <!-- Question 8 -->
+                <div class="quiz-question">
+                    <div class="question-text">8. opacity: 0 removes the element from the page.</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q8" value="true">
+                            <label>True</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q8" value="false">
+                            <label>False</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> False<br>
+                        <strong>Explanation:</strong> The element is invisible but still exists and can be interacted
+                        with.
+                    </div>
+                </div>
+
+
+                <!-- Question 9 -->
+                <div class="quiz-question">
+                    <div class="question-text">9. Which CSS feature is used for responsive design?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9" value="a">
+                            <label>a. Media Queries</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9" value="b">
+                            <label>b. z-index</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9" value="c">
+                            <label>c. float</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9" value="d">
+                            <label>d. clear</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Media Queries<br>
+                        <strong>Explanation:</strong> Media queries adapt layouts for different screen sizes.
+                    </div>
+                </div>
+
+
+                <!-- Question 10 -->
+                <div class="quiz-question">
+                    <div class="question-text">10. Which property rounds the corners of an element?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10" value="a">
+                            <label>a. border-radius</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10" value="b">
+                            <label>b. radius</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10" value="c">
+                            <label>c. corner</label>
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10" value="d">
+                            <label>d. round-border</label>
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> border-radius<br>
+                        <strong>Explanation:</strong> border-radius controls how rounded the element corners appear.
+                    </div>
+                </div>
+
+
+                <div class="quiz-navigation">
+                    <a href="/pages/quiz.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                    <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
+                    <a href="" class="btn btn-outline">View Result</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/quiz.js"></script>
+    <script>
+        function selectOption(element) {
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            const radio = element.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+        }
+
+        function nextQuestion() { alert('Next question'); }
+        function previousQuestion() { alert('Previous question'); }
+        function submitQuiz() {
+            if (confirm('Are you sure you want to submit the quiz?')) {
+                document.querySelectorAll('.show-answer-btn').forEach(btn => btn.click());
+                alert('Quiz submitted! Check your answers.');
+            }
+        }
+    </script>
+</body>
+
+</html>
