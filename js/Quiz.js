@@ -1,3 +1,11 @@
+function selectOption(option) {
+    const allOptions = option.parentElement.querySelectorAll('.option');
+    allOptions.forEach(opt => opt.classList.remove('selected'));
+    option.classList.add('selected');
+
+    option.querySelector('input[type="radio"]').checked = true;
+}
+
 function submitQuiz() {
     const correctAnswers = {
         q1: "a",
@@ -25,7 +33,7 @@ function submitQuiz() {
 
         if (selected.value === correctAnswers[q]) {
             selected.parentElement.style.border = "2px solid green";
-            score++; // count correct
+            score++;
         } else {
             selected.parentElement.style.border = "2px solid red";
         }
@@ -34,17 +42,34 @@ function submitQuiz() {
         const showBtn = quizDiv.querySelector(".show-answer-btn");
         showBtn.disabled = false;
 
-        showBtn.onclick = function () {
+        showBtn.onclick = () => {
             quizDiv.querySelector(".answer-explanation").style.display = "block";
         };
     }
 
-    // Save result
+    // ✅ KEEP DATA (HISTORY)
     const percentage = Math.round((score / total) * 100);
-    localStorage.setItem("score", score);
-    localStorage.setItem("total", total);
-    localStorage.setItem("percentage", percentage);
 
-    // Go to result page
+    const resultData = {
+        score: score,
+        total: total,
+        percentage: percentage,
+        date: new Date().toLocaleString()
+    };
+
+    // Get existing history or create new
+    let history = JSON.parse(localStorage.getItem("quizHistory")) || [];
+
+    // Add new result
+    history.push(resultData);
+
+    // Save history
+    localStorage.setItem("quizHistory", JSON.stringify(history));
+
+    // Save latest result (for result page)
+    localStorage.setItem("latestResult", JSON.stringify(resultData));
+}
+
+function goToResult() {
     window.location.href = "result.html";
 }
