@@ -1,30 +1,46 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const latestResult = JSON.parse(localStorage.getItem("latestResult"));
+// ================= RESULT.JS =================
 
-    // Safety check
-    if (!latestResult) {
-        document.getElementById("percentage").textContent = "0%";
-        document.getElementById("correctAnswers").textContent = "0/0";
-        document.getElementById("scoreText").textContent = "No Quiz Taken Yet";
-        return;
-    }
+// Get the latest result from localStorage
+const latestResult = JSON.parse(localStorage.getItem("latestResult"));
 
-    const { score, total, percentage } = latestResult;
+if (latestResult) {
+    const score = latestResult.score;
+    const total = latestResult.total;
+    const percentage = latestResult.percentage;
 
-    // Update UI
-    document.getElementById("percentage").textContent = percentage + "%";
+    // ================= UPDATE UI =================
+    document.getElementById("percentage").textContent = `${percentage}%`;
     document.getElementById("correctAnswers").textContent = `${score}/${total}`;
 
-    // Dynamic message
+    // ================= SCORE TEXT MESSAGE =================
     const scoreText = document.getElementById("scoreText");
 
-    if (percentage >= 80) {
-        scoreText.textContent = "Excellent Work! 🎉";
-    } else if (percentage >= 60) {
-        scoreText.textContent = "Good Job! 👍";
-    } else if (percentage >= 40) {
-        scoreText.textContent = "Not Bad 🙂";
+    if (percentage >= 90) {
+        scoreText.textContent = "Excellent!";
+    } else if (percentage >= 75) {
+        scoreText.textContent = "Great Job!";
+    } else if (percentage >= 50) {
+        scoreText.textContent = "Good Try!";
     } else {
-        scoreText.textContent = "Keep Practicing 💪";
+        scoreText.textContent = "Keep Practicing!";
     }
-});
+
+    // ================= CIRCLE COLOR =================
+    const scoreCircle = document.querySelector(".score-circle");
+    // Remove previous classes
+    scoreCircle.classList.remove("high-score", "medium-score", "low-score");
+
+    if (percentage >= 75) {
+        scoreCircle.classList.add("high-score");
+    } else if (percentage >= 50) {
+        scoreCircle.classList.add("medium-score");
+    } else {
+        scoreCircle.classList.add("low-score");
+    }
+
+    // Optional: Update the date
+    const resultDateElem = document.querySelector(".result-card .text-muted");
+    if (resultDateElem && latestResult.date) {
+        resultDateElem.textContent = `Completed on ${latestResult.date}`;
+    }
+}
