@@ -1,233 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        /* Help Page Specific Styles */
-        .help-header {
-            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .help-header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .help-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
-        .help-container {
-            padding: 0 20px 60px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .help-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .help-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            padding: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .help-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .help-card i {
-            font-size: 2.5rem;
-            color: #007bff;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .help-card h3 {
-            color: #343a40;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .help-card p {
-            color: #6c757d;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .help-section {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            padding: 40px;
-            margin-bottom: 40px;
-        }
-
-        .help-section h2 {
-            color: #2c3e50;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-            font-size: 2rem;
-            position: relative;
-        }
-
-        .help-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 80px;
-            height: 3px;
-            background: #007bff;
-        }
-
-        .faq-item {
-            margin-bottom: 25px;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .faq-item:hover {
-            border-color: #007bff;
-            box-shadow: 0 3px 10px rgba(0,123,255,0.1);
-        }
-
-        .faq-question {
-            background: #f8f9fa;
-            padding: 15px 20px;
-            font-weight: 600;
-            color: #2c3e50;
-            margin: 0;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-        }
-
-        .faq-question:hover {
-            background: #f1f3f5;
-        }
-
-        .faq-question::after {
-            content: '\f107';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-question::after {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            color: #555;
-            line-height: 1.6;
-            padding-left: 20px;
-            border-left: 3px solid var(--primary);
-            margin-top: 10px;
-            display: none;
-        }
-
-        .faq-answer.show {
-            display: block;
-        }
-
-        .step {
-            display: flex;
-            margin-bottom: 25px;
-        }
-
-        .step-number {
-            background: var(--primary);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-            font-weight: bold;
-        }
-
-        .step-content {
-            flex: 1;
-        }
-
-        .step-content h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-
-        .contact-form {
-            margin-top: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .btn-block {
-            display: block;
-            width: 100%;
-        }
-=======
- * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
- }
-=======
-=======
->>>>>>> f9a3a31ac133c20b2ba9057ae2de72f05e66fd49
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-<<<<<<< HEAD
->>>>>>> ee6a9b68098a15a973f56853f57c23c52df18023
 
-=======
->>>>>>> f9a3a31ac133c20b2ba9057ae2de72f05e66fd49
 :root {
     --primary-color: #007bff;
     --secondary-color: #0056b3;
@@ -253,7 +29,6 @@ body {
     padding: 0 15px;
 }
 
-/* ===================== Navbar/Header (Home Page Style) ===================== */
 .header {
     padding: 20px 0;
     background-color: #fff;
@@ -269,9 +44,21 @@ body {
     align-items: center;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    color: #007bff;
+    font-size: 30px;
+    font-weight: 700;
+}
+
 .logo h1 {
-    color: var(--primary-color);
-    font-size: 1.8rem;
+    color: #007bff;
+    font-size: 30px;
     font-weight: 700;
 }
 
@@ -286,7 +73,7 @@ body {
 
 .main-nav a {
     text-decoration: none;
-    color: var(--dark-color);
+    color: #343a40;
     font-weight: 500;
     padding: 5px 0;
     position: relative;
@@ -295,7 +82,7 @@ body {
 
 .main-nav a:hover,
 .main-nav .active a {
-    color: var(--primary-color);
+    color: #007bff;
 }
 
 .main-nav a:after {
@@ -305,7 +92,7 @@ body {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--primary-color);
+    background-color: #007bff;
     transition: width 0.3s;
 }
 
@@ -314,7 +101,6 @@ body {
     width: 100%;
 }
 
-/* Page Header */
 .page-header {
     background: #4f46e5;
     color: #fff;
@@ -322,16 +108,33 @@ body {
     padding: 50px 0;
 }
 
-/* Help Sections */
 .help-section {
-    margin: 40px 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-bottom: 40px;
 }
 
 .help-section h2 {
-    margin-bottom: 15px;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 32px;
+    position: relative;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
 }
 
-/* Lists */
+.help-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: #007bff;
+}
+
 .guide-list {
     list-style: none;
 }
@@ -345,7 +148,6 @@ body {
     margin-right: 8px;
 }
 
-/* Steps */
 .step {
     display: flex;
     gap: 15px;
@@ -360,9 +162,15 @@ body {
     border-radius: 50%;
     text-align: center;
     line-height: 35px;
+    font-weight: bold;
 }
 
-/* Tips */
+.step-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
 .tips-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -376,75 +184,135 @@ body {
     text-align: center;
 }
 
-/* FAQ */
-.faq-item {
+.tip-card i {
+    font-size: 24px;
+    color: #007bff;
     margin-bottom: 10px;
 }
 
-.faq-question {
-    font-weight: 600;
-    cursor: pointer;
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
 }
 
+.faq-item:hover {
+    border-color: #007bff;
+    box-shadow: 0 3px 10px rgba(0, 123, 255, 0.1);
+}
 
-  .footer {
-     background-color: var(--dark-color);
-     color: #fff;
-     padding: 60px 0 0;
- }
+.faq-question {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
 
- .footer-content {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-     gap: 30px;
-     margin-bottom: 40px;
- }
+.faq-question:hover {
+    background: #f1f3f5;
+}
 
- .footer-section h3 {
-     font-size: 1.3rem;
-     margin-bottom: 20px;
-     position: relative;
-     padding-bottom: 10px;
- }
+.faq-question::after {
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    transition: transform 0.3s;
+}
 
- .footer-section h3:after {
-     content: '';
-     position: absolute;
-     left: 0;
-     bottom: 0;
-     width: 50px;
-     height: 2px;
-     background-color: var(--primary-color);
- }
+.faq-item.active .faq-question::after {
+    transform: rotate(180deg);
+}
 
- .footer-section p {
-     margin-bottom: 15px;
-     color: #bbb;
- }
+.faq-answer {
+    padding-left: 20px;
+    border-left: 3px solid #007bff;
+    margin-top: 10px;
+    display: none;
+    color: #555;
+    line-height: 1.6;
+}
 
- .footer-section ul {
-     list-style: none;
- }
+.faq-answer.show {
+    display: block;
+}
 
- .footer-section ul li {
-     margin-bottom: 10px;
- }
+.contact-form {
+    margin-top: 30px;
+}
 
- .footer-section a {
-     color: #bbb;
-     text-decoration: none;
-     transition: color 0.3s;
- }
+.form-group {
+    margin-bottom: 20px;
+}
 
- .footer-section a:hover {
-     color: var(--primary-color);
- }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
 
- .footer-bottom {
-     text-align: center;
-     padding: 20px 0;
-     border-top: 1px solid rgba(255, 255, 255, 0.1);
-     font-size: 0.9rem;
-     color: #bbb;
- }
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 60px 0 0;
+}
 
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section h3:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #343a40;
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+    color: #bbb;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #007bff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    color: #bbb;
+}

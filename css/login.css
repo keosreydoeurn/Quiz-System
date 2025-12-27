@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    background: #f0f2f5;
+}
+
+.login-page {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login-left {
+    flex: 1;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 30px;
+}
+
+.login-left .overlay {
+    text-align: center;
+}
+
+.login-left h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.login-left h1 span {
+    color: #ffd700;
+}
+
+.login-left p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.login-left img {
+    width: 550px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.login-right {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 30px;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.05);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-toggle {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.form-toggle button {
+    flex: 1;
+    padding: 12px 0;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: #f1f1f1;
+    transition: 0.3s;
+}
+
+.form-toggle button.active-toggle {
+    background: #007bff;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hidden-form {
+    display: none;
+}
+
+.active-form {
+    display: flex;
+}
+
+label {
+    font-weight: 500;
+    color: #333;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #007bff;
+    font-size: 18px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.remember-me label {
+    cursor: pointer;
+    color: #333;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    height: 18px;
+}
+
+.btn {
+    padding: 12px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.social-login {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.social-login p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 5px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.social-btn.google {
+    background: #db4437;
+}
+
+.social-btn.google:hover {
+    background: #c23321;
+}
+
+.social-btn.facebook {
+    background: #3b5998;
+}
+
+.social-btn.facebook:hover {
+    background: #2d4373;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    background: #007bff;
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-back i {
+    font-size: 14px;
+}
+
+.btn-back:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.success-popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #28a745;
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 18px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-popup.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+@media(max-width: 900px) {
+    .login-page {
+        flex-direction: column;
+    }
+    .login-left {
+        height: 250px;
+        order: 2;
+    }
+    .login-right {
+        padding: 30px 20px;
+    }
+    .login-left img {
+        width: 200px;
+    }
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,8 @@
     <link rel="stylesheet" href="../css/result.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1>TechQuiz</h1>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="quiz.html">Quizzes</a></li>
-                    <li class="active"><a href="result.html">Results</a></li>
-                    <li><a href="help.html">Help</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
     <!-- Results Header -->
     <section class="results-header">
@@ -38,18 +24,18 @@
         <div class="result-card">
             <div class="score-circle">
                 <div>
-                    <p class="score-percentage">85%</p>
-                    <p class="score-text">Great Job!</p>
+                    <p class="score-percentage" id="percentage">0%</p>
+                    <p class="score-text" id="scoreText">Good Try!</p>
                 </div>
             </div>
-            
+
             <h2>Web Development Basics</h2>
             <p class="text-muted">Completed on December 22, 2025</p>
-            
+
             <div class="result-details">
                 <div class="result-metric">
                     <span class="metric-label">Correct Answers</span>
-                    <span class="metric-value">17/20</span>
+                    <span class="metric-value" id="correctAnswers">0/0</span>
                 </div>
                 <div class="result-metric">
                     <span class="metric-label">Time Spent</span>
@@ -64,14 +50,14 @@
                     <span class="metric-value">Top 15%</span>
                 </div>
             </div>
-            
+
             <div class="btn-group">
                 <a href="quiz.html" class="btn">Try Another Quiz</a>
-                <a href="#" class="btn btn-outline">Review Answers</a>
+                <a href="quizhtml1.html" class="btn btn-outline">Review Answers</a>
                 <a href="../index.html" class="btn btn-outline">Back to Home</a>
             </div>
         </div>
-        
+
         <div class="recommendations">
             <h3>Recommended for You</h3>
             <div class="quiz-cards">
@@ -86,7 +72,7 @@
                         <a href="quiz.html#advanced-web" class="btn-small">Start Quiz</a>
                     </div>
                 </div>
-                
+
                 <div class="quiz-card">
                     <img src="../img/basic.png" alt="JavaScript Fundamentals">
                     <div class="quiz-info">
@@ -108,7 +94,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>About TechQuiz</h3>
-                    <p>TechQuiz helps you test and improve your IT and Web Development knowledge through interactive quizzes.</p>
+                    <p>TechQuiz helps you test and improve your IT and Web Development knowledge through interactive
+                        quizzes.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -132,6 +119,7 @@
         </div>
     </footer>
 
-    <script src="../js/main.js"></script>
+    <script src="../js/result.js"></script>
 </body>
+
 </html>

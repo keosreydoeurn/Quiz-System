@@ -10,24 +10,6 @@
 </head>
 
 <body>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1>TechQuiz</h1>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li class="active"><a href="quiz.html">Quizzes</a></li>
-                    <li><a href="result.html">Results</a></li>
-                    <li><a href="help.html">Help</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
     <!-- Quiz Content -->
     <div class="container">
         <div class="quiz-container">
@@ -38,21 +20,21 @@
                 <div class="quiz-question">
                     <div class="question-text">1. What does HTML stand for?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" id="answer1" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="a" id="q1a">
                             <label for="q1a">Hyper Text Markup Language</label>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" id="answer2" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="b" id="q1b">
                             <label for="q1b">Hyperlinks and Text Markup Language</label>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" id="answer3" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="c" id="q1c">
                             <label for="q1c">Home Tool Markup Language</label>
                         </div>
                     </div>
-                    <button type="button" class="show-answer-btn">Show Answer</button>
-                    <div class="answer-explanation">
+                    <button type="button" id="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation" id="answer-explanation">
                         <strong>Correct Answer:</strong> Hyper Text Markup Language<br>
                         <strong>Explanation:</strong> HTML stands for Hyper Text Markup Language, which is the standard
                         markup language for creating web pages.
@@ -288,89 +270,22 @@
                     </div>
                 </div>
 
-                <!-- Add more questions as needed -->
+              
 
                 <div class="quiz-navigation">
-                    <button type="button" class="btn btn-outline" onclick="previousQuestion()">Previous</button>
-                    <div>
-                        <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                    <a href="/pages/quiz.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                    <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
+                    <button type="button" class="btn btn-outline" onclick="goToResult()">
+                        View Result
+                    </button>
                 </div>
             </form>
         </div>
     </div>
+    <script src="../js/Quiz.js"></script>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About TechQuiz</h3>
-                    <p>TechQuiz helps you test and improve your IT and Web Development knowledge through interactive
-                        quizzes.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="quiz.html">Quizzes</a></li>
-                        <li><a href="result.html">Results</a></li>
-                        <li><a href="help.html">Help</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Email: info@techquiz.com</p>
-                    <p>Phone: +1 234 567 890</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 TechQuiz. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="../js/quiz.js"></script>
-    <script>
-        // Function to handle option selection
-        function selectOption(element) {
-            // Remove selected class from all options in this question
-            const options = element.parentElement.querySelectorAll('.option');
-            options.forEach(opt => opt.classList.remove('selected'));
-
-            // Add selected class to clicked option
-            element.classList.add('selected');
-
-            // Check the radio input
-            const radio = element.querySelector('input[type="radio"]');
-            if (radio) {
-                radio.checked = true;
-            }
-        }
-
-        // Navigation functions
-        function nextQuestion() {
-            // Add logic to go to next question
-            alert('Next question');
-        }
-
-        function previousQuestion() {
-            // Add logic to go to previous question
-            alert('Previous question');
-        }
-
-        function submitQuiz() {
-            // Add quiz submission logic
-            if (confirm('Are you sure you want to submit the quiz?')) {
-                // Show all answers
-                document.querySelectorAll('.show-answer-btn').forEach(btn => {
-                    btn.click();
-                });
-                alert('Quiz submitted! Check your answers.');
-            }
-        }
-    </script>
 </body>
 
 </html>
