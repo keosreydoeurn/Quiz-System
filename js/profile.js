@@ -1,588 +1,506 @@
-// TechQuiz Profile JavaScript
+// js/profile.js - Profile Management
+import dbManager from './database.js';
 
-class TechQuizProfile {
-    constructor() {
-        this.currentUser = null;
-        this.chart = null;
-        this.init();
-    }
-
-    async init() {
-        await this.loadUserData();
-        this.setupEventListeners();
-        this.renderProfile();
-        this.initChart();
-        this.checkAuth();
-    }
-
-    async loadUserData() {
-        // Try to load from localStorage
-        const savedUser = localStorage.getItem('techquiz_user');
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Check if user is logged in
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         
-        if (savedUser) {
-            this.currentUser = JSON.parse(savedUser);
-        } else {
-            // Demo user data
-            this.currentUser = {
-                id: 1,
-                name: "John Doe",
-                email: "john.doe@example.com",
-                memberSince: "2024-01-15",
-                stats: {
-                    quizzesTaken: 42,
-                    averageScore: 78,
-                    totalTime: 1250, // minutes
-                    rank: 15,
-                    categoryScores: {
-                        html: 85,
-                        css: 92,
-                        js: 78,
-                        react: 65
-                    }
-                },
-                recentActivity: [
-                    { type: 'quiz_complete', title: 'HTML5 Quiz', score: 85, time: '15 minutes ago' },
-                    { type: 'badge_earned', title: 'JavaScript Expert Badge', time: '1 hour ago' },
-                    { type: 'streak', title: '3 Day Streak!', time: '2 days ago' },
-                    { type: 'high_score', title: 'New High Score', score: 92, time: '3 days ago' }
-                ],
-                quizHistory: [
-                    { name: 'Advanced JavaScript', category: 'js', score: 76, time: '18m 30s', date: '2024-03-15' },
-                    { name: 'CSS Layout Mastery', category: 'css', score: 88, time: '15m 45s', date: '2024-03-14' },
-                    { name: 'HTML5 Semantic Elements', category: 'html', score: 94, time: '12m 20s', date: '2024-03-13' },
-                    { name: 'React Fundamentals', category: 'react', score: 82, time: '20m 15s', date: '2024-03-12' }
-                ],
-                achievements: [
-                    { id: 1, name: 'Quick Learner', description: 'Complete 10 quizzes in one week', earned: true },
-                    { id: 2, name: 'Perfect Score', description: 'Score 100% on any quiz', earned: true },
-                    { id: 3, name: 'Streak Master', description: '7-day quiz streak', earned: true },
-                    { id: 4, name: 'Quiz Master', description: 'Complete 50 quizzes', earned: false, progress: 42 },
-                    { id: 5, name: 'Speed Demon', description: 'Complete quiz in under 5 minutes', earned: false },
-                    { id: 6, name: 'Global Champion', description: 'Reach #1 on leaderboard', earned: false }
-                ],
-                settings: {
-                    displayName: 'John Doe',
-                    email: 'john.doe@example.com',
-                    notifications: {
-                        email: true,
-                        quizReminders: true,
-                        achievements: false
-                    },
-                    privacy: {
-                        profileVisibility: 'public',
-                        showOnLeaderboard: true,
-                        allowMessages: false
-                    }
-                }
-            };
-            
-            localStorage.setItem('techquiz_user', JSON.stringify(this.currentUser));
+        if (!currentUser || !currentUser.email) {
+            window.location.href = 'login.html';
+            return;
         }
-    }
-
-    renderProfile() {
-        if (!this.currentUser) return;
-
-        // Update user info
-        document.getElementById('userName').textContent = this.currentUser.name;
-        document.getElementById('userEmail').textContent = this.currentUser.email;
         
-        // Format member since date
-        const memberSince = new Date(this.currentUser.memberSince);
-        const options = { year: 'numeric', month: 'long' };
-        document.querySelector('.member-since').innerHTML = 
-            `<i class="far fa-calendar-alt"></i> Member since ${memberSince.toLocaleDateString('en-US', options)}`;
-
-        // Update stats
-        document.getElementById('totalQuizzes').textContent = this.currentUser.stats.quizzesTaken;
-        document.getElementById('avgScore').textContent = `${this.currentUser.stats.averageScore}%`;
-        
-        // Format total time
-        const hours = Math.floor(this.currentUser.stats.totalTime / 60);
-        const minutes = this.currentUser.stats.totalTime % 60;
-        document.getElementById('totalTime').textContent = `${hours}h ${minutes}m`;
-        
-        document.getElementById('rank').textContent = `#${this.currentUser.stats.rank}`;
-
-        // Update progress bars for category stats
-        const categories = ['html', 'css', 'js', 'react'];
-        categories.forEach(category => {
-            const score = this.currentUser.stats.categoryScores[category];
-            const progressBar = document.querySelector(`.category-stat:nth-child(${categories.indexOf(category) + 1}) .progress`);
-            const scoreSpan = document.querySelector(`.category-stat:nth-child(${categories.indexOf(category) + 1}) .stat-score`);
-            
-            if (progressBar) {
-                progressBar.style.width = `${score}%`;
-            }
-            if (scoreSpan) {
-                scoreSpan.textContent = `${score}%`;
-            }
-        });
-    }
-
-    setupEventListeners() {
-        // Logout button
-        const logoutBtn = document.getElementById('logoutBtn');
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', () => this.logout());
+        // Initialize database
+        if (!dbManager.db) {
+            await dbManager.init();
         }
+        
+        // Load user data
+        await loadUserProfile(currentUser.email);
+        
+        // Set up event listeners
+        setupEventListeners();
+        
+        // Update header
+        updateHeader();
+        
+    } catch (error) {
+        console.error('Profile initialization error:', error);
+        alert('Error loading profile. Please try logging in again.');
+        window.location.href = 'login.html';
+    }
+});
 
-        // Tab switching
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        tabButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const tabName = e.target.getAttribute('onclick').match(/switchTab\('(\w+)'\)/)[1];
-                this.switchTab(tabName);
-            });
-        });
-
-        // Settings form
+// Load user profile data
+async function loadUserProfile(email) {
+    try {
+        const user = await dbManager.getUserByEmail(email);
+        
+        if (!user) {
+            throw new Error('User not found');
+        }
+        
+        // Update UI with user data
+        document.getElementById('userName').textContent = user.fullName || user.username;
+        document.getElementById('userEmail').textContent = user.email;
+        document.getElementById('totalQuizzes').textContent = user.totalQuizzes || 0;
+        document.getElementById('avgScore').textContent = `${Math.round(user.averageScore || 0)}%`;
+        document.getElementById('totalTime').textContent = formatTime(user.totalTime || 0);
+        document.getElementById('rank').textContent = `#${user.rank || '999'}`;
+        
+        // Update member since
+        const memberSince = document.querySelector('.member-since');
+        if (memberSince && user.createdAt) {
+            const date = new Date(user.createdAt);
+            memberSince.innerHTML = `<i class="far fa-calendar-alt"></i> Member since ${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`;
+        }
+        
+        // Update settings form
         const displayNameInput = document.getElementById('displayName');
-        if (displayNameInput) {
-            displayNameInput.value = this.currentUser?.settings?.displayName || '';
-            displayNameInput.addEventListener('change', () => this.saveSettings());
-        }
-
         const emailInput = document.getElementById('userEmailInput');
-        if (emailInput) {
-            emailInput.value = this.currentUser?.settings?.email || '';
-            emailInput.addEventListener('change', () => this.saveSettings());
-        }
-
-        // Notification checkboxes
-        ['emailNotifications', 'quizReminders', 'achievementAlerts'].forEach(id => {
-            const checkbox = document.getElementById(id);
-            if (checkbox && this.currentUser?.settings?.notifications) {
-                const key = id.replace('Notifications', '').replace('Reminders', '').replace('Alerts', '').toLowerCase();
-                checkbox.checked = this.currentUser.settings.notifications[key] || false;
-                checkbox.addEventListener('change', () => this.saveSettings());
-            }
-        });
-
-        // Privacy settings
-        const visibilitySelect = document.getElementById('profileVisibility');
-        if (visibilitySelect && this.currentUser?.settings?.privacy) {
-            visibilitySelect.value = this.currentUser.settings.privacy.profileVisibility;
-            visibilitySelect.addEventListener('change', () => this.saveSettings());
-        }
-
-        const leaderboardCheckbox = document.getElementById('showOnLeaderboard');
-        if (leaderboardCheckbox && this.currentUser?.settings?.privacy) {
-            leaderboardCheckbox.checked = this.currentUser.settings.privacy.showOnLeaderboard;
-            leaderboardCheckbox.addEventListener('change', () => this.saveSettings());
-        }
-
-        const messagesCheckbox = document.getElementById('allowMessages');
-        if (messagesCheckbox && this.currentUser?.settings?.privacy) {
-            messagesCheckbox.checked = this.currentUser.settings.privacy.allowMessages;
-            messagesCheckbox.addEventListener('change', () => this.saveSettings());
-        }
-
-        // Filter dropdowns
-        const categoryFilter = document.getElementById('categoryFilter');
-        const dateFilter = document.getElementById('dateFilter');
+        if (displayNameInput) displayNameInput.value = user.fullName || user.username;
+        if (emailInput) emailInput.value = user.email;
         
-        if (categoryFilter) {
-            categoryFilter.addEventListener('change', () => this.filterHistory());
-        }
+        // Load performance chart
+        loadPerformanceChart();
         
-        if (dateFilter) {
-            dateFilter.addEventListener('change', () => this.filterHistory());
-        }
+        // Load quiz history
+        await loadQuizHistory(user.email);
+        
+        // Load achievements
+        loadAchievements(user);
+        
+        // Load settings
+        await loadUserSettings(user.email);
+        
+    } catch (error) {
+        console.error('Error loading profile:', error);
+        throw error;
     }
+}
 
-    switchTab(tabName) {
-        // Update tab buttons
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        document.querySelectorAll('.tab-content').forEach(content => {
-            content.classList.remove('active');
-        });
-
-        // Activate selected tab
-        const activeButton = document.querySelector(`.tab-btn[onclick*="${tabName}"]`);
-        const activeContent = document.getElementById(`${tabName}Tab`);
-        
-        if (activeButton) activeButton.classList.add('active');
-        if (activeContent) activeContent.classList.add('active');
-
-        // Load tab-specific content
-        switch(tabName) {
-            case 'history':
-                this.renderQuizHistory();
-                break;
-            case 'achievements':
-                this.renderAchievements();
-                break;
-            case 'settings':
-                this.renderSettings();
-                break;
-        }
+// Format time from seconds to readable format
+function formatTime(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    
+    if (hours > 0) {
+        return `${hours}h ${minutes}m`;
     }
+    return `${minutes}m`;
+}
 
-    initChart() {
-        const ctx = document.getElementById('performanceChart');
-        if (!ctx) return;
-
-        // Destroy existing chart
-        if (this.chart) {
-            this.chart.destroy();
+// Load quiz history
+async function loadQuizHistory(userId) {
+    try {
+        const history = await dbManager.getUserQuizHistory(userId);
+        
+        // Update the history table if it exists
+        const historyTable = document.querySelector('.history-table tbody');
+        if (historyTable && history.length > 0) {
+            historyTable.innerHTML = history.map(item => `
+                <tr>
+                    <td>${item.quizName}</td>
+                    <td><span class="category-badge ${item.category.toLowerCase()}">${item.category}</span></td>
+                    <td><span class="score-badge">${item.score}%</span></td>
+                    <td>${formatTime(item.timeSpent)}</td>
+                    <td>${new Date(item.date).toLocaleDateString()}</td>
+                    <td><button class="btn-small" onclick="retakeQuiz('${item.quizName}')">Retake</button></td>
+                </tr>
+            `).join('');
         }
+        
+    } catch (error) {
+        console.error('Error loading quiz history:', error);
+    }
+}
 
-        // Create new chart
-        this.chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Average Score',
-                    data: [65, 72, 78, 75, 82, 85],
-                    borderColor: '#667eea',
-                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
-                    tension: 0.4,
-                    fill: true,
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                        titleFont: { size: 14 },
-                        bodyFont: { size: 14 },
-                        padding: 12
-                    }
+// Load achievements
+function loadAchievements(user) {
+    const badgesGrid = document.querySelector('.badges-grid');
+    if (!badgesGrid) return;
+    
+    const achievements = [
+        {
+            id: 'quick-learner',
+            title: 'Quick Learner',
+            description: 'Complete 10 quizzes in one week',
+            icon: 'fas fa-bolt',
+            earned: (user.totalQuizzes || 0) >= 10,
+            progress: user.totalQuizzes || 0
+        },
+        {
+            id: 'perfect-score',
+            title: 'Perfect Score',
+            description: 'Score 100% on any quiz',
+            icon: 'fas fa-star',
+            earned: (user.averageScore || 0) >= 100,
+            progress: user.averageScore >= 100 ? 1 : 0
+        },
+        {
+            id: 'streak-master',
+            title: 'Streak Master',
+            description: '7-day quiz streak',
+            icon: 'fas fa-fire',
+            earned: (user.streak || 0) >= 7,
+            progress: user.streak || 0
+        },
+        {
+            id: 'quiz-master',
+            title: 'Quiz Master',
+            description: 'Complete 50 quizzes',
+            icon: 'fas fa-crown',
+            earned: (user.totalQuizzes || 0) >= 50,
+            progress: Math.min((user.totalQuizzes || 0), 50)
+        },
+        {
+            id: 'speed-demon',
+            title: 'Speed Demon',
+            description: 'Complete quiz in under 5 minutes',
+            icon: 'fas fa-brain',
+            earned: false,
+            progress: 0
+        },
+        {
+            id: 'global-champion',
+            title: 'Global Champion',
+            description: 'Reach #1 on leaderboard',
+            icon: 'fas fa-globe',
+            earned: (user.rank || 999) === 1,
+            progress: user.rank === 1 ? 1 : 0
+        }
+    ];
+    
+    badgesGrid.innerHTML = achievements.map(achievement => `
+        <div class="badge-card ${achievement.earned ? 'earned' : 'locked'}">
+            <div class="badge-icon">
+                <i class="${achievement.icon}"></i>
+            </div>
+            <h4>${achievement.title}</h4>
+            <p>${achievement.description}</p>
+            ${!achievement.earned && achievement.progress > 0 ? 
+                `<span class="progress-text">${achievement.progress}/${achievement.id === 'quiz-master' ? '50' : '1'}</span>` : ''}
+        </div>
+    `).join('');
+}
+
+// Load user settings
+async function loadUserSettings(userId) {
+    try {
+        const settings = await dbManager.getUserSettings(userId);
+        
+        if (settings) {
+            const emailNotifications = document.getElementById('emailNotifications');
+            const quizReminders = document.getElementById('quizReminders');
+            const achievementAlerts = document.getElementById('achievementAlerts');
+            const profileVisibility = document.getElementById('profileVisibility');
+            const showOnLeaderboard = document.getElementById('showOnLeaderboard');
+            const allowMessages = document.getElementById('allowMessages');
+            
+            if (emailNotifications) emailNotifications.checked = settings.emailNotifications !== false;
+            if (quizReminders) quizReminders.checked = settings.quizReminders !== false;
+            if (achievementAlerts) achievementAlerts.checked = settings.achievementAlerts !== false;
+            if (profileVisibility) profileVisibility.value = settings.profileVisibility || 'public';
+            if (showOnLeaderboard) showOnLeaderboard.checked = settings.showOnLeaderboard !== false;
+            if (allowMessages) allowMessages.checked = settings.allowMessages !== false;
+        }
+        
+    } catch (error) {
+        console.error('Error loading settings:', error);
+    }
+}
+
+// Initialize performance chart
+function loadPerformanceChart() {
+    const ctx = document.getElementById('performanceChart');
+    if (!ctx) return;
+    
+    const chartCtx = ctx.getContext('2d');
+    
+    // Sample data - in real app, you would fetch this from database
+    const data = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+            label: 'Average Score',
+            data: [65, 70, 75, 78, 80, 78],
+            borderColor: '#4A6FFF',
+            backgroundColor: 'rgba(74, 111, 255, 0.1)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#4A6FFF',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 5
+        }]
+    };
+    
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100,
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
-                        },
-                        ticks: {
-                            callback: function(value) {
-                                return value + '%';
-                            }
-                        }
-                    },
-                    x: {
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        label: function(context) {
+                            return `Score: ${context.parsed.y}%`;
                         }
                     }
                 }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                }
+            }
+        }
+    };
+    
+    // Destroy existing chart if it exists
+    if (ctx.chart) {
+        ctx.chart.destroy();
+    }
+    
+    // Create new chart
+    ctx.chart = new Chart(chartCtx, config);
+}
+
+// Set up event listeners
+function setupEventListeners() {
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            // Show corresponding content
+            const tabName = this.getAttribute('data-tab') || 
+                           this.textContent.toLowerCase().includes('overview') ? 'overview' :
+                           this.textContent.toLowerCase().includes('history') ? 'history' :
+                           this.textContent.toLowerCase().includes('achievements') ? 'achievements' :
+                           this.textContent.toLowerCase().includes('settings') ? 'settings' : 'overview';
+            
+            const tabContent = document.getElementById(`${tabName}Tab`);
+            if (tabContent) {
+                tabContent.classList.add('active');
+                
+                // Refresh chart if it's overview tab
+                if (tabName === 'overview') {
+                    setTimeout(() => {
+                        loadPerformanceChart();
+                    }, 100);
+                }
             }
         });
+    });
+    
+    // Profile update form
+    const updateProfileBtn = document.querySelector('button[onclick="updateProfile()"]');
+    if (updateProfileBtn) {
+        updateProfileBtn.addEventListener('click', updateProfile);
     }
-
-    renderQuizHistory() {
-        const tableBody = document.querySelector('#historyTab tbody');
-        if (!tableBody || !this.currentUser) return;
-
-        const categoryFilter = document.getElementById('categoryFilter')?.value || 'all';
-        const dateFilter = document.getElementById('dateFilter')?.value || 'all';
-
-        let filteredHistory = this.currentUser.quizHistory;
-
-        // Filter by category
-        if (categoryFilter !== 'all') {
-            filteredHistory = filteredHistory.filter(quiz => quiz.category === categoryFilter);
-        }
-
-        // Filter by date
-        if (dateFilter !== 'all') {
-            const now = new Date();
-            const cutoff = new Date();
-            
-            if (dateFilter === 'week') {
-                cutoff.setDate(now.getDate() - 7);
-            } else if (dateFilter === 'month') {
-                cutoff.setMonth(now.getMonth() - 1);
-            }
-            
-            filteredHistory = filteredHistory.filter(quiz => new Date(quiz.date) >= cutoff);
-        }
-
-        // Render table rows
-        tableBody.innerHTML = filteredHistory.map(quiz => `
-            <tr>
-                <td>${quiz.name}</td>
-                <td><span class="category-badge ${quiz.category}">${this.getCategoryName(quiz.category)}</span></td>
-                <td><span class="score-badge">${quiz.score}%</span></td>
-                <td>${quiz.time}</td>
-                <td>${new Date(quiz.date).toLocaleDateString()}</td>
-                <td><button class="btn-small" onclick="profile.retakeQuiz('${quiz.name}')">Retake</button></td>
-            </tr>
-        `).join('');
+    
+    // Password change form
+    const changePasswordBtn = document.querySelector('button[onclick="changePassword()"]');
+    if (changePasswordBtn) {
+        changePasswordBtn.addEventListener('click', changePassword);
     }
-
-    getCategoryName(category) {
-        const categories = {
-            'html': 'HTML5',
-            'css': 'CSS3',
-            'js': 'JavaScript',
-            'react': 'React.js'
-        };
-        return categories[category] || category;
+    
+    // Settings changes
+    document.querySelectorAll('#settingsTab input, #settingsTab select').forEach(element => {
+        element.addEventListener('change', saveSettings);
+    });
+    
+    // Avatar change
+    const avatarEditBtn = document.querySelector('.avatar-edit');
+    if (avatarEditBtn) {
+        avatarEditBtn.addEventListener('click', changeAvatar);
     }
+}
 
-    renderAchievements() {
-        const badgesGrid = document.querySelector('.badges-grid');
-        if (!badgesGrid || !this.currentUser) return;
-
-        badgesGrid.innerHTML = this.currentUser.achievements.map(achievement => {
-            const earnedClass = achievement.earned ? 'earned' : 'locked';
-            const progressText = achievement.progress ? `<span class="progress-text">${achievement.progress}/50</span>` : '';
-            
-            return `
-                <div class="badge-card ${earnedClass}">
-                    <div class="badge-icon">
-                        <i class="fas ${this.getAchievementIcon(achievement.id)}"></i>
-                    </div>
-                    <h4>${achievement.name}</h4>
-                    <p>${achievement.description}</p>
-                    ${progressText}
-                </div>
-            `;
-        }).join('');
-    }
-
-    getAchievementIcon(id) {
-        const icons = {
-            1: 'fa-bolt',
-            2: 'fa-star',
-            3: 'fa-fire',
-            4: 'fa-crown',
-            5: 'fa-brain',
-            6: 'fa-globe'
-        };
-        return icons[id] || 'fa-trophy';
-    }
-
-    renderSettings() {
-        // Settings are already loaded in setupEventListeners
-        // This function is kept for consistency
-        console.log('Settings tab rendered');
-    }
-
-    saveSettings() {
-        if (!this.currentUser) return;
-
-        // Update settings from form
-        this.currentUser.settings.displayName = document.getElementById('displayName').value;
-        this.currentUser.settings.email = document.getElementById('userEmailInput').value;
-
-        // Update notifications
-        this.currentUser.settings.notifications = {
-            email: document.getElementById('emailNotifications').checked,
-            quizReminders: document.getElementById('quizReminders').checked,
-            achievements: document.getElementById('achievementAlerts').checked
-        };
-
-        // Update privacy
-        this.currentUser.settings.privacy = {
-            profileVisibility: document.getElementById('profileVisibility').value,
-            showOnLeaderboard: document.getElementById('showOnLeaderboard').checked,
-            allowMessages: document.getElementById('allowMessages').checked
-        };
-
-        // Update user name if display name changed
-        if (document.getElementById('displayName').value !== this.currentUser.name) {
-            this.currentUser.name = document.getElementById('displayName').value;
-            this.renderProfile();
-        }
-
-        // Save to localStorage
-        localStorage.setItem('techquiz_user', JSON.stringify(this.currentUser));
-
-        this.showNotification('Settings saved successfully!', 'success');
-    }
-
-    updateProfile() {
-        const displayName = document.getElementById('displayName').value.trim();
-        const email = document.getElementById('userEmailInput').value.trim();
-
+// Update profile information
+async function updateProfile() {
+    try {
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        if (!currentUser) return;
+        
+        const displayName = document.getElementById('displayName')?.value;
+        const email = document.getElementById('userEmailInput')?.value;
+        
         if (!displayName || !email) {
-            this.showNotification('Please fill in all fields', 'error');
+            alert('Please fill in all fields');
             return;
         }
-
-        if (!this.validateEmail(email)) {
-            this.showNotification('Please enter a valid email address', 'error');
-            return;
+        
+        const updates = {};
+        
+        // Only update if changed
+        if (displayName !== currentUser.fullName) {
+            updates.fullName = displayName;
         }
-
-        this.saveSettings();
-        this.showNotification('Profile updated successfully!', 'success');
+        
+        if (email !== currentUser.email) {
+            // Email change requires verification
+            if (!confirm('Are you sure you want to change your email? You will need to verify the new email.')) {
+                return;
+            }
+            updates.email = email;
+        }
+        
+        if (Object.keys(updates).length > 0) {
+            const updatedUser = await dbManager.updateUser(currentUser.email, updates);
+            
+            // Update session storage with new email if changed
+            if (updates.email) {
+                updatedUser.email = updates.email;
+            }
+            sessionStorage.setItem('currentUser', JSON.stringify(updatedUser));
+            
+            // Reload profile data
+            await loadUserProfile(updatedUser.email);
+            
+            alert('Profile updated successfully!');
+        }
+        
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        alert('Error updating profile: ' + error.message);
     }
+}
 
-    changePassword() {
-        const currentPassword = document.getElementById('currentPassword').value;
-        const newPassword = document.getElementById('newPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-
+// Change password
+async function changePassword() {
+    try {
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        if (!currentUser) return;
+        
+        const currentPassword = document.getElementById('currentPassword')?.value;
+        const newPassword = document.getElementById('newPassword')?.value;
+        const confirmPassword = document.getElementById('confirmPassword')?.value;
+        
+        // Validate inputs
         if (!currentPassword || !newPassword || !confirmPassword) {
-            this.showNotification('Please fill in all password fields', 'error');
+            alert('Please fill in all password fields');
             return;
         }
-
-        if (newPassword.length < 8) {
-            this.showNotification('Password must be at least 8 characters', 'error');
-            return;
-        }
-
+        
         if (newPassword !== confirmPassword) {
-            this.showNotification('New passwords do not match', 'error');
+            alert('New passwords do not match');
             return;
         }
-
-        // In real app, verify current password with server
-        // For demo, just show success
-
-        // Clear fields
+        
+        if (newPassword.length < 6) {
+            alert('New password must be at least 6 characters long');
+            return;
+        }
+        
+        // Note: In production, you should verify current password first
+        // For this demo, we'll just update it
+        const updates = { password: newPassword };
+        await dbManager.updateUser(currentUser.email, updates);
+        
+        alert('Password changed successfully!');
+        
+        // Clear password fields
         document.getElementById('currentPassword').value = '';
         document.getElementById('newPassword').value = '';
         document.getElementById('confirmPassword').value = '';
-
-        this.showNotification('Password updated successfully!', 'success');
-    }
-
-    filterHistory() {
-        this.renderQuizHistory();
-    }
-
-    retakeQuiz(quizName) {
-        this.showNotification(`Starting quiz: ${quizName}`, 'info');
-        // In real app, redirect to quiz page
-        setTimeout(() => {
-            window.location.href = 'quiz.html';
-        }, 1000);
-    }
-
-    changeAvatar() {
-        this.showNotification('Avatar upload feature coming soon!', 'info');
-    }
-
-    logout() {
-        // Clear user session
-        localStorage.removeItem('techquiz_user');
-        localStorage.removeItem('isLoggedIn');
         
-        // Redirect to login page
-        window.location.href = 'login.html';
+    } catch (error) {
+        console.error('Error changing password:', error);
+        alert('Error changing password: ' + error.message);
     }
+}
 
-    checkAuth() {
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        if (!isLoggedIn) {
-            this.showNotification('Please login to view your profile', 'error');
+// Save settings
+async function saveSettings() {
+    try {
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        if (!currentUser) return;
+        
+        const settings = {
+            emailNotifications: document.getElementById('emailNotifications')?.checked || false,
+            quizReminders: document.getElementById('quizReminders')?.checked || false,
+            achievementAlerts: document.getElementById('achievementAlerts')?.checked || false,
+            profileVisibility: document.getElementById('profileVisibility')?.value || 'public',
+            showOnLeaderboard: document.getElementById('showOnLeaderboard')?.checked || false,
+            allowMessages: document.getElementById('allowMessages')?.checked || false
+        };
+        
+        await dbManager.updateUserSettings(currentUser.email, settings);
+        
+        // Show save confirmation
+        const saveBtn = document.querySelector('#settingsTab .btn');
+        if (saveBtn) {
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved!';
             setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 1500);
-        }
-    }
-
-    validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    }
-
-    showNotification(message, type = 'info') {
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.innerHTML = `
-            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-            <span>${message}</span>
-            <button onclick="this.parentElement.remove()">&times;</button>
-        `;
-        
-        // Add styles
-        notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#F44336' : '#667eea'};
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 10000;
-            animation: slideIn 0.3s ease;
-            min-width: 300px;
-            max-width: 400px;
-        `;
-        
-        // Add CSS for animation
-        if (!document.getElementById('notification-styles')) {
-            const style = document.createElement('style');
-            style.id = 'notification-styles';
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-                .notification button {
-                    background: none;
-                    border: none;
-                    color: white;
-                    font-size: 20px;
-                    cursor: pointer;
-                    margin-left: auto;
-                }
-            `;
-            document.head.appendChild(style);
+                saveBtn.innerHTML = originalText;
+            }, 2000);
         }
         
-        document.body.appendChild(notification);
-        
-        // Auto remove after 3 seconds
-        setTimeout(() => {
-            if (notification.parentElement) {
-                notification.style.animation = 'slideIn 0.3s ease reverse';
-                setTimeout(() => notification.remove(), 300);
-            }
-        }, 3000);
+    } catch (error) {
+        console.error('Error saving settings:', error);
     }
 }
 
-// Initialize profile when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    window.profile = new TechQuizProfile();
-});
-
-// Global functions for inline onclick handlers
-function switchTab(tabName) {
-    if (window.profile) {
-        window.profile.switchTab(tabName);
-    }
-}
-
-function updateProfile() {
-    if (window.profile) {
-        window.profile.updateProfile();
-    }
-}
-
-function changePassword() {
-    if (window.profile) {
-        window.profile.changePassword();
-    }
-}
-
+// Change avatar (placeholder)
 function changeAvatar() {
-    if (window.profile) {
-        window.profile.changeAvatar();
+    alert('Avatar change functionality would be implemented here. In a real app, this would allow you to upload a profile picture.');
+}
+
+// Update header based on login state
+function updateHeader() {
+    const loginBtn = document.getElementById('loginBtn');
+    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    
+    if (currentUser && loginBtn) {
+        loginBtn.innerHTML = `<i class="fas fa-user"></i> ${currentUser.fullName || currentUser.username}`;
+        loginBtn.href = 'profile.html';
     }
 }
+
+// Retake quiz function
+function retakeQuiz(quizName) {
+    alert(`Redirecting to ${quizName} quiz...`);
+    // In a real app, this would redirect to the quiz page
+    // window.location.href = `quiz.html?quiz=${encodeURIComponent(quizName)}`;
+}
+
+// Make functions available globally
+window.switchTab = function(tabName) {
+    const btn = document.querySelector(`.tab-btn[onclick*="${tabName}"]`) ||
+                document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+    if (btn) btn.click();
+};
+
+window.changeAvatar = changeAvatar;
+window.updateProfile = updateProfile;
+window.changePassword = changePassword;
+window.retakeQuiz = retakeQuiz;
