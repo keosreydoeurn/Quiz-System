@@ -245,40 +245,31 @@ input:focus {
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
-/* Success Popup - Bigger Version */
 .success-popup {
     position: fixed;
-    bottom: -200px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: #28a745; 
+    background: #28a745;
     color: #fff;
-    padding: 20px 40px; 
+    padding: 20px 40px;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 18px; /
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3); 
+    font-size: 18px;
     opacity: 0;
     pointer-events: none;
     transition: all 0.5s ease;
     z-index: 1000;
-    min-width: 300px; 
-    max-width: 90%; 
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .success-popup.show {
-    bottom: 50px; 
     opacity: 1;
     pointer-events: auto;
 }
 
-.success-popup {
-    width: 80%;
-    max-width: 500px;
-    font-size: 20px;
-    padding: 25px 50px;
-}
 
 @media(max-width: 900px) {
     .login-page {
