@@ -1,46 +1,67 @@
 // ================= RESULT.JS =================
+window.addEventListener('DOMContentLoaded', () => {
+    const latestResult = JSON.parse(localStorage.getItem('latestResult'));
+    if (!latestResult) return console.warn('No quiz results found.');
 
-// Get the latest result from localStorage
-const latestResult = JSON.parse(localStorage.getItem("latestResult"));
+    const { score, total, percentage, date, userAnswers, correctAnswers, timeSpent } = latestResult;
 
-if (latestResult) {
-    const score = latestResult.score;
-    const total = latestResult.total;
-    const percentage = latestResult.percentage;
+    // --- Update Score Metrics ---
+    const percentageElem = document.getElementById('percentage');
+    const correctElem = document.getElementById('correctAnswers');
+    const completionElem = document.querySelector('.text-muted');
+    const timeElem = document.getElementById('timeSpent');
 
-    // ================= UPDATE UI =================
-    document.getElementById("percentage").textContent = `${percentage}%`;
-    document.getElementById("correctAnswers").textContent = `${score}/${total}`;
+    percentageElem.textContent = `${percentage}%`;
+    correctElem.textContent = `${score}/${total}`;
+    if (date) completionElem.textContent = `Completed on ${date}`;
+    if (timeSpent) timeElem.textContent = timeSpent;
 
-    // ================= SCORE TEXT MESSAGE =================
-    const scoreText = document.getElementById("scoreText");
+    // --- Score Message ---
+    const scoreText = document.getElementById('scoreText');
+    scoreText.textContent =
+        percentage >= 90 ? 'Excellent!' :
+        percentage >= 75 ? 'Great Job!' :
+        percentage >= 50 ? 'Good Try!' :
+        'Keep Practicing!';
 
-    if (percentage >= 90) {
-        scoreText.textContent = "Excellent!";
-    } else if (percentage >= 75) {
-        scoreText.textContent = "Great Job!";
-    } else if (percentage >= 50) {
-        scoreText.textContent = "Good Try!";
-    } else {
-        scoreText.textContent = "Keep Practicing!";
+    // --- Update Circle Color ---
+    const scoreCircle = document.querySelector('.score-circle');
+    scoreCircle.classList.remove('high-score', 'medium-score', 'low-score');
+    scoreCircle.classList.add(
+        percentage >= 75 ? 'high-score' :
+        percentage >= 50 ? 'medium-score' :
+        'low-score'
+    );
+
+    // --- Review Mode ---
+    if (localStorage.getItem('reviewMode') === 'true' && userAnswers && correctAnswers) {
+        Object.entries(userAnswers).forEach(([q, userValue]) => {
+            const inputElem = document.querySelector(`input[name="${q}"][value="${userValue}"]`);
+            if (!inputElem) return;
+
+            const quizDiv = inputElem.closest('.quiz-question');
+
+            // Mark selection
+            inputElem.checked = true;
+            inputElem.parentElement.classList.add('selected');
+
+            // Border color for correct/incorrect
+            inputElem.parentElement.style.border = userValue === correctAnswers[q]
+                ? '2px solid blue'
+                : '2px solid red';
+
+            // Show/Hide explanation toggle
+            const showBtn = quizDiv.querySelector('.show-answer-btn');
+            if (showBtn) {
+                showBtn.disabled = false;
+                showBtn.onclick = () => {
+                    const explanation = quizDiv.querySelector('.answer-explanation');
+                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
+                };
+            }
+        });
+
+        // Disable all radio inputs in review mode
+        document.querySelectorAll('.option input[type="radio"]').forEach(input => input.disabled = true);
     }
-
-    // ================= CIRCLE COLOR =================
-    const scoreCircle = document.querySelector(".score-circle");
-    // Remove previous classes
-    scoreCircle.classList.remove("high-score", "medium-score", "low-score");
-
-    if (percentage >= 75) {
-        scoreCircle.classList.add("high-score");
-    } else if (percentage >= 50) {
-        scoreCircle.classList.add("medium-score");
-    } else {
-        scoreCircle.classList.add("low-score");
-    }
-
-    // Optional: Update the date
-    const resultDateElem = document.querySelector(".result-card .text-muted");
-    if (resultDateElem && latestResult.date) {
-        resultDateElem.textContent = `Completed on ${latestResult.date}`;
-    }
-}
+});

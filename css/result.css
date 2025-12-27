@@ -62,14 +62,14 @@ body {
 .score-percentage {
     font-size: 48px;
     font-weight: 700;
-    color: #28a745;
+    color: #fff;
     margin: 0;
     line-height: 1;
 }
 
 .score-text {
     font-size: 20px;
-    color: #6c757d;
+    color: #fff;
     margin-top: 5px;
 }
 
