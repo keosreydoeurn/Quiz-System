@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - TechQuiz</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+
+     <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>TechQuiz</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./quiz.html">Quizzes</a></li>
+                    <li><a href="./leaderboard.html">Leaderboard</a></li>
+                    <li class="active"><a href="./profile.html">Profile</a></li>
+                    <li><a href="./help.html">Help</a></li>
+                </ul>
+            </nav>
+            <a href="/pages/login.html" class="btn-login" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+        </div>
+    </header>
+
+    <!-- Profile Hero Section -->
+    <section class="profile-hero">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <div class="avatar-circle">
+                        <img src="../img/avatar.png" alt="User Avatar" id="userAvatar">
+                        <button class="avatar-edit" onclick="changeAvatar()">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    <div class="profile-info">
+                        <h1 id="userName">John Doe</h1>
+                        <p class="user-email" id="userEmail">john.doe@example.com</p>
+                        <p class="member-since"><i class="far fa-calendar-alt"></i> Member since January 2024</p>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <div>
+                            <h3 id="totalQuizzes">42</h3>
+                            <p>Quizzes Taken</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h3 id="avgScore">78%</h3>
+                            <p>Average Score</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3 id="totalTime">20h 50m</h3>
+                            <p>Total Time</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-medal"></i>
+                        <div>
+                            <h3 id="rank">#15</h3>
+                            <p>Global Rank</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Content -->
+    <section class="profile-content">
+        <div class="container">
+            <!-- Tab Navigation -->
+            <div class="profile-tabs">
+                <button class="tab-btn active" onclick="switchTab('overview')">
+                    <i class="fas fa-chart-pie"></i> Overview
+                </button>
+                <button class="tab-btn" onclick="switchTab('history')">
+                    <i class="fas fa-history"></i> Quiz History
+                </button>
+                <button class="tab-btn" onclick="switchTab('achievements')">
+                    <i class="fas fa-trophy"></i> Achievements
+                </button>
+                <button class="tab-btn" onclick="switchTab('settings')">
+                    <i class="fas fa-cog"></i> Settings
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content active" id="overviewTab">
+                <div class="overview-grid">
+                    <!-- Performance Chart -->
+                    <div class="overview-card">
+                        <h3><i class="fas fa-chart-bar"></i> Performance Trends</h3>
+                        <div class="performance-chart">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="overview-card">
+                        <h3><i class="fas fa-bolt"></i> Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <i class="fas fa-check-circle success"></i>
+                                <div>
+                                    <strong>Completed HTML5 Quiz</strong>
+                                    <p>Scored 85% • 15 minutes ago</p>
+                                </div>
+                                <span class="score-badge">85%</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-medal warning"></i>
+                                <div>
+                                    <strong>Earned "JavaScript Expert" Badge</strong>
+                                    <p>1 hour ago</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-fire-alt danger"></i>
+                                <div>
+                                    <strong>3 Day Streak!</strong>
+                                    <p>Daily quiz completed • 2 days ago</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-star primary"></i>
+                                <div>
+                                    <strong>New High Score in CSS Quiz</strong>
+                                    <p>92% • 3 days ago</p>
+                                </div>
+                                <span class="score-badge">92%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="overview-card">
+                        <h3><i class="fas fa-chart-line"></i> Category Performance</h3>
+                        <div class="category-stats">
+                            <div class="category-stat">
+                                <div class="stat-header">
+                                    <i class="fab fa-html5" style="color: #E44D26;"></i>
+                                    <span>HTML5</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 85%; background: #E44D26;"></div>
+                                </div>
+                                <span class="stat-score">85%</span>
+                            </div>
+                            <div class="category-stat">
+                                <div class="stat-header">
+                                    <i class="fab fa-css3-alt" style="color: #264DE4;"></i>
+                                    <span>CSS3</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 92%; background: #264DE4;"></div>
+                                </div>
+                                <span class="stat-score">92%</span>
+                            </div>
+                            <div class="category-stat">
+                                <div class="stat-header">
+                                    <i class="fab fa-js" style="color: #F7DF1E;"></i>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 78%; background: #F7DF1E;"></div>
+                                </div>
+                                <span class="stat-score">78%</span>
+                            </div>
+                            <div class="category-stat">
+                                <div class="stat-header">
+                                    <i class="fab fa-react" style="color: #61DAFB;"></i>
+                                    <span>React.js</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 65%; background: #61DAFB;"></div>
+                                </div>
+                                <span class="stat-score">65%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Quizzes -->
+                    <div class="overview-card">
+                        <h3><i class="fas fa-rocket"></i> Recent Quizzes</h3>
+                        <div class="quiz-history">
+                            <div class="quiz-history-item">
+                                <div>
+                                    <strong>Advanced JavaScript</strong>
+                                    <p>Yesterday • 25 questions</p>
+                                </div>
+                                <div class="quiz-score">
+                                    <span class="score-circle">76%</span>
+                                </div>
+                            </div>
+                            <div class="quiz-history-item">
+                                <div>
+                                    <strong>CSS Layout Mastery</strong>
+                                    <p>2 days ago • 20 questions</p>
+                                </div>
+                                <div class="quiz-score">
+                                    <span class="score-circle">88%</span>
+                                </div>
+                            </div>
+                            <div class="quiz-history-item">
+                                <div>
+                                    <strong>HTML5 Semantic Elements</strong>
+                                    <p>3 days ago • 15 questions</p>
+                                </div>
+                                <div class="quiz-score">
+                                    <span class="score-circle">94%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div class="tab-content" id="historyTab">
+                <div class="history-container">
+                    <div class="history-filters">
+                        <select id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="html">HTML5</option>
+                            <option value="css">CSS3</option>
+                            <option value="js">JavaScript</option>
+                            <option value="react">React.js</option>
+                        </select>
+                        <select id="dateFilter">
+                            <option value="all">All Time</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                    </div>
+                    <div class="history-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Quiz Name</th>
+                                    <th>Category</th>
+                                    <th>Score</th>
+                                    <th>Time</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Advanced JavaScript</td>
+                                    <td><span class="category-badge js">JavaScript</span></td>
+                                    <td><span class="score-badge">76%</span></td>
+                                    <td>18m 30s</td>
+                                    <td>Mar 15, 2024</td>
+                                    <td><button class="btn-small">Retake</button></td>
+                                </tr>
+                                <tr>
+                                    <td>CSS Layout Mastery</td>
+                                    <td><span class="category-badge css">CSS3</span></td>
+                                    <td><span class="score-badge">88%</span></td>
+                                    <td>15m 45s</td>
+                                    <td>Mar 14, 2024</td>
+                                    <td><button class="btn-small">Review</button></td>
+                                </tr>
+                                <tr>
+                                    <td>HTML5 Semantic Elements</td>
+                                    <td><span class="category-badge html">HTML5</span></td>
+                                    <td><span class="score-badge">94%</span></td>
+                                    <td>12m 20s</td>
+                                    <td>Mar 13, 2024</td>
+                                    <td><button class="btn-small">Retake</button></td>
+                                </tr>
+                                <tr>
+                                    <td>React Fundamentals</td>
+                                    <td><span class="category-badge react">React.js</span></td>
+                                    <td><span class="score-badge">82%</span></td>
+                                    <td>20m 15s</td>
+                                    <td>Mar 12, 2024</td>
+                                    <td><button class="btn-small">Review</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Tab -->
+            <div class="tab-content" id="achievementsTab">
+                <div class="achievements-container">
+                    <h3>Your Badges & Achievements</h3>
+                    <div class="badges-grid">
+                        <div class="badge-card earned">
+                            <div class="badge-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4>Quick Learner</h4>
+                            <p>Complete 10 quizzes in one week</p>
+                        </div>
+                        <div class="badge-card earned">
+                            <div class="badge-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>Perfect Score</h4>
+                            <p>Score 100% on any quiz</p>
+                        </div>
+                        <div class="badge-card earned">
+                            <div class="badge-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <h4>Streak Master</h4>
+                            <p>7-day quiz streak</p>
+                        </div>
+                        <div class="badge-card locked">
+                            <div class="badge-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h4>Quiz Master</h4>
+                            <p>Complete 50 quizzes</p>
+                            <span class="progress-text">42/50</span>
+                        </div>
+                        <div class="badge-card locked">
+                            <div class="badge-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>Speed Demon</h4>
+                            <p>Complete quiz in under 5 minutes</p>
+                        </div>
+                        <div class="badge-card locked">
+                            <div class="badge-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h4>Global Champion</h4>
+                            <p>Reach #1 on leaderboard</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-content" id="settingsTab">
+                <div class="settings-container">
+                    <div class="settings-grid">
+                        <!-- Profile Settings -->
+                        <div class="settings-card">
+                            <h3><i class="fas fa-user-edit"></i> Profile Information</h3>
+                            <div class="form-group">
+                                <label for="displayName">Display Name</label>
+                                <input type="text" id="displayName" placeholder="Enter your display name">
+                            </div>
+                            <div class="form-group">
+                                <label for="userEmail">Email Address</label>
+                                <input type="email" id="userEmailInput" placeholder="your.email@example.com">
+                            </div>
+                            <button class="btn" onclick="updateProfile()">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </div>
+
+                        <!-- Security Settings -->
+                        <div class="settings-card">
+                            <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" placeholder="Enter current password">
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" placeholder="Enter new password">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                            </div>
+                            <button class="btn" onclick="changePassword()">
+                                <i class="fas fa-key"></i> Update Password
+                            </button>
+                        </div>
+
+                        <!-- Notification Settings -->
+                        <div class="settings-card">
+                            <h3><i class="fas fa-bell"></i> Notifications</h3>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailNotifications" checked>
+                                    <span>Email notifications</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="quizReminders" checked>
+                                    <span>Quiz reminders</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="achievementAlerts">
+                                    <span>Achievement alerts</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Privacy Settings -->
+                        <div class="settings-card">
+                            <h3><i class="fas fa-lock"></i> Privacy</h3>
+                            <div class="form-group">
+                                <label for="profileVisibility">Profile Visibility</label>
+                                <select id="profileVisibility">
+                                    <option value="public">Public</option>
+                                    <option value="friends">Friends Only</option>
+                                    <option value="private">Private</option>
+                                </select>
+                            </div>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="showOnLeaderboard" checked>
+                                    <span>Show on leaderboard</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="allowMessages">
+                                    <span>Allow messages</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+
+</html>

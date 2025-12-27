@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --border-radius: 5px;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -50,52 +61,6 @@ body {
     font-size: 30px;
     font-weight: 700;
 }
-
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    align-items: center;
-}
-
-.main-nav li {
-    margin-left: 30px;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: #343a40;
-    font-weight: 500;
-    padding: 5px 12px;
-    position: relative;
-    transition: color 0.3s, background 0.3s, transform 0.3s;
-}
-
-/* Underline effect for normal links */
-.main-nav a:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #007bff;
-    transition: width 0.3s;
-}
-
-.main-nav a:hover:after,
-.main-nav li.active a:after {
-    width: 100%;
-}
-
-.main-nav a:hover {
-    color: #007bff;
-}
-
-.main-nav li.active .btn-login {
-    background: #0056b3;
-    color: #fff;
-}
-
 .btn-login {
     display: inline-flex;
     align-items: center;
@@ -155,6 +120,45 @@ body {
     background-color: #0056b3;
     transform: translateY(-2px);
 }
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 30px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #343a40;
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav .active a {
+    color: #007bff;
+}
+
+.main-nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #007bff;
+    transition: width 0.3s;
+}
+
+.main-nav a:hover:after,
+.main-nav .active a:after {
+    width: 100%;
+}
+
 
 .stats-row {
     display: flex;
