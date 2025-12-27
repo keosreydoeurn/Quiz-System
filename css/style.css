@@ -54,6 +54,7 @@ body {
 .main-nav ul {
     display: flex;
     list-style: none;
+    align-items: center;
 }
 
 .main-nav li {
@@ -64,16 +65,12 @@ body {
     text-decoration: none;
     color: #343a40;
     font-weight: 500;
-    padding: 5px 0;
+    padding: 5px 12px;
     position: relative;
-    transition: color 0.3s;
+    transition: color 0.3s, background 0.3s, transform 0.3s;
 }
 
-.main-nav a:hover,
-.main-nav .active a {
-    color: #007bff;
-}
-
+/* Underline effect for normal links */
 .main-nav a:after {
     content: '';
     position: absolute;
@@ -86,8 +83,41 @@ body {
 }
 
 .main-nav a:hover:after,
-.main-nav .active a:after {
+.main-nav li.active a:after {
     width: 100%;
+}
+
+.main-nav a:hover {
+    color: #007bff;
+}
+
+.main-nav li.active .btn-login {
+    background: #0056b3;
+    color: #fff;
+}
+
+.btn-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background: linear-gradient(135deg, #0056b3, #0099cc);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.btn-login i {
+    font-size: 16px;
 }
 
 .btn {
