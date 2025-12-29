@@ -1,60 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-box input');
+    const searchBtn = document.querySelector('.search-box button');
     const categorySelect = document.getElementById('categorySelect');
     const levelSelect = document.querySelectorAll('.filter-dropdown select')[1];
-    const quizzes = Array.from(document.querySelectorAll('.quiz-card'));
+    const cards = Array.from(document.querySelectorAll('.quiz-card'));
     const seeMoreBtn = document.getElementById('seeMoreBtn');
 
-    const initialCount = 6;
+    const INITIAL_CARDS = 6; // Initial visible cards
+    let cardsToShow = INITIAL_CARDS;
 
-    // Function to show quizzes based on a given array and count
-    function showQuizzes(filteredQuizzes, count) {
-        filteredQuizzes.forEach((quiz, i) => {
-            quiz.style.display = i < count ? 'flex' : 'none';
-        });
-        seeMoreBtn.style.display = filteredQuizzes.length > count ? 'block' : 'none';
-    }
-
-    // Filter quizzes based on search, category, and level
-    function filterQuizzes() {
+    function updateCards() {
         const searchTerm = searchInput.value.toLowerCase();
         const selectedCategory = categorySelect.value.toLowerCase();
         const selectedLevel = levelSelect.value.toLowerCase();
 
-        const filtered = quizzes.filter(quiz => {
-            const title = quiz.querySelector('h3').textContent.toLowerCase();
-            const category = quiz.querySelector('.quiz-category').textContent.toLowerCase();
-            const level = quiz.querySelector('.quiz-level').textContent.toLowerCase();
-
+        let visibleCount = 0;
+        const matchingCards = cards.filter(card => {
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
+            const category = card.querySelector('.quiz-category')?.textContent.toLowerCase() || "";
+            const level = card.querySelector('.quiz-level')?.textContent.toLowerCase() || "";
             return title.includes(searchTerm) &&
-                   (selectedCategory === "" || category === selectedCategory) &&
-                   (selectedLevel === "" || level === selectedLevel);
+                   (selectedCategory === "" || category.includes(selectedCategory)) &&
+                   (selectedLevel === "" || level.includes(selectedLevel));
         });
 
-        showQuizzes(filtered, initialCount);
-        seeMoreBtn.dataset.filteredCount = filtered.length; // store filtered count
-        seeMoreBtn.dataset.visibleCount = initialCount;    // reset visible count
+        cards.forEach(card => {
+            if (matchingCards.includes(card) && visibleCount < cardsToShow) {
+                card.style.display = "block";
+                visibleCount++;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        // Update See More / See Less button
+        if (cardsToShow >= matchingCards.length) {
+            seeMoreBtn.textContent = "See Less";
+        } else {
+            seeMoreBtn.textContent = "See More";
+        }
+
+        seeMoreBtn.style.display = matchingCards.length > INITIAL_CARDS ? "block" : "none";
     }
 
-    // Initial display
-    filterQuizzes();
+    // Filtering event listeners
+    searchBtn.addEventListener('click', () => { cardsToShow = INITIAL_CARDS; updateCards(); });
+    searchInput.addEventListener('keyup', () => { cardsToShow = INITIAL_CARDS; updateCards(); });
+    categorySelect.addEventListener('change', () => { cardsToShow = INITIAL_CARDS; updateCards(); });
+    levelSelect.addEventListener('change', () => { cardsToShow = INITIAL_CARDS; updateCards(); });
 
-    // Event listeners
-    [searchInput, categorySelect, levelSelect].forEach(el => {
-        el.addEventListener('input', filterQuizzes);
-    });
-
-    // See More button
+    // See More / See Less click
     seeMoreBtn.addEventListener('click', () => {
-        let visibleCount = parseInt(seeMoreBtn.dataset.visibleCount);
-        const filteredCount = parseInt(seeMoreBtn.dataset.filteredCount);
-        const nextCount = visibleCount + initialCount;
-
-        quizzes.forEach((quiz, i) => {
-            if(i < nextCount) quiz.style.display = 'flex';
+        const matchingCards = cards.filter(card => {
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
+            const category = card.querySelector('.quiz-category')?.textContent.toLowerCase() || "";
+            const level = card.querySelector('.quiz-level')?.textContent.toLowerCase() || "";
+            return title.includes(searchInput.value.toLowerCase()) &&
+                   (categorySelect.value === "" || category.includes(categorySelect.value.toLowerCase())) &&
+                   (levelSelect.value === "" || level.includes(levelSelect.value.toLowerCase()));
         });
 
-        seeMoreBtn.dataset.visibleCount = nextCount;
-        if(nextCount >= filteredCount) seeMoreBtn.style.display = 'none';
+        if (cardsToShow >= matchingCards.length) {
+            cardsToShow = INITIAL_CARDS; // See Less: collapse
+        } else {
+            cardsToShow += INITIAL_CARDS; // See More: expand
+        }
+        updateCards();
     });
+
+    // Initial display
+    updateCards();
 });

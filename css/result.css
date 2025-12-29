@@ -62,27 +62,15 @@ body {
 .score-percentage {
     font-size: 48px;
     font-weight: 700;
-    color: #fff;
+    color: #28a745;
     margin: 0;
     line-height: 1;
 }
 
 .score-text {
     font-size: 20px;
-    color: #fff;
+    color: #6c757d;
     margin-top: 5px;
-}
-
-.score-circle.high-score {
-    background: linear-gradient(135deg, #28a745, #20c997);
-}
-
-.score-circle.medium-score {
-    background: linear-gradient(135deg, #ffc107, #fd7e14);
-}
-
-.score-circle.low-score {
-    background: linear-gradient(135deg, #dc3545, #c82333);
 }
 
 .result-details {
