@@ -1,75 +1,73 @@
-function selectOption(option) {
-    const allOptions = option.parentElement.querySelectorAll('.option');
-    allOptions.forEach(opt => opt.classList.remove('selected'));
-    option.classList.add('selected');
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-box input');
+    const searchBtn = document.querySelector('.search-box button');
+    const categorySelect = document.getElementById('categorySelect');
+    const levelSelect = document.querySelectorAll('.filter-dropdown select')[1];
+    const cards = Array.from(document.querySelectorAll('.quiz-card'));
+    const seeMoreBtn = document.getElementById('seeMoreBtn');
 
-    option.querySelector('input[type="radio"]').checked = true;
-}
+    const INITIAL_CARDS = 6; // Initial visible cards
+    let cardsToShow = INITIAL_CARDS;
 
-function submitQuiz() {
-    const correctAnswers = {
-        q1: "a",
-        q2: "c",
-        q3: "b",
-        q4: "b",
-        q5: "b",
-        q6: "b",
-        q7: "c",
-        q8: "a",
-        q9: "b",
-        q10: "b"
-    };
+    function updateCards() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedCategory = categorySelect.value.toLowerCase();
+        const selectedLevel = levelSelect.value.toLowerCase();
 
-    let score = 0;
-    let total = Object.keys(correctAnswers).length;
+        let visibleCount = 0;
+        const matchingCards = cards.filter(card => {
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
+            const category = card.querySelector('.quiz-category')?.textContent.toLowerCase() || "";
+            const level = card.querySelector('.quiz-level')?.textContent.toLowerCase() || "";
+            return title.includes(searchTerm) &&
+                   (selectedCategory === "" || category.includes(selectedCategory)) &&
+                   (selectedLevel === "" || level.includes(selectedLevel));
+        });
 
-    for (let q in correctAnswers) {
-        const selected = document.querySelector(`input[name="${q}"]:checked`);
-        const options = document.querySelectorAll(`input[name="${q}"]`);
+        cards.forEach(card => {
+            if (matchingCards.includes(card) && visibleCount < cardsToShow) {
+                card.style.display = "block";
+                visibleCount++;
+            } else {
+                card.style.display = "none";
+            }
+        });
 
-        options.forEach(opt => opt.parentElement.style.border = "none");
-
-        if (!selected) continue;
-
-        if (selected.value === correctAnswers[q]) {
-            selected.parentElement.style.border = "2px solid green";
-            score++;
+        // Update See More / See Less button
+        if (cardsToShow >= matchingCards.length) {
+            seeMoreBtn.textContent = "See Less";
         } else {
-            selected.parentElement.style.border = "2px solid red";
+            seeMoreBtn.textContent = "See More";
         }
 
-        const quizDiv = selected.closest(".quiz-question");
-        const showBtn = quizDiv.querySelector(".show-answer-btn");
-        showBtn.disabled = false;
-
-        showBtn.onclick = () => {
-            quizDiv.querySelector(".answer-explanation").style.display = "block";
-        };
+        seeMoreBtn.style.display = matchingCards.length > INITIAL_CARDS ? "block" : "none";
     }
 
-    // ✅ KEEP DATA (HISTORY)
-    const percentage = Math.round((score / total) * 100);
+    // Filtering event listeners
+    searchBtn.addEventListener('click', () => { cardsToShow = INITIAL_CARDS; updateCards(); });
+    searchInput.addEventListener('keyup', () => { cardsToShow = INITIAL_CARDS; updateCards(); });
+    categorySelect.addEventListener('change', () => { cardsToShow = INITIAL_CARDS; updateCards(); });
+    levelSelect.addEventListener('change', () => { cardsToShow = INITIAL_CARDS; updateCards(); });
 
-    const resultData = {
-        score: score,
-        total: total,
-        percentage: percentage,
-        date: new Date().toLocaleString()
-    };
+    // See More / See Less click
+    seeMoreBtn.addEventListener('click', () => {
+        const matchingCards = cards.filter(card => {
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || "";
+            const category = card.querySelector('.quiz-category')?.textContent.toLowerCase() || "";
+            const level = card.querySelector('.quiz-level')?.textContent.toLowerCase() || "";
+            return title.includes(searchInput.value.toLowerCase()) &&
+                   (categorySelect.value === "" || category.includes(categorySelect.value.toLowerCase())) &&
+                   (levelSelect.value === "" || level.includes(levelSelect.value.toLowerCase()));
+        });
 
-    // Get existing history or create new
-    let history = JSON.parse(localStorage.getItem("quizHistory")) || [];
+        if (cardsToShow >= matchingCards.length) {
+            cardsToShow = INITIAL_CARDS; // See Less: collapse
+        } else {
+            cardsToShow += INITIAL_CARDS; // See More: expand
+        }
+        updateCards();
+    });
 
-    // Add new result
-    history.push(resultData);
-
-    // Save history
-    localStorage.setItem("quizHistory", JSON.stringify(history));
-
-    // Save latest result (for result page)
-    localStorage.setItem("latestResult", JSON.stringify(resultData));
-}
-
-function goToResult() {
-    window.location.href = "result.html";
-}
+    // Initial display
+    updateCards();
+});

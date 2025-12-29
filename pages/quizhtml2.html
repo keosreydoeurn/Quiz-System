@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,12 +10,18 @@
 </head>
 
 <body>
-    <!-- Quiz Content -->
     <div class="container">
         <div class="quiz-container">
             <h1>HTML Intermediate Quiz</h1>
-            <p class="text-muted">Test your knowledge of HTML fundamentals</p>
+            <p class="text-muted">Test your knowledge of HTML and CSS fundamentals</p>
+            <div class="quiz-timer-container">
+                <div class="quiz-timer">
+                    <i class="fas fa-hourglass-half timer-icon"></i>
+                    Time Left: <span id="time">10:00</span>
+                </div>
+            </div>
             <form id="quizForm" class="quiz-form">
+
                 <!-- Question 1 -->
                 <div class="quiz-question">
                     <div class="question-text">1. What is the main purpose of the HTML &lt;section&gt; element?</div>
@@ -36,22 +41,14 @@
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> To group related content semantically
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        The <code>&lt;section&gt;</code> element is used to group related content that shares a common
-                        theme.
-                        It gives semantic meaning to the page structure, helping search engines and screen readers
-                        understand the content.
+                        <strong>Correct Answer:</strong> To group related content semantically<br>
+                        <strong>Explanation:</strong> The &lt;section&gt; element groups related content with a common theme and adds semantic meaning.
                     </div>
-
                 </div>
-
 
                 <!-- Question 2 -->
                 <div class="quiz-question">
-                    <div class="question-text">2. True or False: The &lt;div&gt; element has semantic meaning in HTML.
-                    </div>
+                    <div class="question-text">2. True or False: The &lt;div&gt; element has semantic meaning in HTML.</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q2" value="a">
@@ -64,271 +61,170 @@
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> False
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        The <code>&lt;div&gt;</code> element is non-semantic. It does not describe the meaning of its
-                        content
-                        and is mainly used for layout and styling purposes.
+                        <strong>Correct Answer:</strong> False<br>
+                        <strong>Explanation:</strong> The &lt;div&gt; element is non-semantic; it's mainly used for layout and styling.
                     </div>
-
                 </div>
 
-
-
-                <!-- quiz3 -->
+                <!-- Question 3 -->
                 <div class="quiz-question">
-                    <div class="question-text">3. Which HTML attribute improves accessibility by providing text for
-                        screen readers?</div>
+                    <div class="question-text">3. Which HTML attribute improves accessibility by providing text for screen readers?</div>
                     <input type="text" class="text-answer" placeholder="Your answer here">
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> alt
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        The <code>alt</code> attribute provides alternative text for images.
-                        Screen readers use this text to describe images to visually impaired users,
-                        improving accessibility and SEO.
+                        <strong>Correct Answer:</strong> alt<br>
+                        <strong>Explanation:</strong> The <code>alt</code> attribute provides alternative text for images, improving accessibility.
                     </div>
-
                 </div>
 
-                <!-- quiz4 -->
-
+                <!-- Question 4 -->
                 <div class="quiz-question">
                     <div class="question-text">4. Which CSS property is used to change text color?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q4">
+                            <input type="radio" name="q4" value="a">
                             <label>font-color</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q4">
+                            <input type="radio" name="q4" value="b">
                             <label>color</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q4">
+                            <input type="radio" name="q4" value="c">
                             <label>text-style</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> color
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        The <code>color</code> property is used in CSS to change the text color.
-                        Other options like <code>font-color</code> and <code>text-style</code> are not valid CSS
-                        properties.
+                        <strong>Correct Answer:</strong> color<br>
+                        <strong>Explanation:</strong> The <code>color</code> property changes text color in CSS.
                     </div>
-
                 </div>
 
-
-                <!-- quiz5 -->
-
+                <!-- Question 5 -->
                 <div class="quiz-question">
-                    <div class="question-text">5. True or False: The CSS box model includes margin, border, padding, and
-                        content.</div>
+                    <div class="question-text">5. True or False: The CSS box model includes margin, border, padding, and content.</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q5">
+                            <input type="radio" name="q5" value="a">
                             <label>True</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q5">
+                            <input type="radio" name="q5" value="b">
                             <label>False</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> True
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        The CSS box model consists of four parts: content, padding, border, and margin.
-                        These parts define the size and spacing of elements on a webpage.
+                        <strong>Correct Answer:</strong> True<br>
+                        <strong>Explanation:</strong> The box model defines content, padding, border, and margin of an element.
                     </div>
-
                 </div>
 
-
-                <!-- quiz6 -->
-
-
-
+                <!-- Question 6 -->
                 <div class="quiz-question">
                     <div class="question-text">6. Which CSS property is used to create space inside an element?</div>
                     <input type="text" class="text-answer" placeholder="Your answer here">
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> padding
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        The <code>padding</code> property creates space inside an element,
-                        between the content and its border.
+                        <strong>Correct Answer:</strong> padding<br>
+                        <strong>Explanation:</strong> The <code>padding</code> property adds space between content and border.
                     </div>
-
                 </div>
 
-
-                <!-- quiz7 -->
-
-
+                <!-- Question 7 -->
                 <div class="quiz-question">
                     <div class="question-text">7. Which HTML element is best for embedding a YouTube video?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q7">
+                            <input type="radio" name="q7" value="a">
                             <label>&lt;video&gt;</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q7">
+                            <input type="radio" name="q7" value="b">
                             <label>&lt;iframe&gt;</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q7">
+                            <input type="radio" name="q7" value="c">
                             <label>&lt;embed&gt;</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> &lt;iframe&gt;
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        YouTube videos are embedded using an <code>&lt;iframe&gt;</code>.
-                        It allows external content to be displayed inside a webpage securely.
+                        <strong>Correct Answer:</strong> &lt;iframe&gt;<br>
+                        <strong>Explanation:</strong> YouTube videos are embedded using <code>&lt;iframe&gt;</code>.
                     </div>
-
                 </div>
 
-
-                <!-- quiz8 -->
-
+                <!-- Question 8 -->
                 <div class="quiz-question">
                     <div class="question-text">8. True or False: CSS Flexbox is one-dimensional.</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q8">
+                            <input type="radio" name="q8" value="a">
                             <label>True</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q8">
+                            <input type="radio" name="q8" value="b">
                             <label>False</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> True
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        CSS Flexbox is one-dimensional because it works in either a row or a column.
-                        For two-dimensional layouts, CSS Grid is more suitable.
+                        <strong>Correct Answer:</strong> True<br>
+                        <strong>Explanation:</strong> Flexbox works in a single dimension (row or column). Grid is for two dimensions.
                     </div>
-
                 </div>
 
-
-                <!-- quiz9 -->
-
-
-
-
+                <!-- Question 9 -->
                 <div class="quiz-question">
                     <div class="question-text">9. Which HTML tag is used to define navigation links?</div>
                     <input type="text" class="text-answer" placeholder="Your answer here">
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> nav
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        The <code>&lt;nav&gt;</code> element is a semantic HTML tag used to define
-                        navigation links on a webpage.
+                        <strong>Correct Answer:</strong> nav<br>
+                        <strong>Explanation:</strong> The &lt;nav&gt; element defines navigation links semantically.
                     </div>
-
                 </div>
 
-                <!-- quiz10 -->
+                <!-- Question 10 -->
                 <div class="quiz-question">
                     <div class="question-text">10. Which CSS property controls the stacking order of elements?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q10">
+                            <input type="radio" name="q10" value="a">
                             <label>position</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q10">
+                            <input type="radio" name="q10" value="b">
                             <label>z-index</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q10">
+                            <input type="radio" name="q10" value="c">
                             <label>display</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> z-index
-                        <br><br>
-                        <strong>Explanation:</strong>
-                        The <code>z-index</code> property controls the vertical stacking order of elements.
-                        Elements with a higher z-index appear in front of elements with a lower value.
+                        <strong>Correct Answer:</strong> z-index<br>
+                        <strong>Explanation:</strong> The <code>z-index</code> property controls stacking order of elements.
                     </div>
-
                 </div>
 
-
-                 <div class="quiz-navigation">
+                <!-- Navigation -->
+                <div class="quiz-navigation">
                     <a href="/pages/quiz.html" class="btn btn-outline">
                         <i class="fas fa-arrow-left"></i> Back
                     </a>
                     <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
-                    <a href="" class="btn btn-outline">View Result</a>
+                    <a href="result.html" class="btn btn-outline">View Result</a>
                 </div>
+
             </form>
         </div>
     </div>
 
-
-    <script src="../js/quiz.js"></script>
-    <script>
-        // Function to handle option selection
-        function selectOption(element) {
-            // Remove selected class from all options in this question
-            const options = element.parentElement.querySelectorAll('.option');
-            options.forEach(opt => opt.classList.remove('selected'));
-
-            // Add selected class to clicked option
-            element.classList.add('selected');
-
-            // Check the radio input
-            const radio = element.querySelector('input[type="radio"]');
-            if (radio) {
-                radio.checked = true;
-            }
-        }
-
-        // Navigation functions
-        function nextQuestion() {
-            // Add logic to go to next question
-            alert('Next question');
-        }
-
-        function previousQuestion() {
-            // Add logic to go to previous question
-            alert('Previous question');
-        }
-
-
-
-        function submitQuiz() {
-            // Add quiz submission logic
-            if (confirm('Are you sure you want to submit the quiz?')) {
-                // Show all answers
-                document.querySelectorAll('.show-answer-btn').forEach(btn => {
-                    btn.click();
-                });
-                alert('Quiz submitted! Check your answers.');
-            }
-        }
-    </script>
+    <script src="../js/quizhtml2.js"></script>
 </body>
 
 </html>
