@@ -255,8 +255,6 @@ input:focus {
     padding: 20px 40px;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 18px; 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3); 
     font-size: 18px;
     opacity: 0;
     pointer-events: none;

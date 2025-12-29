@@ -80,7 +80,7 @@
                 <div class="quiz-question">
                     <div class="question-text">3. Which HTML attribute improves accessibility by providing text for
                         screen readers?</div>
-                    <input type="text" class="text-answer" placeholder="Your answer here" value="alt">
+                    <input type="text" class="text-answer" placeholder="Your answer here">
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> alt
@@ -99,15 +99,15 @@
                     <div class="question-text">4. Which CSS property is used to change text color?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q4" value="a">
+                            <input type="radio" name="q4">
                             <label>font-color</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q4" value="b">
+                            <input type="radio" name="q4">
                             <label>color</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q4" value="c">
+                            <input type="radio" name="q4">
                             <label>text-style</label>
                         </div>
                     </div>
@@ -131,14 +131,13 @@
                         content.</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q5" value="a">
+                            <input type="radio" name="q5">
                             <label>True</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q5" value="b">
+                            <input type="radio" name="q5">
                             <label>False</label>
                         </div>
-
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
@@ -158,7 +157,7 @@
 
                 <div class="quiz-question">
                     <div class="question-text">6. Which CSS property is used to create space inside an element?</div>
-                    <input type="text" class="text-answer" placeholder="Your answer here" value="Padding">
+                    <input type="text" class="text-answer" placeholder="Your answer here">
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> padding
@@ -178,15 +177,15 @@
                     <div class="question-text">7. Which HTML element is best for embedding a YouTube video?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q7" value="a">
+                            <input type="radio" name="q7">
                             <label>&lt;video&gt;</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q7" value="b">
+                            <input type="radio" name="q7">
                             <label>&lt;iframe&gt;</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q7" value="c">
+                            <input type="radio" name="q7">
                             <label>&lt;embed&gt;</label>
                         </div>
                     </div>
@@ -208,11 +207,11 @@
                     <div class="question-text">8. True or False: CSS Flexbox is one-dimensional.</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q8" value="a">
+                            <input type="radio" name="q8">
                             <label>True</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q8" value="b">
+                            <input type="radio" name="q8">
                             <label>False</label>
                         </div>
                     </div>
@@ -235,7 +234,7 @@
 
                 <div class="quiz-question">
                     <div class="question-text">9. Which HTML tag is used to define navigation links?</div>
-                    <input type="text" class="text-answer" placeholder="Your answer here"  value="nav">
+                    <input type="text" class="text-answer" placeholder="Your answer here">
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> nav
@@ -252,15 +251,15 @@
                     <div class="question-text">10. Which CSS property controls the stacking order of elements?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q10" value="a">
-                            <label>position</label >
+                            <input type="radio" name="q10">
+                            <label>position</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q10" value="b">
+                            <input type="radio" name="q10">
                             <label>z-index</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
-                            <input type="radio" name="q10" value="c">
+                            <input type="radio" name="q10">
                             <label>display</label>
                         </div>
                     </div>
@@ -288,8 +287,48 @@
     </div>
 
 
-    <script src="../js/quiz2.js"></script>
-    
+    <script src="../js/quiz.js"></script>
+    <script>
+        // Function to handle option selection
+        function selectOption(element) {
+            // Remove selected class from all options in this question
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            // Add selected class to clicked option
+            element.classList.add('selected');
+
+            // Check the radio input
+            const radio = element.querySelector('input[type="radio"]');
+            if (radio) {
+                radio.checked = true;
+            }
+        }
+
+        // Navigation functions
+        function nextQuestion() {
+            // Add logic to go to next question
+            alert('Next question');
+        }
+
+        function previousQuestion() {
+            // Add logic to go to previous question
+            alert('Previous question');
+        }
+
+
+
+        function submitQuiz() {
+            // Add quiz submission logic
+            if (confirm('Are you sure you want to submit the quiz?')) {
+                // Show all answers
+                document.querySelectorAll('.show-answer-btn').forEach(btn => {
+                    btn.click();
+                });
+                alert('Quiz submitted! Check your answers.');
+            }
+        }
+    </script>
 </body>
 
 </html>
