@@ -10,19 +10,21 @@
 </head>
 
 <body>
-    <!-- Create Quiz Form -->
-    <section class="create-quiz-container">
-        <h2>Create Your Own Quiz</h2>
-        <form id="quizForm">
+    <!-- Quiz Creation Section -->
+    <main class="create-quiz-container">
+        <h1>Create Your Own Quiz</h1>
+        <form id="quizForm" novalidate>
+            <!-- Quiz Title -->
             <div class="form-group">
                 <label for="quizTitle">Quiz Title</label>
-                <input type="text" id="quizTitle" class="form-control" required>
+                <input type="text" id="quizTitle" class="form-control" placeholder="Enter quiz title" required>
             </div>
 
+            <!-- Quiz Category -->
             <div class="form-group">
                 <label for="quizCategory">Category</label>
                 <select id="quizCategory" class="form-control" required>
-                    <option value="">Select a category</option>
+                    <option value="" disabled selected>Select a category</option>
                     <option value="html">HTML</option>
                     <option value="css">CSS</option>
                     <option value="javascript">JavaScript</option>
@@ -31,6 +33,7 @@
                 </select>
             </div>
 
+            <!-- Quiz Difficulty Level -->
             <div class="form-group">
                 <label for="quizLevel">Difficulty Level</label>
                 <select id="quizLevel" class="form-control" required>
@@ -40,19 +43,22 @@
                 </select>
             </div>
 
-            <div id="questionsContainer"></div>
+            <!-- Questions Container -->
+            <section id="questionsContainer"></section>
 
+            <!-- Add Question Button -->
             <button type="button" class="add-question" id="addQuestionBtn">
                 <i class="fas fa-plus"></i> Add Question
             </button>
 
-            <div class="form-group" style="margin-top: 2rem;">
+            <!-- Save Quiz Button -->
+            <div class="form-group" style="margin-top: 24px;">
                 <button type="submit" class="btn">
                     <i class="fas fa-save"></i> Save Quiz
                 </button>
             </div>
         </form>
-    </section>
+    </main>
 
     <script src="../js/usercreate.js"></script>
 </body>
