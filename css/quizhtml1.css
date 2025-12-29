@@ -33,14 +33,14 @@
  }
 
 .quiz-timer-container {
-    position: fixed; /* keeps it in place when scrolling */
-    top: 20px;       /* distance from top */
-    right: 20px;     /* distance from right */
+    position: fixed; 
+    top: 20px;
+    right: 20px; 
     background: #fff;
     padding: 12px 18px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    z-index: 999;    /* makes sure it’s on top */
+    z-index: 999;
     display: flex;
     align-items: center;
     gap: 10px;
