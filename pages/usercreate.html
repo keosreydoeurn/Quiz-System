@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz - TechQuiz</title>
+    <link rel="stylesheet" href="../css/usercreate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Create Quiz Form -->
+    <section class="create-quiz-container">
+        <h2>Create Your Own Quiz</h2>
+        <form id="quizForm">
+            <div class="form-group">
+                <label for="quizTitle">Quiz Title</label>
+                <input type="text" id="quizTitle" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quizCategory">Category</label>
+                <select id="quizCategory" class="form-control" required>
+                    <option value="">Select a category</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="react">React.js</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="quizLevel">Difficulty Level</label>
+                <select id="quizLevel" class="form-control" required>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+
+            <div id="questionsContainer"></div>
+
+            <button type="button" class="add-question" id="addQuestionBtn">
+                <i class="fas fa-plus"></i> Add Question
+            </button>
+
+            <div class="form-group" style="margin-top: 2rem;">
+                <button type="submit" class="btn">
+                    <i class="fas fa-save"></i> Save Quiz
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <script src="../js/usercreate.js"></script>
+</body>
+
+</html>
