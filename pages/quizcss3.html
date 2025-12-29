@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Advanced CSS</title>
+    <link rel="stylesheet" href="../css/quizcss2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="quiz-container">
+            <h1>Advanced CSS Quiz</h1>
+            <p class="text-muted">Test your advanced knowledge of modern CSS</p>
+
+            <form class="quiz-form">
+
+                <!-- Q1 -->
+                <div class="quiz-question">
+                    <div class="question-text">1. Which CSS selector has the highest specificity?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q1"><label>a.
+                                .class</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q1"><label>b.
+                                #id</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q1"><label>c. inline
+                                style</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q1"><label>d.
+                                element</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> inline style<br>
+                        <strong>Explanation:</strong> Inline styles override IDs, classes, and elements.
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="quiz-question">
+                    <div class="question-text">2. CSS Grid is designed for two-dimensional layouts.</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q2"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q2"><label>False</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> True<br>
+                        <strong>Explanation:</strong> Grid works with rows and columns together.
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="quiz-question">
+                    <div class="question-text">3. Which property creates a stacking context?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><label>a.
+                                overflow</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><label>b. opacity
+                                &lt; 1</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><label>c.
+                                margin</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q3"><label>d.
+                                padding</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> opacity &lt; 1<br>
+                        <strong>Explanation:</strong> Certain properties create a new stacking context.
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="quiz-question">
+                    <div class="question-text">4. Which unit is best for responsive typography?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q4"><label>a.
+                                px</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q4"><label>b.
+                                rem</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q4"><label>c.
+                                cm</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q4"><label>d.
+                                pt</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> rem<br>
+                        <strong>Explanation:</strong> rem scales based on root font size.
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="quiz-question">
+                    <div class="question-text">5. position: sticky behaves like relative until a scroll threshold.</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q5"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q5"><label>False</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> True<br>
+                        <strong>Explanation:</strong> Sticky switches to fixed after scrolling.
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="quiz-question">
+                    <div class="question-text">6. Which function dynamically clamps values?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q6"><label>a.
+                                calc()</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q6"><label>b.
+                                min()</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q6"><label>c.
+                                clamp()</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q6"><label>d.
+                                var()</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> clamp()<br>
+                        <strong>Explanation:</strong> clamp() sets min, ideal, and max values.
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="quiz-question">
+                    <div class="question-text">7. CSS variables are scoped.</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q7"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q7"><label>False</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> True<br>
+                        <strong>Explanation:</strong> Variables follow normal CSS scoping rules.
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="quiz-question">
+                    <div class="question-text">8. Which pseudo-class selects the last child?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q8"><label>a.
+                                :last</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q8"><label>b.
+                                :last-child</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q8"><label>c.
+                                :end</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q8"><label>d.
+                                :child-last</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> :last-child<br>
+                        <strong>Explanation:</strong> Targets the last child of a parent.
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="quiz-question">
+                    <div class="question-text">9. Will-change improves animation performance.</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q9"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q9"><label>False</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> True<br>
+                        <strong>Explanation:</strong> It hints the browser to optimize rendering.
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="quiz-question">
+                    <div class="question-text">10. Which layout system supports auto-placement?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q10"><label>a.
+                                Float</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q10"><label>b.
+                                Grid</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q10"><label>c.
+                                Table</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q10"><label>d.
+                                Inline</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Grid<br>
+                        <strong>Explanation:</strong> Grid can auto-place items.
+                    </div>
+                </div>
+
+                <!-- Q11 -->
+                <div class="quiz-question">
+                    <div class="question-text">11. Which CSS function creates a responsive length between a min,
+                        preferred, and max value?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q11"><label>a.
+                                calc()</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q11"><label>b.
+                                min()</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q11"><label>c.
+                                clamp()</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q11"><label>d.
+                                max()</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> clamp()<br>
+                        <strong>Explanation:</strong> clamp() allows a value to stay between a minimum and maximum while
+                        scaling responsively.
+                    </div>
+                </div>
+
+                <!-- Q12 -->
+                <div class="quiz-question">
+                    <div class="question-text">12. Which pseudo-class selects an element when a user hovers over it?
+                    </div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q12"><label>a.
+                                :hover</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q12"><label>b.
+                                :focus</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q12"><label>c.
+                                :active</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q12"><label>d.
+                                :checked</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> :hover<br>
+                        <strong>Explanation:</strong> :hover targets elements during mouse hover.
+                    </div>
+                </div>
+
+                <!-- Q13 -->
+                <div class="quiz-question">
+                    <div class="question-text">13. What does the CSS property isolation: isolate do?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q13"><label>a.
+                                Prevents an element from affecting z-index stacking</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q13"><label>b. Makes
+                                text unselectable</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q13"><label>c. Clears
+                                floats inside element</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q13"><label>d.
+                                Creates a flex container</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Prevents an element from affecting z-index stacking<br>
+                        <strong>Explanation:</strong> isolation: isolate creates a new stacking context.
+                    </div>
+                </div>
+
+                <!-- Q14 -->
+                <div class="quiz-question">
+                    <div class="question-text">14. The minmax() function is commonly used in which layout?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q14"><label>a.
+                                Flexbox</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q14"><label>b.
+                                Grid</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q14"><label>c.
+                                Inline-block</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q14"><label>d.
+                                Table</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Grid<br>
+                        <strong>Explanation:</strong> minmax() sets minimum and maximum track sizes in CSS Grid.
+                    </div>
+                </div>
+
+                <!-- Q15 -->
+                <div class="quiz-question">
+                    <div class="question-text">15. Which property allows an element to ignore pointer events?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q15"><label>a.
+                                pointer-events: none</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q15"><label>b.
+                                user-select: none</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q15"><label>c.
+                                visibility: hidden</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q15"><label>d.
+                                display: none</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> pointer-events: none<br>
+                        <strong>Explanation:</strong> This property disables mouse interactions on the element.
+                    </div>
+                </div>
+
+                <!-- Q16 -->
+                <div class="quiz-question">
+                    <div class="question-text">16. Which pseudo-element is used to insert content before an element?
+                    </div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q16"><label>a.
+                                ::before</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q16"><label>b.
+                                ::after</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q16"><label>c.
+                                ::first-line</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q16"><label>d.
+                                ::first-letter</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> ::before<br>
+                        <strong>Explanation:</strong> ::before adds content before the element’s content.
+                    </div>
+                </div>
+
+                <!-- Q17 -->
+                <div class="quiz-question">
+                    <div class="question-text">17. CSS subgrid is currently supported in most modern browsers.</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q17"><label>True</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio"
+                                name="q17"><label>False</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> False<br>
+                        <strong>Explanation:</strong> Subgrid has limited support; check browser compatibility.
+                    </div>
+                </div>
+
+                <!-- Q18 -->
+                <div class="quiz-question">
+                    <div class="question-text">18. Which CSS property controls the rendering order of flex items along
+                        the main axis?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q18"><label>a.
+                                order</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q18"><label>b.
+                                z-index</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q18"><label>c.
+                                flex-grow</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q18"><label>d.
+                                align-self</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> order<br>
+                        <strong>Explanation:</strong> The order property changes the visual order of flex items.
+                    </div>
+                </div>
+
+                <!-- Q19 -->
+                <div class="quiz-question">
+                    <div class="question-text">19. Which property allows smooth transitions for changing CSS properties?
+                    </div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q19"><label>a.
+                                animation</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q19"><label>b.
+                                transition</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q19"><label>c.
+                                transform</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q19"><label>d.
+                                keyframes</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> transition<br>
+                        <strong>Explanation:</strong> transition smooths property changes over time.
+                    </div>
+                </div>
+
+                <!-- Q20 -->
+                <div class="quiz-question">
+                    <div class="question-text">20. Which unit adapts to viewport width?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q20"><label>a.
+                                vw</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q20"><label>b.
+                                vh</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q20"><label>c.
+                                rem</label></div>
+                        <div class="option" onclick="selectOption(this)"><input type="radio" name="q20"><label>d.
+                                em</label></div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> vw<br>
+                        <strong>Explanation:</strong> 1vw equals 1% of the viewport width.
+                    </div>
+
+                    <div class="quiz-navigation">
+
+                        <div>
+                            <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function selectOption(element) {
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            const radio = element.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+        }
+
+        function submitQuiz() {
+            if (confirm('Submit the quiz?')) {
+                document.querySelectorAll('.show-answer-btn').forEach(btn => btn.click());
+                alert('Quiz submitted!');
+            }
+        }
+    </script>
+</body>
+
+</html>
