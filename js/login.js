@@ -55,7 +55,7 @@ function clearErrors() {
     if (signupError) signupError.textContent = '';
 }
 
-// ================= SUCCESS POPUP =================
+// Update the showSuccess function in login.js
 function showSuccess(message, title = 'Success') {
     const popup = document.getElementById('successPopup');
     const titleEl = document.getElementById('successTitle');
@@ -66,11 +66,22 @@ function showSuccess(message, title = 'Success') {
     titleEl.textContent = title;
     messageEl.textContent = message;
     
-    popup.style.display = 'flex';
+    // Show popup
+    popup.classList.add('show');
     
+    // Auto-close after 1.5 seconds
     setTimeout(() => {
-        popup.style.display = 'none';
+        popup.classList.remove('show');
     }, 1500);
+    
+    // Reset progress bar animation
+    const progressBar = document.querySelector('.popup-progress-bar');
+    if (progressBar) {
+        progressBar.style.animation = 'none';
+        setTimeout(() => {
+            progressBar.style.animation = 'progressBar 1.5s linear forwards';
+        }, 10);
+    }
 }
 
 // ================= LOGIN VALIDATION =================
