@@ -175,7 +175,8 @@ document.addEventListener('DOMContentLoaded', function () {
         quizzes.push(quizData);
         localStorage.setItem('userQuizzes', JSON.stringify(quizzes));
 
-        alert('Quiz saved successfully!');
-        window.location.href = 'review.html';
+        // alert('Quiz saved successfully!');
+        window.location.href = 'review.html'; // if same folder
+
     }
 });
