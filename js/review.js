@@ -48,5 +48,5 @@ const quizzes = JSON.parse(localStorage.getItem('userQuizzes') || '[]');
 
     function confirmQuiz() {
         // alert('Quiz confirmed and ready to use!');
-        window.location.href = 'finshi.html';
+        window.location.href = 'successcreatequiz.html';
     }15
