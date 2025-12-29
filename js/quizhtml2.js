@@ -39,8 +39,7 @@ function selectOption(option) {
     allOptions.forEach(opt => opt.classList.remove("selected"));
 
     option.classList.add("selected");
-    const input = option.querySelector('input');
-    if (input) input.checked = true;
+    option.querySelector('input[type="radio"]').checked = true;
 }
 
 // ================= SUBMIT QUIZ =================
@@ -48,33 +47,27 @@ function submitQuiz() {
     clearInterval(timerInterval);
 
     const correctAnswers = {
-        q1: "a", q2: "c", q3: "b", q4: "b", q5: "b",
-        q6: "b", q7: "c", q8: "a", q9: "b", q10: "b"
+        q1: "b",
+        q2: "b",
+        q3: "alt",
+        q4: "b",
+        q5: "a",
+        q6: "padding",
+        q7: "b",
+        q8: "a",
+        q9: "nav",
+        q10: "b"
     };
 
     let score = 0;
     const userAnswers = {};
 
     for (const q in correctAnswers) {
-        const inputRadio = document.querySelector(`input[name="${q}"]:checked`);
-        const inputText = document.querySelector(`input[name="${q}"].text-answer`);
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (!selected) continue;
 
-        let answer = inputRadio ? inputRadio.value : inputText ? inputText.value.trim() : "";
-        if (!answer) continue;
-
-        userAnswers[q] = answer;
-
-        if (answer.toLowerCase() === correctAnswers[q].toLowerCase()) score++;
-
-        // Setup show-answer button
-        const quizDiv = document.querySelector(`[name="${q}"]`)?.closest(".quiz-question");
-        if (quizDiv) {
-            const showBtn = quizDiv.querySelector(".show-answer-btn");
-            if (showBtn) showBtn.onclick = () => {
-                const explanation = quizDiv.querySelector(".answer-explanation");
-                explanation.style.display = explanation.style.display === "block" ? "none" : "block";
-            };
-        }
+        userAnswers[q] = selected.value;
+        if (selected.value === correctAnswers[q]) score++;
     }
 
     const total = Object.keys(correctAnswers).length;
@@ -88,17 +81,17 @@ function submitQuiz() {
         userAnswers,
         correctAnswers,
         timeLeft: totalTime >= 0 ? totalTime : 0,
-        quizPage: window.location.pathname.split("/").pop() // save current quiz page
+        quizPage: window.location.pathname.split("/").pop() // Save the current quiz page
     };
 
     localStorage.setItem("latestResult", JSON.stringify(resultData));
 
-    // Save history
+    // Save quiz history
     const history = JSON.parse(localStorage.getItem("quizHistory")) || [];
     history.push(resultData);
     localStorage.setItem("quizHistory", JSON.stringify(history));
 
-    // Redirect to result page
+    // Redirect to results page
     window.location.href = "result.html";
 }
 
@@ -112,47 +105,33 @@ function handleReviewMode() {
     const { userAnswers, correctAnswers } = latestResult;
 
     for (const q in correctAnswers) {
-        const answer = userAnswers[q];
-        if (!answer) continue;
+        const userValue = userAnswers[q];
+        if (!userValue) continue;
 
-        const inputRadio = document.querySelector(`input[name="${q}"][value="${answer}"]`);
-        const inputText = document.querySelector(`input[name="${q}"].text-answer`);
-
-        let inputElem = inputRadio || inputText;
+        const inputElem = document.querySelector(`input[name="${q}"][value="${userValue}"]`);
         if (!inputElem) continue;
 
         const quizDiv = inputElem.closest(".quiz-question");
         inputElem.checked = true;
-        if (inputElem.parentElement) inputElem.parentElement.classList.add("selected");
+        inputElem.parentElement.classList.add("selected");
 
-        // Border: blue=correct, red=wrong
-        if (inputRadio) {
-            inputElem.parentElement.style.border = answer.toLowerCase() === correctAnswers[q].toLowerCase() ? "2px solid blue" : "2px solid red";
-        }
-
-        // Show explanation automatically
-        const explanation = quizDiv.querySelector(".answer-explanation");
-        if (explanation) explanation.style.display = "block";
+        // Color borders: blue = correct, red = wrong
+        inputElem.parentElement.style.border = userValue === correctAnswers[q] ? "2px solid blue" : "2px solid red";
 
         const showBtn = quizDiv.querySelector(".show-answer-btn");
         if (showBtn) showBtn.onclick = () => {
-            explanation.style.display = explanation.style.display === "block" ? "none" : "block";
+            const explanation = quizDiv.querySelector(".answer-explanation");
+            explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
         };
+
+        // Automatically show explanation
+        const explanation = quizDiv.querySelector(".answer-explanation");
+        if (explanation) explanation.style.display = "block";
     }
 
     // Disable all inputs
-    document.querySelectorAll('input').forEach(input => input.disabled = true);
+    document.querySelectorAll('.option input[type="radio"]').forEach(input => input.disabled = true);
 
-    // Add Back to Result button
-    const container = document.querySelector(".quiz-container");
-    if (container) {
-        const backBtn = document.createElement("button");
-        backBtn.textContent = "Back to Result";
-        backBtn.className = "btn btn-outline";
-        backBtn.onclick = () => window.location.href = "result.html";
-        container.prepend(backBtn);
-    }
-
-    // Remove reviewMode flag
+    // Remove reviewMode flag so it's only used once
     localStorage.removeItem("reviewMode");
 }
