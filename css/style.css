@@ -104,6 +104,25 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
 .btn-small {
     display: inline-block;
     background-color: #007bff;
@@ -120,10 +139,10 @@ body {
     background-color: #0056b3;
     transform: translateY(-2px);
 }
+
 .main-nav ul {
     display: flex;
     list-style: none;
-    align-items: center;
 }
 
 .main-nav li {
@@ -134,12 +153,16 @@ body {
     text-decoration: none;
     color: #343a40;
     font-weight: 500;
-    padding: 5px 12px;
+    padding: 5px 0;
     position: relative;
-    transition: color 0.3s, background 0.3s, transform 0.3s;
+    transition: color 0.3s;
 }
 
-/* Underline effect for normal links */
+.main-nav a:hover,
+.main-nav .active a {
+    color:#007bff;
+}
+
 .main-nav a:after {
     content: '';
     position: absolute;
@@ -147,15 +170,14 @@ body {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #007bff;
+    background-color:#007bff;
     transition: width 0.3s;
 }
 
 .main-nav a:hover:after,
-.main-nav li.active a:after {
+.main-nav .active a:after {
     width: 100%;
 }
-
 
 .stats-row {
     display: flex;
