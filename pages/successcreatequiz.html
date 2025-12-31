@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Preview - TechQuiz</title>
+    <link rel="stylesheet" href="../css/successcreatequiz.css">
+</head>
+
+<body>
+    <main class="quiz-container">
+        <h1>Quiz Preview</h1>
+
+        <!-- Quiz Details -->
+        <section class="quiz-details">
+            <p><strong>Title:</strong> <span id="quizTitle"></span></p>
+            <p><strong>Category:</strong> <span id="quizCategory"></span></p>
+            <p><strong>Level:</strong> <span id="quizLevel"></span></p>
+        </section>
+
+        <hr>
+
+        <!-- Quiz Questions -->
+        <form id="quizForm" novalidate>
+            <section id="questionsArea"></section>
+
+            <div class="form-actions" style="margin-top:24px;">
+                <!-- Optional back button -->
+                <!-- <button type="button" class="btn btn-secondary" onclick="history.back()">Back</button> -->
+                <button type="submit" class="btn">Submit Answers</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../js/successcreatequiz.js"></script>
+</body>
+
+</html>
