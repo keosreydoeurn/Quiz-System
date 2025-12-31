@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 :root {
@@ -13,6 +17,69 @@
     --danger-color: #dc3545;
     --border-radius: 5px;
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= KEYFRAMES ================= */
+@keyframes slideDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeLeft {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 body {
@@ -61,6 +128,7 @@ body {
     font-size: 30px;
     font-weight: 700;
 }
+
 .btn-login {
     display: inline-flex;
     align-items: center;
@@ -78,7 +146,7 @@ body {
 .btn-login:hover {
     background: linear-gradient(135deg, #0056b3, #0099cc);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .btn-login i {
@@ -120,6 +188,7 @@ body {
     background-color: #0056b3;
     transform: translateY(-2px);
 }
+
 .main-nav ul {
     display: flex;
     list-style: none;
@@ -158,12 +227,14 @@ body {
 .main-nav .active a:after {
     width: 100%;
 }
+
 /* Profile Hero Section */
 .profile-hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 60px 0 40px;
     margin-top: 80px;
+    animation: fadeUp 0.8s ease;
 }
 
 .profile-header {
@@ -183,6 +254,7 @@ body {
     position: relative;
     width: 120px;
     height: 120px;
+    animation: pop 0.6s ease;
 }
 
 .avatar-circle img {
@@ -191,6 +263,10 @@ body {
     border-radius: 50%;
     border: 4px solid rgba(255, 255, 255, 0.3);
     object-fit: cover;
+}
+
+.avatar-circle img:hover {
+    transform: scale(1.05);
 }
 
 .avatar-edit {
@@ -250,11 +326,12 @@ body {
     align-items: center;
     gap: 20px;
     transition: transform 0.3s ease;
+    animation: fadeUp 0.6s ease forwards;
 }
 
 .stat-card:hover {
-    transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-8px) scale(1.03);
 }
 
 .stat-card i {
@@ -330,8 +407,15 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Overview Grid */
@@ -394,10 +478,21 @@ body {
     font-size: 1.2rem;
 }
 
-.activity-item i.success { color: #4CAF50; }
-.activity-item i.warning { color: #FF9800; }
-.activity-item i.danger { color: #F44336; }
-.activity-item i.primary { color: #667eea; }
+.activity-item i.success {
+    color: #4CAF50;
+}
+
+.activity-item i.warning {
+    color: #FF9800;
+}
+
+.activity-item i.danger {
+    color: #F44336;
+}
+
+.activity-item i.primary {
+    color: #667eea;
+}
 
 .activity-item div {
     flex: 1;
@@ -582,10 +677,25 @@ body {
     font-weight: 600;
 }
 
-.category-badge.html { background: #E44D26; color: white; }
-.category-badge.css { background: #264DE4; color: white; }
-.category-badge.js { background: #F7DF1E; color: #333; }
-.category-badge.react { background: #61DAFB; color: #333; }
+.category-badge.html {
+    background: #E44D26;
+    color: white;
+}
+
+.category-badge.css {
+    background: #264DE4;
+    color: white;
+}
+
+.category-badge.js {
+    background: #F7DF1E;
+    color: #333;
+}
+
+.category-badge.react {
+    background: #61DAFB;
+    color: #333;
+}
 
 /* Achievements Tab */
 .achievements-container {
@@ -760,40 +870,40 @@ body {
     .profile-hero {
         padding: 40px 0;
     }
-    
+
     .profile-avatar {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .profile-stats {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .profile-tabs {
         flex-wrap: wrap;
     }
-    
+
     .tab-btn {
         min-width: 150px;
     }
-    
+
     .overview-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .history-filters {
         flex-direction: column;
     }
-    
+
     .history-filters select {
         min-width: 100%;
     }
-    
+
     .badges-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .settings-grid {
         grid-template-columns: 1fr;
     }
@@ -803,11 +913,11 @@ body {
     .profile-stats {
         grid-template-columns: 1fr;
     }
-    
+
     .badges-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .tab-btn {
         min-width: 100%;
     }
