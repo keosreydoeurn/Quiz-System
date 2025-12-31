@@ -15,303 +15,247 @@
         <div class="quiz-container">
             <h1>Advanced Tech Quiz</h1>
             <p class="text-muted">Test your knowledge with 15 questions</p>
+
             <div class="quiz-timer-container">
                 <div class="quiz-timer">
                     <i class="fas fa-hourglass-half timer-icon"></i>
                     Time Left: <span id="time">15:00</span>
                 </div>
             </div>
+
             <form id="quizForm" class="quiz-form">
 
-                <!-- Question 1 - Multiple Choice -->
+                <!-- Question 1 -->
                 <div class="quiz-question">
                     <div class="question-text">1. Which HTML element is used for a self-contained composition like a
                         blog post?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q1"><label>&lt;article&gt;</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q1"><label>&lt;section&gt;</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="c"
-                                name="q1"><label>&lt;div&gt;</label></div>
+                        <div class="option"><input type="radio" name="q1" value="a"><label>&lt;article&gt;</label></div>
+                        <div class="option"><input type="radio" name="q1" value="b"><label>&lt;section&gt;</label></div>
+                        <div class="option"><input type="radio" name="q1" value="c"><label>&lt;div&gt;</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> &lt;article&gt;<br>
-                        <em>Explanation:</em> The &lt;article&gt; element represents a self-contained composition, such
-                        as a blog post, forum post, or news article.
+                        <em>Explanation:</em> The &lt;article&gt; element represents a self-contained composition.
                     </div>
-
                 </div>
 
-                <!-- Question 2 - True/False -->
+                <!-- Question 2 -->
                 <div class="quiz-question">
-                    <div class="question-text">2. The HTML &lt;picture&gt; element allows responsive
-                        images based on device width.</div>
+                    <div class="question-text">2. The HTML &lt;picture&gt; element allows responsive images based on
+                        device width.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q2"><label>True</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q2"><label>False</label></div>
+                        <div class="option"><input type="radio" name="q2" value="a"><label>True</label></div>
+                        <div class="option"><input type="radio" name="q2" value="b"><label>False</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> True<br>
-                        <em>Explanation:</em> The &lt;picture&gt; element allows you to specify different images for
-                        different screen sizes or resolutions, enabling responsive images.
+                        <em>Explanation:</em> The &lt;picture&gt; element allows responsive images.
                     </div>
-
                 </div>
 
-                <!-- Question 3 - Multiple Choice -->
+                <!-- Question 3 -->
                 <div class="quiz-question">
                     <div class="question-text">3. Which CSS unit is relative to the font-size of the root element?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q3"><label>em</label>
-                        </div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q3"><label>rem</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="c"
-                                name="q3"><label>px</label>
-                        </div>
+                        <div class="option"><input type="radio" name="q3" value="a"><label>em</label></div>
+                        <div class="option"><input type="radio" name="q3" value="b"><label>rem</label></div>
+                        <div class="option"><input type="radio" name="q3" value="c"><label>px</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> rem<br>
-                        <em>Explanation:</em> The rem unit is relative to the font-size of the root element, making it
-                        useful for consistent scaling across a page.
+                        <em>Explanation:</em> The rem unit is relative to the root element's font-size.
                     </div>
                 </div>
 
-                <!-- Question 4 - True/False -->
+                <!-- Question 4 -->
                 <div class="quiz-question">
-                    <div class="question-text">4. CSS Grid allows for two-dimensional layout designs.
-                    </div>
+                    <div class="question-text">4. CSS Grid allows for two-dimensional layout designs.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q4"><label>True</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q4"><label>False</label></div>
+                        <div class="option"><input type="radio" name="q4" value="a"><label>True</label></div>
+                        <div class="option"><input type="radio" name="q4" value="b"><label>False</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> True<br>
-                        <em>Explanation:</em> CSS Grid is a two-dimensional layout system, allowing both rows and
-                        columns to be controlled.
+                        <em>Explanation:</em> CSS Grid controls both rows and columns.
                     </div>
                 </div>
 
-                <!-- Question 5 - Multiple Choice -->
+                <!-- Question 5 -->
                 <div class="quiz-question">
                     <div class="question-text">5. Which JavaScript keyword declares a block-scoped variable?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q5"><label>var</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q5"><label>let</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="c"
-                                name="q5"><label>const</label></div>
+                        <div class="option"><input type="radio" name="q5" value="a"><label>var</label></div>
+                        <div class="option"><input type="radio" name="q5" value="b"><label>let</label></div>
+                        <div class="option"><input type="radio" name="q5" value="c"><label>const</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> let<br>
-                        <em>Explanation:</em> The `let` keyword declares a block-scoped variable, unlike `var` which is
-                        function-scoped.
+                        <em>Explanation:</em> `let` declares a block-scoped variable.
                     </div>
                 </div>
 
-                <!-- Question 6 - True/False -->
+                <!-- Question 6 -->
                 <div class="quiz-question">
-                    <div class="question-text">6. The CSS pseudo-class :nth-child() selects elements
-                        based on their position in the parent.</div>
+                    <div class="question-text">6. The CSS pseudo-class :nth-child() selects elements based on their
+                        position in the parent.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q6"><label>True</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q6"><label>False</label></div>
+                        <div class="option"><input type="radio" name="q6" value="a"><label>True</label></div>
+                        <div class="option"><input type="radio" name="q6" value="b"><label>False</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> True<br>
-                        <em>Explanation:</em> The :nth-child() pseudo-class selects elements based on their position
-                        within their parent element.
+                        <em>Explanation:</em> :nth-child() selects elements by their position in the parent.
                     </div>
                 </div>
 
-                <!-- Question 7 - Multiple Choice -->
+                <!-- Question 7 -->
                 <div class="quiz-question">
                     <div class="question-text">7. Which HTML element defines a container for SVG graphics?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q7"><label>&lt;svg&gt;</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q7"><label>&lt;canvas&gt;</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="c"
-                                name="q7"><label>&lt;img&gt;</label></div>
+                        <div class="option"><input type="radio" name="q7" value="a"><label>&lt;svg&gt;</label></div>
+                        <div class="option"><input type="radio" name="q7" value="b"><label>&lt;canvas&gt;</label></div>
+                        <div class="option"><input type="radio" name="q7" value="c"><label>&lt;img&gt;</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> &lt;svg&gt;<br>
-                        <em>Explanation:</em> The &lt;svg&gt; element is used as a container for SVG graphics, allowing
-                        vector-based drawings in HTML.
+                        <em>Explanation:</em> &lt;svg&gt; is a container for vector graphics.
                     </div>
                 </div>
 
-                <!-- Question 8 - True/False -->
+                <!-- Question 8 -->
                 <div class="quiz-question">
-                    <div class="question-text">8. The 'position: sticky' property allows an element to
-                        stick to the viewport when scrolling.</div>
+                    <div class="question-text">8. The 'position: sticky' property allows an element to stick to the
+                        viewport when scrolling.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q8"><label>True</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q8"><label>False</label></div>
+                        <div class="option"><input type="radio" name="q8" value="a"><label>True</label></div>
+                        <div class="option"><input type="radio" name="q8" value="b"><label>False</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> True<br>
-                        <em>Explanation:</em> `position: sticky` allows an element to stick to a specified position
-                        within the viewport until a boundary is reached.
+                        <em>Explanation:</em> position: sticky sticks within viewport until boundary.
                     </div>
                 </div>
 
-                <!-- Question 9 - Multiple Choice -->
+                <!-- Question 9 -->
                 <div class="quiz-question">
                     <div class="question-text">9. Which HTML element is used to embed a JavaScript file?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q9"><label>&lt;script&gt;</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q9"><label>&lt;link&gt;</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="c"
-                                name="q9"><label>&lt;javascript&gt;</label></div>
+                        <div class="option"><input type="radio" name="q9" value="a"><label>&lt;script&gt;</label></div>
+                        <div class="option"><input type="radio" name="q9" value="b"><label>&lt;link&gt;</label></div>
+                        <div class="option"><input type="radio" name="q9" value="c"><label>&lt;javascript&gt;</label>
+                        </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> &lt;script&gt;<br>
-                        <em>Explanation:</em> The &lt;script&gt; tag is used to embed or reference JavaScript code in
-                        HTML.
+                        <em>Explanation:</em> &lt;script&gt; embeds JS code.
                     </div>
                 </div>
 
-                <!-- Question 10 - True/False -->
+                <!-- Question 10 -->
                 <div class="quiz-question">
-                    <div class="question-text">10. The localStorage API stores key-value pairs in the
-                        browser.</div>
+                    <div class="question-text">10. The localStorage API stores key-value pairs in the browser.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q10"><label>True</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q10"><label>False</label></div>
+                        <div class="option"><input type="radio" name="q10" value="a"><label>True</label></div>
+                        <div class="option"><input type="radio" name="q10" value="b"><label>False</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> True<br>
-                        <em>Explanation:</em> localStorage stores key-value pairs persistently in the browser, even
-                        after the page is closed.
+                        <em>Explanation:</em> localStorage persists key-value pairs in browser.
                     </div>
                 </div>
 
-                <!-- Question 11 - Multiple Choice -->
+                <!-- Question 11 -->
                 <div class="quiz-question">
                     <div class="question-text">11. Which CSS property creates smooth transitions between property
                         changes?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q11"><label>animation</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q11"><label>transition</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="c"
-                                name="q11"><label>transform</label></div>
+                        <div class="option"><input type="radio" name="q11" value="a"><label>animation</label></div>
+                        <div class="option"><input type="radio" name="q11" value="b"><label>transition</label></div>
+                        <div class="option"><input type="radio" name="q11" value="c"><label>transform</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> transition<br>
-                        <em>Explanation:</em> The CSS `transition` property allows smooth animation effects when CSS
-                        properties change.
+                        <em>Explanation:</em> transition enables smooth CSS property changes.
                     </div>
                 </div>
 
-                <!-- Question 12 - True/False -->
+                <!-- Question 12 -->
                 <div class="quiz-question">
-                    <div class="question-text">12. Arrow functions in JavaScript bind their own 'this'
-                        context.</div>
+                    <div class="question-text">12. Arrow functions in JavaScript bind their own 'this' context.</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q12"><label>True</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q12"><label>False</label></div>
+                        <div class="option"><input type="radio" name="q12" value="a"><label>True</label></div>
+                        <div class="option"><input type="radio" name="q12" value="b"><label>False</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> False<br>
-                        <em>Explanation:</em> Arrow functions do not bind their own `this`; they inherit `this` from the
-                        surrounding context.
+                        <em>Explanation:</em> Arrow functions inherit 'this' from the surrounding context.
                     </div>
                 </div>
 
-                <!-- Question 13 - Multiple Choice -->
+                <!-- Question 13 -->
                 <div class="quiz-question">
                     <div class="question-text">13. Which CSS property controls the visibility of overflow content?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q13"><label>overflow</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q13"><label>visibility</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="c"
-                                name="q13"><label>display</label></div>
+                        <div class="option"><input type="radio" name="q13" value="a"><label>overflow</label></div>
+                        <div class="option"><input type="radio" name="q13" value="b"><label>visibility</label></div>
+                        <div class="option"><input type="radio" name="q13" value="c"><label>display</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> overflow<br>
-                        <em>Explanation:</em> The `overflow` property controls what happens when content exceeds the
-                        container's box.
+                        <em>Explanation:</em> overflow controls content exceeding container size.
                     </div>
                 </div>
 
-                <!-- Question 14 - True/False -->
+                <!-- Question 14 -->
                 <div class="quiz-question">
-                    <div class="question-text">14. The CSS flexbox property 'justify-content' aligns
-                        items horizontally.</div>
+                    <div class="question-text">14. The CSS flexbox property 'justify-content' aligns items horizontally.
+                    </div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q14"><label>True</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q14"><label>False</label></div>
+                        <div class="option"><input type="radio" name="q14" value="a"><label>True</label></div>
+                        <div class="option"><input type="radio" name="q14" value="b"><label>False</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> True<br>
-                        <em>Explanation:</em> The flexbox property `justify-content` aligns items along the main axis,
-                        which is horizontal by default.
+                        <em>Explanation:</em> justify-content aligns along the main axis (horizontal by default).
                     </div>
                 </div>
 
-                <!-- Question 15 - Multiple Choice -->
+                <!-- Question 15 -->
                 <div class="quiz-question">
                     <div class="question-text">15. Which HTML element is used to create a clickable button?</div>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="a"
-                                name="q15"><label>&lt;button&gt;</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="b"
-                                name="q15"><label>&lt;a&gt;</label></div>
-                        <div class="option" onclick="selectOption(this)"><input type="radio" value="c"
-                                name="q15"><label>&lt;input&gt;</label></div>
+                        <div class="option"><input type="radio" name="q15" value="a"><label>&lt;button&gt;</label></div>
+                        <div class="option"><input type="radio" name="q15" value="b"><label>&lt;a&gt;</label></div>
+                        <div class="option"><input type="radio" name="q15" value="c"><label>&lt;input&gt;</label></div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
                         <strong>Correct Answer:</strong> &lt;button&gt;<br>
-                        <em>Explanation:</em> The &lt;button&gt; element creates a clickable button that can trigger
-                        actions in forms or scripts.
+                        <em>Explanation:</em> &lt;button&gt; creates a clickable button.
                     </div>
                 </div>
 
+                <!-- Navigation -->
                 <div class="quiz-navigation">
                     <a href="/pages/quiz.html" class="btn btn-outline">
                         <i class="fas fa-arrow-left"></i> Back
                     </a>
-                    <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
+                    <button type="button" id="submitQuizBtn" class="btn btn-outline">Submit Quiz</button>
                     <a href="result.html" class="btn btn-outline">View Result</a>
                 </div>
 
