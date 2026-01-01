@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results - TechQuiz</title>
     <link rel="stylesheet" href="../css/result.css">
+    <link rel="shortcut icon" href="/img/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -20,7 +21,7 @@
     </section>
 
     <!-- Main Results -->
-    <div class="results-container">
+    <div class="results-container container">
         <div class="result-card">
             <div class="score-circle">
                 <div>
@@ -39,21 +40,21 @@
                 </div>
                 <div class="result-metric">
                     <span class="metric-label">Time Spent</span>
-                    <span class="metric-value">12:45 min</span>
+                    <span class="metric-value" id="timeSpent">0:00 min</span>
                 </div>
                 <div class="result-metric">
                     <span class="metric-label">Average Score</span>
-                    <span class="metric-value">75%</span>
+                    <span class="metric-value" id="averageScore">0%</span>
                 </div>
                 <div class="result-metric">
                     <span class="metric-label">Your Rank</span>
-                    <span class="metric-value">Top 15%</span>
+                    <span class="metric-value" id="rankPercent">Top 0%</span>
                 </div>
             </div>
 
             <div class="btn-group">
                 <a href="quiz.html" class="btn">Try Another Quiz</a>
-                <a href="quizhtml1.html" class="btn btn-outline">Review Answers</a>
+                <a href="#" class="btn btn-outline" id="reviewBtn">Review Answers</a>
                 <a href="../index.html" class="btn btn-outline">Back to Home</a>
             </div>
         </div>

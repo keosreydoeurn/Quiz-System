@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Tech Quiz</title>
     <link rel="stylesheet" href="../css/quizhtml3.css">
+    <link rel="shortcut icon" href="/img/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -14,6 +15,12 @@
         <div class="quiz-container">
             <h1>Advanced Tech Quiz</h1>
             <p class="text-muted">Test your knowledge with 15 questions</p>
+            <div class="quiz-timer-container">
+                <div class="quiz-timer">
+                    <i class="fas fa-hourglass-half timer-icon"></i>
+                    Time Left: <span id="time">15:00</span>
+                </div>
+            </div>
             <form id="quizForm" class="quiz-form">
 
                 <!-- Question 1 - Multiple Choice -->
@@ -300,19 +307,19 @@
                     </div>
                 </div>
 
-                   <div class="quiz-navigation">
+                <div class="quiz-navigation">
                     <a href="/pages/quiz.html" class="btn btn-outline">
                         <i class="fas fa-arrow-left"></i> Back
                     </a>
                     <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
-                    <a href="" class="btn btn-outline">View Result</a>
+                    <a href="result.html" class="btn btn-outline">View Result</a>
                 </div>
 
             </form>
         </div>
     </div>
 
-    <script src="../js/quiz3.js"></script>
+    <script src="../js/quizhtml3.js"></script>
 </body>
 
 </html>

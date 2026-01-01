@@ -1,0 +1,147 @@
+/* ====== General Styles ====== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 32px;
+    color: #2c3e50;
+}
+
+/* ====== Quiz Container ====== */
+.create-quiz-container {
+    max-width: 800px;
+    margin: 32px auto;
+    padding: 32px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.create-quiz-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ====== Form Groups ====== */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #34495e;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #2196F3;
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+    outline: none;
+}
+
+/* ====== Buttons ====== */
+.btn, .add-option, .remove-question, .add-question {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn:hover {
+    background: #45a049;
+}
+
+.add-option, .add-question {
+    background: #2196F3;
+    color: white;
+}
+
+.add-option:hover, .add-question:hover {
+    background: #1976D2;
+}
+
+.remove-question {
+    background: #f44336;
+    color: white;
+}
+
+.remove-question:hover {
+    background: #d32f2f;
+}
+
+/* ====== Question Container ====== */
+.question-container {
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    transition: all 0.3s;
+}
+
+.question-container:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ====== Option Rows ====== */
+.option-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.option-row input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    margin-right: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* ====== Add Question Button ====== */
+.add-question {
+    display: inline-block;
+    margin-top: 16px;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 600px) {
+    .create-quiz-container {
+        padding: 24px;
+        margin: 16px;
+    }
+
+    .form-control, .option-row input[type="text"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .btn, .add-option, .remove-question, .add-question {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+}
