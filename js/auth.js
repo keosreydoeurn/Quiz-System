@@ -1,55 +1,83 @@
-// js/auth.js - Authentication Check for Protected Pages
+// js/auth.js
 import dbManager from './database.js';
 
-// Check if user is logged in
+// ------------------- AUTH CHECK -------------------
 export function checkAuth() {
     const currentUser = sessionStorage.getItem('currentUser');
-    const protectedPages = ['profile.html', 'quiz.html']; // Add pages that require login
-    
+    const protectedPages = ['profile.html', 'quiz.html']; // Pages that require login
     const currentPage = window.location.pathname.split('/').pop();
-    
+
     if (protectedPages.includes(currentPage) && !currentUser) {
-        window.location.href = 'login.html';
+        // Redirect to login page if not logged in
+        window.location.href = '../pages/login.html';
         return false;
     }
-    
     return true;
 }
 
-// Get current user
+// ------------------- GET CURRENT USER -------------------
 export function getCurrentUser() {
     const userStr = sessionStorage.getItem('currentUser');
     return userStr ? JSON.parse(userStr) : null;
 }
 
-// Logout function
+// ------------------- LOGOUT -------------------
 export function logout() {
     sessionStorage.removeItem('currentUser');
-    window.location.href = 'login.html';
+    window.location.href = '../pages/login.html';
 }
 
-// Update header based on auth state
+// ------------------- UPDATE HEADER -------------------
 export function updateHeaderAuth() {
     const loginBtn = document.getElementById('loginBtn');
+    const userDropdown = document.getElementById('userDropdown');
+    const usernameSpan = document.getElementById('username');
+    const dropdownContent = document.getElementById('dropdownContent');
+    const logoutBtn = document.getElementById('logoutBtn');
+
     const currentUser = getCurrentUser();
-    
+
     if (currentUser) {
-        loginBtn.innerHTML = `<i class="fas fa-user"></i> ${currentUser.fullName || currentUser.username}`;
-        loginBtn.href = 'profile.html';
-        
-        // Add logout option if needed
-        loginBtn.addEventListener('click', (e) => {
-            if (e.ctrlKey) { // Ctrl+click to logout
+        // Hide login button
+        if (loginBtn) loginBtn.style.display = 'none';
+
+        // Show dropdown
+        if (userDropdown) userDropdown.style.display = 'inline-block';
+        if (usernameSpan) usernameSpan.textContent = currentUser.fullName || currentUser.username;
+
+        // Toggle dropdown
+        const userBtn = document.getElementById('userBtn');
+        if (userBtn) {
+            userBtn.addEventListener('click', () => {
+                dropdownContent.style.display =
+                    dropdownContent.style.display === 'block' ? 'none' : 'block';
+            });
+        }
+
+        // Logout button
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 if (confirm('Are you sure you want to logout?')) {
                     logout();
                 }
+            });
+        }
+
+        // Close dropdown if clicked outside
+        window.addEventListener('click', (e) => {
+            if (userDropdown && !userDropdown.contains(e.target)) {
+                dropdownContent.style.display = 'none';
             }
         });
+    } else {
+        // Not logged in: show login button
+        if (loginBtn) loginBtn.style.display = 'inline-flex';
+        if (userDropdown) userDropdown.style.display = 'none';
     }
 }
 
-// Initialize auth on page load
+// ------------------- INIT -------------------
 document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
     updateHeaderAuth();
