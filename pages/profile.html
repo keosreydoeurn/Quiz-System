@@ -29,9 +29,24 @@
                     <li><a href="./help.html">Help</a></li>
                 </ul>
             </nav>
-            <a href="/pages/login.html" class="btn-login" id="loginBtn">
-                <i class="fas fa-sign-in-alt"></i> Login
-            </a>
+            <!-- Login / User Dropdown -->
+            <div class="user-menu" id="userMenu">
+                <a href="/pages/login.html" class="btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+
+                <div class="dropdown" id="userDropdown" style="display: none;">
+                    <button class="dropdown-btn" id="userBtn">
+                        <i class="fas fa-user"></i> <span id="username">User</span> <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="./profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="./login.html" id="loginBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
