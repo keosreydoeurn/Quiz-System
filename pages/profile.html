@@ -40,11 +40,13 @@
         <div class="container">
             <div class="profile-header">
                 <div class="profile-avatar">
+                    <!-- Replace the current avatar-circle div with this -->
                     <div class="avatar-circle">
                         <img src="../img/avatar.png" alt="User Avatar" id="userAvatar">
-                        <button class="avatar-edit" onclick="changeAvatar()">
+                        <button class="avatar-edit" id="avatarUploadBtn">
                             <i class="fas fa-camera"></i>
                         </button>
+                        <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
                     </div>
                     <div class="profile-info">
                         <h1 id="userName">John Doe</h1>
