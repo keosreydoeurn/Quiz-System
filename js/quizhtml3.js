@@ -1,5 +1,5 @@
 // ================= QUIZ TIMER =================
-let totalTime = 15 * 60; // 15 minutes
+let totalTime = 5 * 60; // 5 minutes
 let timerInterval;
 
 window.addEventListener("DOMContentLoaded", () => {
