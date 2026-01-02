@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Java Intermediate</title>
+    <link rel="stylesheet" href="../css/quizjava2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="quiz-container">
+            <h1>Java Advanced Quiz</h1>
+            <p class="text-muted">Test your advanced knowledge of Java programming</p>
+            <form id="quizForm" class="quiz-form">
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <div class="question-text">1. Which memory area replaced PermGen in Java 8?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1"> Heap
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1"> Stack
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1"> Metaspace
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q1"> Eden Space
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Metaspace<br>
+                        <strong>Explanation:</strong> Metaspace stores class metadata and replaced PermGen in Java 8.
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <div class="question-text">2. Which collection is thread-safe and optimized for read-heavy
+                        operations?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q2"> ArrayList
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q2"> Vector
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q2"> CopyOnWriteArrayList
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q2"> LinkedList
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> CopyOnWriteArrayList<br>
+                        <strong>Explanation:</strong> It allows safe concurrent access without explicit synchronization.
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <div class="question-text">3. What happens if wait() is called without owning the monitor?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3"> Thread waits
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3"> Deadlock occurs
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3"> IllegalMonitorStateException
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q3"> Thread stops
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> IllegalMonitorStateException<br>
+                        <strong>Explanation:</strong> A thread must own the object's monitor to call wait().
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <div class="question-text">4. Which keyword guarantees variable visibility across threads?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q4"> synchronized
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q4"> static
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q4"> volatile
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q4"> final
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> volatile<br>
+                        <strong>Explanation:</strong> volatile ensures changes are visible across threads.
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <div class="question-text">5. Which Stream method transforms elements?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5"> filter()
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5"> map()
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5"> reduce()
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q5"> collect()
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> map()<br>
+                        <strong>Explanation:</strong> map() converts each element into another form.
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <div class="question-text">6. Which GC is optimized for low-latency applications?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q6"> Serial GC
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q6"> Parallel GC
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q6"> G1 GC
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q6"> Epsilon GC
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> G1 GC<br>
+                        <strong>Explanation:</strong> G1 GC balances throughput with low pause times.
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="quiz-question">
+                    <div class="question-text">7. Which design pattern ensures only one instance exists?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7"> Factory
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7"> Builder
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7"> Singleton
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q7"> Prototype
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Singleton<br>
+                        <strong>Explanation:</strong> Singleton restricts instantiation to one object.
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="quiz-question">
+                    <div class="question-text">8. Which interface is a marker interface?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q8"> Runnable
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q8"> Comparable
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q8"> Serializable
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q8"> Callable
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Serializable<br>
+                        <strong>Explanation:</strong> Marker interfaces contain no methods.
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="quiz-question">
+                    <div class="question-text">9. What does Optional help prevent?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9"> ClassCastException
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9"> NullPointerException
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9"> IOException
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q9"> StackOverflowError
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> NullPointerException<br>
+                        <strong>Explanation:</strong> Optional provides a safe container for nullable values.
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="quiz-question">
+                    <div class="question-text">10. What is the role of ClassLoader?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10"> Compile Java code
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10"> Execute bytecode
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10"> Load classes at runtime
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q10"> Manage garbage collection
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Load classes at runtime<br>
+                        <strong>Explanation:</strong> ClassLoader dynamically loads class definitions into the JVM.
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="quiz-question">
+                    <div class="question-text">11. Which ExecutorService method stops accepting new tasks?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q11"> close()
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q11"> shutdown()
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q11"> terminate()
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q11"> destroy()
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> shutdown()<br>
+                        <strong>Explanation:</strong> shutdown() prevents new tasks but allows running tasks to finish.
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="quiz-question">
+                    <div class="question-text">12. Which keyword prevents a method from being overridden?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q12"> static
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q12"> abstract
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q12"> final
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q12"> private
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> final<br>
+                        <strong>Explanation:</strong> final methods cannot be overridden by subclasses.
+                    </div>
+                </div>
+
+                <!-- Question 13 -->
+                <div class="quiz-question">
+                    <div class="question-text">13. Which collection does NOT allow duplicate elements?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q13"> ArrayList
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q13"> LinkedList
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q13"> HashSet
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q13"> Vector
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> HashSet<br>
+                        <strong>Explanation:</strong> Set implementations do not allow duplicate values.
+                    </div>
+                </div>
+
+                <!-- Question 14 -->
+                <div class="quiz-question">
+                    <div class="question-text">14. Which exception is thrown when a thread is interrupted?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q14"> InterruptedException
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q14"> IllegalThreadStateException
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q14"> RuntimeException
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q14"> ThreadDeath
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> InterruptedException<br>
+                        <strong>Explanation:</strong> Thrown when a thread is waiting or sleeping and gets interrupted.
+                    </div>
+                </div>
+
+                <!-- Question 15 -->
+                <div class="quiz-question">
+                    <div class="question-text">15. What is the main benefit of immutable objects?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q15"> Faster execution
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q15"> Thread safety
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q15"> Less memory usage
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q15"> Easier syntax
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Thread safety<br>
+                        <strong>Explanation:</strong> Immutable objects cannot be changed after creation.
+                    </div>
+                </div>
+
+                <!-- Question 16 -->
+                <div class="quiz-question">
+                    <div class="question-text">16. Which interface allows custom object sorting?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q16"> Comparable
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q16"> Serializable
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q16"> Cloneable
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q16"> AutoCloseable
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Comparable<br>
+                        <strong>Explanation:</strong> Comparable defines natural ordering of objects.
+                    </div>
+                </div>
+
+                <!-- Question 17 -->
+                <div class="quiz-question">
+                    <div class="question-text">17. Which keyword allows a method to be accessed without creating an
+                        object?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q17"> final
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q17"> abstract
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q17"> static
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q17"> synchronized
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> static<br>
+                        <strong>Explanation:</strong> Static methods belong to the class, not instances.
+                    </div>
+                </div>
+
+                <!-- Question 18 -->
+                <div class="quiz-question">
+                    <div class="question-text">18. Which Stream method converts elements into a single result?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q18"> map()
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q18"> filter()
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q18"> reduce()
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q18"> peek()
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> reduce()<br>
+                        <strong>Explanation:</strong> reduce() aggregates stream elements into a single value.
+                    </div>
+                </div>
+
+                <!-- Question 19 -->
+                <div class="quiz-question">
+                    <div class="question-text">19. Which Java feature supports multiple inheritance?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q19"> Abstract classes
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q19"> Interfaces
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q19"> Inner classes
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q19"> Packages
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Interfaces<br>
+                        <strong>Explanation:</strong> A class can implement multiple interfaces.
+                    </div>
+                </div>
+
+                <!-- Question 20 -->
+                <div class="quiz-question">
+                    <div class="question-text">20. What does the JVM use the stack for?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q20"> Object storage
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q20"> Method execution
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q20"> Class loading
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <input type="radio" name="q20"> Garbage collection
+                        </div>
+                    </div>
+                    <button type="button" class="show-answer-btn">Show Answer</button>
+                    <div class="answer-explanation">
+                        <strong>Correct Answer:</strong> Method execution<br>
+                        <strong>Explanation:</strong> The stack stores method calls and local variables per thread.
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/quiz.js"></script>
+    <script>
+        function selectOption(element) {
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            const radio = element.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+        }
+
+        function submitQuiz() {
+            if (confirm('Are you sure you want to submit the quiz?')) {
+                document.querySelectorAll('.show-answer-btn').forEach(btn => btn.click());
+                alert('Quiz submitted! Check your answers.');
+            }
+        }
+    </script>
+</body>
+
+</html>

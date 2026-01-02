@@ -28,9 +28,24 @@
                     <li><a href="./help.html">Help</a></li>
                 </ul>
             </nav>
-            <a href="/pages/login.html" class="btn-login" id="loginBtn">
-                <i class="fas fa-sign-in-alt"></i> Login
-            </a>
+            <!-- Login / User Dropdown -->
+            <div class="user-menu" id="userMenu">
+                <a href="/pages/login.html" class="btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+
+                <div class="dropdown" id="userDropdown" style="display: none;">
+                    <button class="dropdown-btn" id="userBtn">
+                        <i class="fas fa-user"></i> <span id="username">User</span> <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="./profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="./login.html" id="loginBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
     <!-- Page Header -->
@@ -169,7 +184,7 @@
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="../pages/quizcss1" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizcss2.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -188,7 +203,7 @@
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="../pages/quizcss1" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizcss3.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -208,7 +223,7 @@
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="quiz-js.html" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizjava1.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -228,7 +243,7 @@
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="quiz-js.html" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizjava2.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -249,7 +264,7 @@
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="quiz-js.html" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizjava3.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -260,7 +275,7 @@
         <div class="see-more-container">
             <button id="seeMoreBtn" class="btn btn-outline">See More</button>
         </div>
-        
+
     </section>
 
     <!-- Quiz Types Section -->

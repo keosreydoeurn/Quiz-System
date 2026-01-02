@@ -5,6 +5,9 @@ let timerInterval;
 window.addEventListener("DOMContentLoaded", () => {
     startTimer();
     handleReviewMode();
+    attachOptionHandlers();
+    attachShowAnswerHandlers();
+    document.getElementById("submitQuizBtn")?.addEventListener("click", submitQuiz);
 });
 
 // Start countdown timer
@@ -31,15 +34,35 @@ function startTimer() {
     }, 1000);
 }
 
-// ================= SELECT OPTION =================
-function selectOption(option) {
-    if (localStorage.getItem("reviewMode") === "true") return;
+// ================= SELECT OPTION HANDLERS =================
+function attachOptionHandlers() {
+    const optionDivs = document.querySelectorAll(".option");
+    optionDivs.forEach(option => {
+        option.addEventListener("click", () => {
+            if (localStorage.getItem("reviewMode") === "true") return;
 
-    const allOptions = option.parentElement.querySelectorAll(".option");
-    allOptions.forEach(opt => opt.classList.remove("selected"));
+            const siblings = option.parentElement.querySelectorAll(".option");
+            siblings.forEach(sib => sib.classList.remove("selected"));
 
-    option.classList.add("selected");
-    option.querySelector('input[type="radio"]').checked = true;
+            option.classList.add("selected");
+
+            const input = option.querySelector('input[type="radio"]');
+            if (input) input.checked = true;
+        });
+    });
+}
+
+// ================= SHOW ANSWER HANDLERS =================
+function attachShowAnswerHandlers() {
+    const showButtons = document.querySelectorAll(".show-answer-btn");
+    showButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const explanation = btn.nextElementSibling;
+            if (explanation) {
+                explanation.style.display = explanation.style.display === "block" ? "none" : "block";
+            }
+        });
+    });
 }
 
 // ================= SUBMIT QUIZ =================
@@ -63,11 +86,16 @@ function submitQuiz() {
     const userAnswers = {};
 
     for (const q in correctAnswers) {
-        const selected = document.querySelector(`input[name="${q}"]:checked`);
-        if (!selected) continue;
-
-        userAnswers[q] = selected.value;
-        if (selected.value === correctAnswers[q]) score++;
+        const inputElem = document.querySelector(`input[name="${q}"]`);
+        if (inputElem && inputElem.type === "text") {
+            userAnswers[q] = inputElem.value.trim();
+            if (userAnswers[q].toLowerCase() === correctAnswers[q].toLowerCase()) score++;
+        } else {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (!selected) continue;
+            userAnswers[q] = selected.value;
+            if (selected.value === correctAnswers[q]) score++;
+        }
     }
 
     const total = Object.keys(correctAnswers).length;
@@ -81,17 +109,15 @@ function submitQuiz() {
         userAnswers,
         correctAnswers,
         timeLeft: totalTime >= 0 ? totalTime : 0,
-        quizPage: window.location.pathname.split("/").pop() // Save the current quiz page
+        quizPage: window.location.pathname.split("/").pop()
     };
 
     localStorage.setItem("latestResult", JSON.stringify(resultData));
 
-    // Save quiz history
     const history = JSON.parse(localStorage.getItem("quizHistory")) || [];
     history.push(resultData);
     localStorage.setItem("quizHistory", JSON.stringify(history));
 
-    // Redirect to results page
     window.location.href = "result.html";
 }
 
@@ -109,29 +135,30 @@ function handleReviewMode() {
         if (!userValue) continue;
 
         const inputElem = document.querySelector(`input[name="${q}"][value="${userValue}"]`);
-        if (!inputElem) continue;
+        const textInput = document.querySelector(`input[name="${q}"]`);
+        let quizDiv;
 
-        const quizDiv = inputElem.closest(".quiz-question");
-        inputElem.checked = true;
-        inputElem.parentElement.classList.add("selected");
+        if (inputElem) {
+            inputElem.checked = true;
+            inputElem.parentElement.classList.add("selected");
+            quizDiv = inputElem.closest(".quiz-question");
+            // Border color for correct/wrong
+            inputElem.parentElement.style.border = userValue === correctAnswers[q] ? "2px solid blue" : "2px solid red";
+        } else if (textInput) {
+            textInput.value = userValue;
+            quizDiv = textInput.closest(".quiz-question");
+            textInput.style.border = userValue.toLowerCase() === correctAnswers[q].toLowerCase() ? "2px solid blue" : "2px solid red";
+        }
 
-        // Color borders: blue = correct, red = wrong
-        inputElem.parentElement.style.border = userValue === correctAnswers[q] ? "2px solid blue" : "2px solid red";
-
-        const showBtn = quizDiv.querySelector(".show-answer-btn");
-        if (showBtn) showBtn.onclick = () => {
+        // Show explanation
+        if (quizDiv) {
             const explanation = quizDiv.querySelector(".answer-explanation");
-            explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
-        };
-
-        // Automatically show explanation
-        const explanation = quizDiv.querySelector(".answer-explanation");
-        if (explanation) explanation.style.display = "block";
+            if (explanation) explanation.style.display = "block";
+        }
     }
 
     // Disable all inputs
-    document.querySelectorAll('.option input[type="radio"]').forEach(input => input.disabled = true);
+    document.querySelectorAll('.option input[type="radio"], .text-answer').forEach(input => input.disabled = true);
 
-    // Remove reviewMode flag so it's only used once
     localStorage.removeItem("reviewMode");
 }

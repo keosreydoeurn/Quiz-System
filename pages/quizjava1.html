@@ -4,305 +4,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - CSS Basics</title>
-    <link rel="stylesheet" href="../css/quizcss1.css">
-    <link rel="shortcut icon" href="/img/logo.png" type="image/png">
+    <title>Quiz - JavaScript Basics</title>
+    <link rel="stylesheet" href="../css/quizjava1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <div class="container">
         <div class="quiz-container">
-            <h1>CSS Basics Quiz</h1>
-            <p class="text-muted">Test your knowledge of CSS fundamentals</p>
+            <h1>JavaScript Basics Quiz</h1>
+            <p class="text-muted">Test your knowledge of JavaScript fundamentals</p>
             <form id="quizForm" class="quiz-form">
 
                 <!-- Question 1 -->
                 <div class="quiz-question">
-                    <div class="question-text">1. What does CSS stand for?</div>
+                    <div class="question-text">1. What does JS stand for?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="a" id="q1a">
-                            <label for="q1a">a. Cascading Style Sheets</label>
+                            <label for="q1a">a. JavaScript</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="b" id="q1b">
-                            <label for="q1b">b. Colorful Style Sheets</label>
+                            <label for="q1b">b. Java Style</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="c" id="q1c">
-                            <label for="q1c">c. Computer Style Sheets</label>
+                            <label for="q1c">c. Java Syntax</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q1" value="d" id="q1d">
-                            <label for="q1d">d. Creative Style Syntax</label>
+                            <label for="q1d">d. JustScript</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> Cascading Style Sheets<br>
-                        <strong>Explanation:</strong> CSS is used to style and layout web pages.
+                        <strong>Correct Answer:</strong> JavaScript<br>
+                        <strong>Explanation:</strong> JS stands for JavaScript, the programming language used in web development.
                     </div>
                 </div>
 
                 <!-- Question 2 -->
                 <div class="quiz-question">
-                    <div class="question-text">2. Which property is used to change text color?</div>
+                    <div class="question-text">2. Which of the following is a way to declare a variable?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q2" value="a" id="q2a">
-                            <label for="q2a">a. font-color</label>
+                            <label for="q2a">a. var</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q2" value="b" id="q2b">
-                            <label for="q2b">b. color</label>
+                            <label for="q2b">b. let</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q2" value="c" id="q2c">
-                            <label for="q2c">c. text-color</label>
+                            <label for="q2c">c. const</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q2" value="d" id="q2d">
-                            <label for="q2d">d. font-style</label>
+                            <label for="q2d">d. All of the above</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> color<br>
-                        <strong>Explanation:</strong> The CSS property "color" changes the text color.
+                        <strong>Correct Answer:</strong> All of the above<br>
+                        <strong>Explanation:</strong> In JavaScript, variables can be declared using var, let, or const.
                     </div>
                 </div>
 
                 <!-- Question 3 -->
                 <div class="quiz-question">
-                    <div class="question-text">3. How do you make the text bold in CSS?</div>
+                    <div class="question-text">3. How do you write a comment in JavaScript?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q3" value="a" id="q3a">
-                            <label for="q3a">a. font-weight: bold;</label>
+                            <label for="q3a">a. <!-- Comment --> </label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q3" value="b" id="q3b">
-                            <label for="q3b">b. text-style: bold;</label>
+                            <label for="q3b">b. // Comment</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q3" value="c" id="q3c">
-                            <label for="q3c">c. font-style: bold;</label>
+                            <label for="q3c">c. ** Comment **</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q3" value="d" id="q3d">
-                            <label for="q3d">d. text-weight: bold;</label>
+                            <label for="q3d">d. ## Comment</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> font-weight: bold;<br>
-                        <strong>Explanation:</strong> The "font-weight" property controls the boldness of text.
+                        <strong>Correct Answer:</strong> // Comment<br>
+                        <strong>Explanation:</strong> Single-line comments in JavaScript start with "//".
                     </div>
                 </div>
 
                 <!-- Question 4 -->
                 <div class="quiz-question">
-                    <div class="question-text">4. Which property is used to change the background color?</div>
+                    <div class="question-text">4. How do you write "Hello World" in an alert box?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q4" value="a" id="q4a">
-                            <label for="q4a">a. background-color</label>
+                            <label for="q4a">a. alertBox("Hello World");</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q4" value="b" id="q4b">
-                            <label for="q4b">b. color</label>
+                            <label for="q4b">b. msg("Hello World");</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q4" value="c" id="q4c">
-                            <label for="q4c">c. bgcolor</label>
+                            <label for="q4c">c. alert("Hello World");</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q4" value="d" id="q4d">
-                            <label for="q4d">d. background-style</label>
+                            <label for="q4d">d. console.log("Hello World");</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> background-color<br>
-                        <strong>Explanation:</strong> The "background-color" property sets the background color of an element.
+                        <strong>Correct Answer:</strong> alert("Hello World");<br>
+                        <strong>Explanation:</strong> The alert() function displays a message in a popup alert box.
                     </div>
                 </div>
 
                 <!-- Question 5 -->
                 <div class="quiz-question">
-                    <div class="question-text">5. How do you select an element with id "header"?</div>
+                    <div class="question-text">5. Which symbol is used for strict equality comparison?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q5" value="a" id="q5a">
-                            <label for="q5a">a. #header</label>
+                            <label for="q5a">a. ==</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q5" value="b" id="q5b">
-                            <label for="q5b">b. .header</label>
+                            <label for="q5b">b. ===</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q5" value="c" id="q5c">
-                            <label for="q5c">c. header</label>
+                            <label for="q5c">c. !=</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q5" value="d" id="q5d">
-                            <label for="q5d">d. *header</label>
+                            <label for="q5d">d. =</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> #header<br>
-                        <strong>Explanation:</strong> The "#" symbol is used to select an element by its ID.
+                        <strong>Correct Answer:</strong> ===<br>
+                        <strong>Explanation:</strong> "===" checks for both value and type equality in JavaScript.
                     </div>
                 </div>
 
                 <!-- Question 6 -->
                 <div class="quiz-question">
-                    <div class="question-text">6. Which property is used to change the font size?</div>
+                    <div class="question-text">6. Which method converts a JSON string into a JavaScript object?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q6" value="a" id="q6a">
-                            <label for="q6a">a. font-size</label>
+                            <label for="q6a">a. JSON.parse()</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q6" value="b" id="q6b">
-                            <label for="q6b">b. text-size</label>
+                            <label for="q6b">b. JSON.stringify()</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q6" value="c" id="q6c">
-                            <label for="q6c">c. size</label>
+                            <label for="q6c">c. Object.parse()</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q6" value="d" id="q6d">
-                            <label for="q6d">d. font-style</label>
+                            <label for="q6d">d. JSON.object()</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> font-size<br>
-                        <strong>Explanation:</strong> The "font-size" property sets the size of the text.
+                        <strong>Correct Answer:</strong> JSON.parse()<br>
+                        <strong>Explanation:</strong> JSON.parse() converts a JSON string into a JavaScript object.
                     </div>
                 </div>
 
                 <!-- Question 7 -->
                 <div class="quiz-question">
-                    <div class="question-text">7. How do you create a bulleted list?</div>
+                    <div class="question-text">7. How do you create a function in JavaScript?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q7" value="a" id="q7a">
-                            <label for="q7a">a. list-style: disc;</label>
+                            <label for="q7a">a. function myFunction() { }</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q7" value="b" id="q7b">
-                            <label for="q7b">b. list-type: bullet;</label>
+                            <label for="q7b">b. func myFunction() { }</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q7" value="c" id="q7c">
-                            <label for="q7c">c. bullet-style: list;</label>
+                            <label for="q7c">c. create function myFunction() { }</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q7" value="d" id="q7d">
-                            <label for="q7d">d. display: list;</label>
+                            <label for="q7d">d. function:myFunction() { }</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> list-style: disc;<br>
-                        <strong>Explanation:</strong> "list-style: disc;" creates a bulleted list in CSS.
+                        <strong>Correct Answer:</strong> function myFunction() { }<br>
+                        <strong>Explanation:</strong> The function keyword is used to define a function in JavaScript.
                     </div>
                 </div>
 
                 <!-- Question 8 -->
                 <div class="quiz-question">
-                    <div class="question-text">8. How do you center text in CSS?</div>
+                    <div class="question-text">8. How do you write an if statement in JavaScript?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q8" value="a" id="q8a">
-                            <label for="q8a">a. text-align: center;</label>
+                            <label for="q8a">a. if i = 5 then</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q8" value="b" id="q8b">
-                            <label for="q8b">b. align-text: center;</label>
+                            <label for="q8b">b. if i == 5</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q8" value="c" id="q8c">
-                            <label for="q8c">c. center-text: yes;</label>
+                            <label for="q8c">c. if (i == 5) { }</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q8" value="d" id="q8d">
-                            <label for="q8d">d. text-center: true;</label>
+                            <label for="q8d">d. if i = 5 { }</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> text-align: center;<br>
-                        <strong>Explanation:</strong> The "text-align" property centers the text horizontally.
+                        <strong>Correct Answer:</strong> if (i == 5) { }<br>
+                        <strong>Explanation:</strong> The correct syntax for an if statement uses parentheses and curly braces.
                     </div>
                 </div>
 
                 <!-- Question 9 -->
                 <div class="quiz-question">
-                    <div class="question-text">9. Which property is used to add space inside an element?</div>
+                    <div class="question-text">9. Which operator is used to assign a value?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q9" value="a" id="q9a">
-                            <label for="q9a">a. margin</label>
+                            <label for="q9a">a. ==</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q9" value="b" id="q9b">
-                            <label for="q9b">b. padding</label>
+                            <label for="q9b">b. ===</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q9" value="c" id="q9c">
-                            <label for="q9c">c. spacing</label>
+                            <label for="q9c">c. =</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q9" value="d" id="q9d">
-                            <label for="q9d">d. gap</label>
+                            <label for="q9d">d. !=</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> padding<br>
-                        <strong>Explanation:</strong> The "padding" property adds space inside an element's border.
+                        <strong>Correct Answer:</strong> =<br>
+                        <strong>Explanation:</strong> The single equals sign "=" is used to assign a value to a variable.
                     </div>
                 </div>
 
                 <!-- Question 10 -->
                 <div class="quiz-question">
-                    <div class="question-text">10. Which property is used to change the width of a border?</div>
+                    <div class="question-text">10. Which function is used to print something to the console?</div>
                     <div class="options">
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q10" value="a" id="q10a">
-                            <label for="q10a">a. border-width</label>
+                            <label for="q10a">a. console.print()</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q10" value="b" id="q10b">
-                            <label for="q10b">b. width</label>
+                            <label for="q10b">b. console.write()</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q10" value="c" id="q10c">
-                            <label for="q10c">c. border-size</label>
+                            <label for="q10c">c. console.log()</label>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <input type="radio" name="q10" value="d" id="q10d">
-                            <label for="q10d">d. border-style</label>
+                            <label for="q10d">d. print.console()</label>
                         </div>
                     </div>
                     <button type="button" class="show-answer-btn">Show Answer</button>
                     <div class="answer-explanation">
-                        <strong>Correct Answer:</strong> border-width<br>
-                        <strong>Explanation:</strong> "border-width" sets the thickness of a border in CSS.
+                        <strong>Correct Answer:</strong> console.log()<br>
+                        <strong>Explanation:</strong> console.log() is used to output messages to the web console.
                     </div>
                 </div>
 
                 <div class="quiz-navigation">
-
                     <div>
                         <button type="button" class="btn btn-outline" onclick="submitQuiz()">Submit Quiz</button>
                     </div>
-               
                 </div>
             </form>
         </div>
@@ -316,10 +313,8 @@
             element.classList.add('selected');
             const radio = element.querySelector('input[type="radio"]');
             if (radio) radio.checked = true;
-        }   
+        }
 
-        function nextQuestion() { alert('Next question'); }
-        function previousQuestion() { alert('Previous question'); }
         function submitQuiz() {
             if (confirm('Are you sure you want to submit the quiz?')) {
                 document.querySelectorAll('.show-answer-btn').forEach(btn => btn.click());

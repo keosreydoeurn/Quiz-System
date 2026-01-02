@@ -32,6 +32,36 @@ body, html {
     text-align: center;
 }
 
+.overlay h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    background: #007bff;
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-back i {
+    font-size: 14px;
+}
+
+.btn-back:hover {
+    background: #c23321;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
 .login-left h1 {
     font-size: 48px;
     margin-bottom: 20px;
@@ -221,30 +251,6 @@ input:focus {
     background: #2d4373;
 }
 
-.btn-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 15px;
-    margin-bottom: 20px;
-    background: #007bff;
-    color: #fff;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s;
-}
-
-.btn-back i {
-    font-size: 14px;
-}
-
-.btn-back:hover {
-    background: #e0e0e0;
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
 .success-popup {
     position: fixed;
     top: 20px;
@@ -286,9 +292,6 @@ input:focus {
         width: 200px;
     }
 }
-
-
-/* Add to your existing login.css file */
 
 /* ================= SUCCESS POPUP ================= */
 .popup-overlay {
