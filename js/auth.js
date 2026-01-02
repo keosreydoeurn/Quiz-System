@@ -9,12 +9,13 @@ export function initAuthListener() {
 
         if (user) {
             updateHeaderAuth(user);
+            updateProfileInfo(user); 
         } else {
-            // Check if user is trying to access a restricted page
             if (protectedPages.includes(currentPage)) {
                 window.location.href = '../pages/login.html';
             }
             updateHeaderAuth(null);
+            clearProfileInfo();
         }
     });
 }
@@ -43,7 +44,6 @@ export function updateHeaderAuth(user) {
         if (userDropdown) userDropdown.style.display = 'inline-block';
         if (usernameSpan) usernameSpan.textContent = user.displayName || user.email.split('@')[0];
 
-        // Toggle dropdown logic
         if (userBtn && !userBtn.dataset.listener) {
             userBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -65,12 +65,42 @@ export function updateHeaderAuth(user) {
     }
 }
 
-// Global click listener to close dropdowns
+// ------------------- UPDATE PROFILE INFO -------------------
+export function updateProfileInfo(user) {
+    const userNameEl = document.getElementById('userName');
+    const userEmailEl = document.getElementById('userEmail');
+    const userAvatarEl = document.getElementById('userAvatar');
+
+    if (userNameEl) userNameEl.textContent = user.displayName || user.email.split('@')[0];
+    if (userEmailEl) userEmailEl.textContent = user.email;
+
+    if (userAvatarEl) {
+        if (user.photoURL) {
+            userAvatarEl.src = user.photoURL;
+        } else {
+            userAvatarEl.src = '../img/avatar.png';
+        }
+    }
+}
+
+// ------------------- CLEAR PROFILE INFO -------------------
+export function clearProfileInfo() {
+    const userNameEl = document.getElementById('userName');
+    const userEmailEl = document.getElementById('userEmail');
+    const userAvatarEl = document.getElementById('userAvatar');
+
+    if (userNameEl) userNameEl.textContent = 'userName';
+    if (userEmailEl) userEmailEl.textContent = 'username@example.com';
+    if (userAvatarEl) userAvatarEl.src = '../img/avatar.png';
+}
+
+// ------------------- GLOBAL CLICK LISTENER -------------------
 window.addEventListener('click', () => {
     const content = document.getElementById('dropdownContent');
     if (content) content.style.display = 'none';
 });
 
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', initAuthListener);
 
 // responsive on nav
@@ -92,3 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+=======
+// Initialize auth listener on page load
+document.addEventListener('DOMContentLoaded', initAuthListener);
+>>>>>>> e22587a464c6434108501d33f53322f81e5d4f4a
