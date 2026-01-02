@@ -72,3 +72,23 @@ window.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', initAuthListener);
+
+// responsive on nav
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const nav = document.querySelector('.main-nav');
+
+    toggleBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+
+    // Optional: close menu when clicking a link (good UX on mobile)
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            const icon = toggleBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+});
