@@ -1,39 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <title>Review Quiz - TechQuiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Preview - TechQuiz</title>
-    <link rel="stylesheet" href="../css/successcreatequiz.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .question-box {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+        .option {
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 0.4rem;
+        }
+        .option.correct {
+            background: #d4edda;
+            color: #155724;
+            font-weight: 600;
+        }
+        .option.wrong {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-secondary {
+            background: #2196F3;
+            margin-right: 1rem;
+        }
+    </style>
 </head>
-
 <body>
-    <main class="quiz-container">
-        <h1>Quiz Preview</h1>
 
-        <!-- Quiz Details -->
-        <section class="quiz-details">
-            <p><strong>Title:</strong> <span id="quizTitle"></span></p>
-            <p><strong>Category:</strong> <span id="quizCategory"></span></p>
-            <p><strong>Level:</strong> <span id="quizLevel"></span></p>
-        </section>
+<section class="quiz-container">
+    <h2>Quiz Preview</h2>
+    <p><strong>Title:</strong> <span id="quizTitle"></span></p>
+    <p><strong>Category:</strong> <span id="quizCategory"></span></p>
+    <p><strong>Level:</strong> <span id="quizLevel"></span></p>
+    <hr>
+    <form id="quizForm">
+        <div id="questionsArea"></div>
+        <div style="margin-top:2rem;">
+            <!-- <button type="button" class="btn btn-secondary" onclick="history.back()">Back</button> -->
+            <button type="submit" class="btn">Submit Answers</button>
+        </div>
+    </form>
+</section>
 
-        <hr>
+<script>
+const quizzes = JSON.parse(localStorage.getItem('userQuizzes') || '[]');
+const quiz = quizzes[quizzes.length - 1];
 
-        <!-- Quiz Questions -->
-        <form id="quizForm" novalidate>
-            <section id="questionsArea"></section>
+document.getElementById('quizTitle').textContent = quiz.title;
+document.getElementById('quizCategory').textContent = quiz.category;
+document.getElementById('quizLevel').textContent = quiz.level;
 
-            <div class="form-actions" style="margin-top:24px;">
-                <!-- Optional back button -->
-                <!-- <button type="button" class="btn btn-secondary" onclick="history.back()">Back</button> -->
-                <button type="submit" class="btn">Submit Answers</button>
-            </div>
-        </form>
-    </main>
+const questionsArea = document.getElementById('questionsArea');
 
-    <script src="../js/successcreatequiz.js"></script>
+quiz.questions.forEach((q, qIndex) => {
+    const div = document.createElement('div');
+    div.className = 'question-box';
+
+    let optionsHTML = '';
+    if (q.type === 'truefalse') {
+        optionsHTML = `
+            <label class="option"><input type="radio" name="q-${qIndex}" value="0"> True</label>
+            <label class="option"><input type="radio" name="q-${qIndex}" value="1"> False</label>
+        `;
+    } else {
+        q.options.forEach((opt, optIndex) => {
+            optionsHTML += `<label class="option"><input type="radio" name="q-${qIndex}" value="${optIndex}"> ${opt}</label>`;
+        });
+    }
+
+    div.innerHTML = `
+        <h4>Question ${qIndex + 1}</h4>
+        <p>${q.question}</p>
+        ${optionsHTML}
+    `;
+
+    questionsArea.appendChild(div);
+});
+
+document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    showResults();
+});
+
+function showResults() {
+    quiz.questions.forEach((q, qIndex) => {
+        const questionDiv = questionsArea.children[qIndex];
+        const options = questionDiv.querySelectorAll('.option');
+        let selected = -1;
+
+        options.forEach((opt, idx) => {
+            const radio = opt.querySelector('input[type="radio"]');
+            if (radio.checked) selected = parseInt(radio.value);
+            opt.classList.remove('correct', 'wrong');
+        });
+
+        options.forEach((opt, idx) => {
+            if (idx === q.correctAnswer) opt.classList.add('correct');
+        });
+
+        if (selected !== -1 && selected !== q.correctAnswer) {
+            options[selected].classList.add('wrong');
+        }
+    });
+
+    // alert('Results shown! Green = correct, Red = wrong.');
+}
+</script>
+
 </body>
-
 </html>
