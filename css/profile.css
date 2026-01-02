@@ -263,13 +263,14 @@ body {
     align-items: center;
     gap: 15px;
     padding: 15px;
-    background: rgba(5, 33, 248, 0.05);
+    background: rgb(251, 251, 251);
     border-radius: 15px;
     transition: all 0.3s ease;
+    color: rgb(17, 29, 140);
 }
 
 .stat-card:hover {
-    background: rgba(255, 254, 254, 0.1);
+    background: rgb(234, 165, 138);
     transform: translateY(-5px);
 }
 
@@ -361,7 +362,7 @@ body {
 }
 
 .overview-card {
-    background: white;
+    background: rgb(215, 239, 242);
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -504,7 +505,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background: #f8f9fa;
+    background: #fde6ff;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -529,7 +530,7 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #667eea;
+    background: #03a40b;
     color: white;
     display: flex;
     align-items: center;
@@ -539,7 +540,7 @@ body {
 
 /* History Tab */
 .history-container {
-    background: white;
+    background: rgb(218, 239, 243);
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -576,7 +577,7 @@ body {
 }
 
 .history-table th {
-    background: #f8f9fa;
+    background: #409efc;
     padding: 15px;
     text-align: left;
     font-weight: 600;
@@ -599,7 +600,9 @@ body {
     font-size: 0.85rem;
     font-weight: 600;
 }
-
+.btn-small{
+    border: none;
+}
 .category-badge.html { background: #E44D26; color: white; }
 .category-badge.css { background: #264DE4; color: white; }
 .category-badge.js { background: #F7DF1E; color: #333; }
@@ -627,7 +630,7 @@ body {
 }
 
 .badge-card {
-    background: white;
+    background: rgb(223, 234, 247);
     border-radius: 15px;
     padding: 30px;
     text-align: center;
@@ -690,7 +693,7 @@ body {
 
 /* Settings Tab */
 .settings-container {
-    background: white;
+    background: rgb(226, 238, 243);
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
