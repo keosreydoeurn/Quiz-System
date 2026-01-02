@@ -100,7 +100,6 @@ window.addEventListener('click', () => {
     if (content) content.style.display = 'none';
 });
 
-<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', initAuthListener);
 
 // responsive on nav
@@ -122,7 +121,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-=======
-// Initialize auth listener on page load
-document.addEventListener('DOMContentLoaded', initAuthListener);
->>>>>>> e22587a464c6434108501d33f53322f81e5d4f4a
