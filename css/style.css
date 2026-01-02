@@ -438,7 +438,7 @@ body {
 }
 
 .category-card {
-    background: var(--card-bg);
+    background: rgb(208, 234, 249);
     border-radius: 20px;
     padding: 36px 32px;
     text-align: center;
@@ -456,7 +456,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: rgb(142, 187, 255);
+    background: rgb(4, 148, 176);
 }
 
 .category-card:hover {
