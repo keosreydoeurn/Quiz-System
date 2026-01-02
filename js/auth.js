@@ -10,6 +10,7 @@ export function initAuthListener() {
         if (user) {
             updateHeaderAuth(user);
         } else {
+            // Check if user is trying to access a restricted page
             if (protectedPages.includes(currentPage)) {
                 window.location.href = '../pages/login.html';
             }
@@ -42,10 +43,12 @@ export function updateHeaderAuth(user) {
         if (userDropdown) userDropdown.style.display = 'inline-block';
         if (usernameSpan) usernameSpan.textContent = user.displayName || user.email.split('@')[0];
 
+        // Toggle dropdown logic
         if (userBtn && !userBtn.dataset.listener) {
             userBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+                const isVisible = dropdownContent.style.display === 'block';
+                dropdownContent.style.display = isVisible ? 'none' : 'block';
             });
             userBtn.dataset.listener = "true";
         }
@@ -62,7 +65,7 @@ export function updateHeaderAuth(user) {
     }
 }
 
-// Close dropdown on outside click
+// Global click listener to close dropdowns
 window.addEventListener('click', () => {
     const content = document.getElementById('dropdownContent');
     if (content) content.style.display = 'none';
