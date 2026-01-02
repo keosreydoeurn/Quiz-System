@@ -338,13 +338,16 @@ body {
 .faq-item.active .faq-question::after {
     transform: rotate(180deg);
 }
+.faq-item.active .faq-answer {
+    display: block;
+}
 
 .faq-answer {
     padding-left: 20px;
     border-left: 3px solid #007bff;
     margin-top: 10px;
     display: none;
-    color: #555;
+    color: #302f2f;
     line-height: 1.6;
 }
 
