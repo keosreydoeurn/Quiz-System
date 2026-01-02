@@ -276,6 +276,30 @@ body {
     min-width: 180px;
 }
 
+
+.createquiz {
+    /* padding: 15px 20px; */
+    /* border-top: 1px solid #eee; */
+    text-align: right;
+}
+
+.btn-create {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-create:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
 .quizzes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
