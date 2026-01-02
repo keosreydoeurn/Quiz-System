@@ -220,6 +220,10 @@ body {
   display: none;
 }
 
+#dropdownContent.show {
+    display: block;
+}
+
 .btn {
     display: inline-block;
     background-color: #007bff;
@@ -336,6 +340,111 @@ body {
 .avatar-circle img:hover {
     transform: scale(1.05);
 }
+
+/* ========== Dark Mode ========== */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .header {
+    background-color: #1f1f1f;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .main-nav a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .main-nav a:hover,
+body.dark-mode .main-nav .active a {
+    color: #4dabf7;
+}
+
+body.dark-mode .btn-login,
+body.dark-mode .dropdown-btn,
+body.dark-mode .btn,
+body.dark-mode .btn-small {
+    background: linear-gradient(135deg, #4dabf7, #1c7ed6);
+    color: #fff;
+}
+
+body.dark-mode .btn-login:hover,
+body.dark-mode .dropdown-btn:hover,
+body.dark-mode .btn:hover,
+body.dark-mode .btn-small:hover {
+    background: linear-gradient(135deg, #1c7ed6, #1971c2);
+}
+
+body.dark-mode .profile-hero {
+    background: linear-gradient(135deg, #1e1e2f, #2e2e42);
+    color: #e0e0e0;
+}
+
+body.dark-mode .stat-card {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .profile-content {
+    background: #1a1a1a;
+}
+
+body.dark-mode .profile-tabs {
+    background: #2c2c2c;
+}
+
+body.dark-mode .tab-btn {
+    color: #bbb;
+}
+
+body.dark-mode .tab-btn.active {
+    background: #4dabf7;
+    color: #fff;
+}
+
+body.dark-mode .overview-card,
+body.dark-mode .history-container,
+body.dark-mode .achievements-container,
+body.dark-mode .settings-container,
+body.dark-mode .badge-card,
+body.dark-mode .settings-card {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .overview-card h3,
+body.dark-mode .stat-card div h3,
+body.dark-mode .badge-card h4,
+body.dark-mode .settings-card h3 {
+    color: #fff;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select {
+    background: #2c2c2c;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode .history-table th,
+body.dark-mode .history-table td {
+    color: #e0e0e0;
+    border-color: #333;
+}
+
+body.dark-mode .activity-item {
+    background: #2c2c2c;
+}
+
+body.dark-mode .activity-item:hover {
+    background: #3a3a3a;
+}
+
+body.dark-mode .score-circle {
+    background: #4dabf7;
+}
+
 
 .avatar-edit {
     position: absolute;

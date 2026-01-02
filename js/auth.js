@@ -1,84 +1,74 @@
-// js/auth.js
-import dbManager from './database.js';
+import { auth } from './firebase.js';
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// ------------------- AUTH CHECK -------------------
-export function checkAuth() {
-    const currentUser = sessionStorage.getItem('currentUser');
-    const protectedPages = ['profile.html', 'quiz.html']; // Pages that require login
-    const currentPage = window.location.pathname.split('/').pop();
+// ------------------- AUTH OBSERVER -------------------
+export function initAuthListener() {
+    onAuthStateChanged(auth, (user) => {
+        const protectedPages = ['profile.html', 'quiz.html'];
+        const currentPage = window.location.pathname.split('/').pop();
 
-    if (protectedPages.includes(currentPage) && !currentUser) {
-        // Redirect to login page if not logged in
-        window.location.href = '../pages/login.html';
-        return false;
-    }
-    return true;
-}
-
-// ------------------- GET CURRENT USER -------------------
-export function getCurrentUser() {
-    const userStr = sessionStorage.getItem('currentUser');
-    return userStr ? JSON.parse(userStr) : null;
+        if (user) {
+            updateHeaderAuth(user);
+        } else {
+            // Check if user is trying to access a restricted page
+            if (protectedPages.includes(currentPage)) {
+                window.location.href = '../pages/login.html';
+            }
+            updateHeaderAuth(null);
+        }
+    });
 }
 
 // ------------------- LOGOUT -------------------
-export function logout() {
-    sessionStorage.removeItem('currentUser');
-    window.location.href = '../pages/login.html';
+export async function logout() {
+    try {
+        await signOut(auth);
+        window.location.href = window.location.pathname.includes('pages') ? 'login.html' : './pages/login.html';
+    } catch (error) {
+        console.error("Logout Error:", error);
+    }
 }
 
-// ------------------- UPDATE HEADER -------------------
-export function updateHeaderAuth() {
+// ------------------- UPDATE HEADER UI -------------------
+export function updateHeaderAuth(user) {
     const loginBtn = document.getElementById('loginBtn');
     const userDropdown = document.getElementById('userDropdown');
     const usernameSpan = document.getElementById('username');
     const dropdownContent = document.getElementById('dropdownContent');
     const logoutBtn = document.getElementById('logoutBtn');
+    const userBtn = document.getElementById('userBtn');
 
-    const currentUser = getCurrentUser();
-
-    if (currentUser) {
-        // Hide login button
+    if (user) {
         if (loginBtn) loginBtn.style.display = 'none';
-
-        // Show dropdown
         if (userDropdown) userDropdown.style.display = 'inline-block';
-        if (usernameSpan) usernameSpan.textContent = currentUser.fullName || currentUser.username;
+        if (usernameSpan) usernameSpan.textContent = user.displayName || user.email.split('@')[0];
 
-        // Toggle dropdown
-        const userBtn = document.getElementById('userBtn');
-        if (userBtn) {
-            userBtn.addEventListener('click', () => {
-                dropdownContent.style.display =
-                    dropdownContent.style.display === 'block' ? 'none' : 'block';
+        // Toggle dropdown logic
+        if (userBtn && !userBtn.dataset.listener) {
+            userBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isVisible = dropdownContent.style.display === 'block';
+                dropdownContent.style.display = isVisible ? 'none' : 'block';
             });
+            userBtn.dataset.listener = "true";
         }
-
-        // Logout button
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (confirm('Are you sure you want to logout?')) {
-                    logout();
-                }
-            });
-        }
-
-        // Close dropdown if clicked outside
-        window.addEventListener('click', (e) => {
-            if (userDropdown && !userDropdown.contains(e.target)) {
-                dropdownContent.style.display = 'none';
-            }
-        });
     } else {
-        // Not logged in: show login button
         if (loginBtn) loginBtn.style.display = 'inline-flex';
         if (userDropdown) userDropdown.style.display = 'none';
     }
+
+    if (logoutBtn) {
+        logoutBtn.onclick = (e) => {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) logout();
+        };
+    }
 }
 
-// ------------------- INIT -------------------
-document.addEventListener('DOMContentLoaded', () => {
-    checkAuth();
-    updateHeaderAuth();
+// Global click listener to close dropdowns
+window.addEventListener('click', () => {
+    const content = document.getElementById('dropdownContent');
+    if (content) content.style.display = 'none';
 });
+
+document.addEventListener('DOMContentLoaded', initAuthListener);

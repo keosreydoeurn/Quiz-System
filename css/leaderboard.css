@@ -114,11 +114,14 @@ body {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .btn-login i {
     font-size: 16px;
 }
 
+=======
+>>>>>>> 7e03efeb89bfb2d147d1e816114599c78ec72f0c
 .user-menu {
   position: relative;
 }
@@ -171,7 +174,14 @@ body {
   display: none;
 }
 
+<<<<<<< HEAD
 >>>>>>> 9731eb367e5f9199cf5cba5fbe68b97310afa447
+=======
+#dropdownContent.show {
+    display: block;
+}
+
+>>>>>>> 7e03efeb89bfb2d147d1e816114599c78ec72f0c
 .btn {
     display: inline-block;
     background-color: var(--primary-color);
