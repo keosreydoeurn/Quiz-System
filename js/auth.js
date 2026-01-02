@@ -1,15 +1,16 @@
 // js/auth.js
 import dbManager from './database.js';
 
+const LOGIN_PAGE = '../pages/login.html';
+const PROTECTED_PAGES = ['profile.html', 'quiz.html'];
+
 // ------------------- AUTH CHECK -------------------
 export function checkAuth() {
     const currentUser = sessionStorage.getItem('currentUser');
-    const protectedPages = ['profile.html', 'quiz.html']; // Pages that require login
     const currentPage = window.location.pathname.split('/').pop();
 
-    if (protectedPages.includes(currentPage) && !currentUser) {
-        // Redirect to login page if not logged in
-        window.location.href = '../pages/login.html';
+    if (PROTECTED_PAGES.includes(currentPage) && !currentUser) {
+        window.location.href = LOGIN_PAGE;
         return false;
     }
     return true;
@@ -17,14 +18,17 @@ export function checkAuth() {
 
 // ------------------- GET CURRENT USER -------------------
 export function getCurrentUser() {
-    const userStr = sessionStorage.getItem('currentUser');
-    return userStr ? JSON.parse(userStr) : null;
+    try {
+        return JSON.parse(sessionStorage.getItem('currentUser'));
+    } catch {
+        return null;
+    }
 }
 
 // ------------------- LOGOUT -------------------
 export function logout() {
     sessionStorage.removeItem('currentUser');
-    window.location.href = '../pages/login.html';
+    window.location.replace(LOGIN_PAGE); // prevents back navigation
 }
 
 // ------------------- UPDATE HEADER -------------------
@@ -33,48 +37,45 @@ export function updateHeaderAuth() {
     const userDropdown = document.getElementById('userDropdown');
     const usernameSpan = document.getElementById('username');
     const dropdownContent = document.getElementById('dropdownContent');
+    const userBtn = document.getElementById('userBtn');
     const logoutBtn = document.getElementById('logoutBtn');
 
     const currentUser = getCurrentUser();
 
-    if (currentUser) {
-        // Hide login button
-        if (loginBtn) loginBtn.style.display = 'none';
-
-        // Show dropdown
-        if (userDropdown) userDropdown.style.display = 'inline-block';
-        if (usernameSpan) usernameSpan.textContent = currentUser.fullName || currentUser.username;
-
-        // Toggle dropdown
-        const userBtn = document.getElementById('userBtn');
-        if (userBtn) {
-            userBtn.addEventListener('click', () => {
-                dropdownContent.style.display =
-                    dropdownContent.style.display === 'block' ? 'none' : 'block';
-            });
-        }
-
-        // Logout button
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (confirm('Are you sure you want to logout?')) {
-                    logout();
-                }
-            });
-        }
-
-        // Close dropdown if clicked outside
-        window.addEventListener('click', (e) => {
-            if (userDropdown && !userDropdown.contains(e.target)) {
-                dropdownContent.style.display = 'none';
-            }
-        });
-    } else {
-        // Not logged in: show login button
-        if (loginBtn) loginBtn.style.display = 'inline-flex';
-        if (userDropdown) userDropdown.style.display = 'none';
+    if (!currentUser) {
+        loginBtn?.style.setProperty('display', 'inline-flex');
+        userDropdown?.style.setProperty('display', 'none');
+        return;
     }
+
+    // Logged in UI
+    loginBtn?.style.setProperty('display', 'none');
+    userDropdown?.style.setProperty('display', 'inline-block');
+    usernameSpan.textContent = currentUser.fullName || currentUser.username;
+
+    // Toggle dropdown
+    userBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownContent.classList.toggle('show');
+    });
+
+    // Logout
+    logoutBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (confirm('Are you sure you want to logout?')) logout();
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener('click', () => {
+        dropdownContent.classList.remove('show');
+    });
+
+    // Close dropdown on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            dropdownContent.classList.remove('show');
+        }
+    });
 }
 
 // ------------------- INIT -------------------
