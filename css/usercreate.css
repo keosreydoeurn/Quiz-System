@@ -76,6 +76,7 @@ h1 {
 }
 
 .add-option, .add-question {
+
     background: #2196F3;
     color: white;
 }
@@ -85,8 +86,10 @@ h1 {
 }
 
 .remove-question {
+    border-radius: 10px;
     background: #f44336;
     color: white;
+
 }
 
 .remove-question:hover {

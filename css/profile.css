@@ -304,9 +304,24 @@ body {
     padding: 80px 0;
    background:  #59b3e0;
     color: white;
+
     padding: 100px 0 60px;
     margin-top: 60px;
     animation: fadeUp 0.8s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+
 }
 
 .profile-header {
@@ -323,9 +338,21 @@ body {
 
 .avatar-circle {
     position: relative;
+
     width: 120px;
     height: 120px;
     animation: pop 0.6s ease;
+
+    width: 120px;
+    height: 120px;
+    animation: pop 0.6s ease;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+
 }
 
 .avatar-circle img {
@@ -500,6 +527,7 @@ body.dark-mode .score-circle {
 .stat-card {
     display: flex;
     align-items: center;
+
     gap: 20px;
     transition: var(--transition);
     cursor: pointer;
@@ -509,6 +537,19 @@ body.dark-mode .score-circle {
 .stat-card:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-8px) scale(1.03);
+
+    gap: 15px;
+    padding: 15px;
+    background: rgb(251, 251, 251);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    color: rgb(17, 29, 140);
+}
+
+.stat-card:hover {
+    background: rgb(234, 165, 138);
+    transform: translateY(-5px);
+
 }
 
 .stat-card i {
@@ -544,7 +585,12 @@ body.dark-mode .score-circle {
     background: white;
     padding: 15px;
     border-radius: 15px;
+
     box-shadow: var(--box-shadow);
+
+    box-shadow: var(--box-shadow);
+
+    box-shadow: 0 5px 15px rgba(246, 245, 245, 0.05);
 }
 
 .tab-btn {
@@ -877,6 +923,7 @@ body.dark-mode .score-circle {
     display: inline-block;
 }
 
+
 .category-badge.html {
     background: #E44D26;
     color: white;
@@ -925,6 +972,15 @@ body.dark-mode .score-circle {
 .btn-small.danger:hover {
     background: #c82333;
 }
+
+.btn-small{
+    border: none;
+}
+.category-badge.html { background: #E44D26; color: white; }
+.category-badge.css { background: #264DE4; color: white; }
+.category-badge.js { background: #F7DF1E; color: #333; }
+.category-badge.react { background: #61DAFB; color: #333; }
+
 
 /* Achievements Tab */
 .achievements-container {

@@ -645,10 +645,6 @@ body {
         transform: translateY(20px);
     }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 @keyframes fadeIn {
@@ -695,7 +691,7 @@ body {
 
 @media screen and (max-width: 767px) {
 
-    /* Header and Navigation */
+        /* Header and Navigation */
     .header .container {
         padding: 15px;
         flex-wrap: wrap;
@@ -743,7 +739,6 @@ body {
         cursor: pointer;
         padding: 5px 10px;
     }
-
     /* Hero Section */
     .hero {
         padding: 40px 0;
@@ -753,7 +748,7 @@ body {
     .hero .container {
         flex-direction: column;
     }
-
+    
     .hero-content {
         padding-right: 0;
         margin-bottom: 30px;
