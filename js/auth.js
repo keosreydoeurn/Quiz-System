@@ -1,56 +1,123 @@
-// js/auth.js - Authentication Check for Protected Pages
-import dbManager from './database.js';
+import { auth } from './firebase.js';
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// Check if user is logged in
-export function checkAuth() {
-    const currentUser = sessionStorage.getItem('currentUser');
-    const protectedPages = ['profile.html', 'quiz.html']; // Add pages that require login
-    
-    const currentPage = window.location.pathname.split('/').pop();
-    
-    if (protectedPages.includes(currentPage) && !currentUser) {
-        window.location.href = 'login.html';
-        return false;
-    }
-    
-    return true;
-}
+// ------------------- AUTH OBSERVER -------------------
+export function initAuthListener() {
+    onAuthStateChanged(auth, (user) => {
+        const protectedPages = ['profile.html', 'quiz.html'];
+        const currentPage = window.location.pathname.split('/').pop();
 
-// Get current user
-export function getCurrentUser() {
-    const userStr = sessionStorage.getItem('currentUser');
-    return userStr ? JSON.parse(userStr) : null;
-}
-
-// Logout function
-export function logout() {
-    sessionStorage.removeItem('currentUser');
-    window.location.href = 'login.html';
-}
-
-// Update header based on auth state
-export function updateHeaderAuth() {
-    const loginBtn = document.getElementById('loginBtn');
-    const currentUser = getCurrentUser();
-    
-    if (currentUser) {
-        loginBtn.innerHTML = `<i class="fas fa-user"></i> ${currentUser.fullName || currentUser.username}`;
-        loginBtn.href = 'profile.html';
-        
-        // Add logout option if needed
-        loginBtn.addEventListener('click', (e) => {
-            if (e.ctrlKey) { // Ctrl+click to logout
-                e.preventDefault();
-                if (confirm('Are you sure you want to logout?')) {
-                    logout();
-                }
+        if (user) {
+            updateHeaderAuth(user);
+            updateProfileInfo(user); 
+        } else {
+            if (protectedPages.includes(currentPage)) {
+                window.location.href = '../pages/login.html';
             }
-        });
+            updateHeaderAuth(null);
+            clearProfileInfo();
+        }
+    });
+}
+
+// ------------------- LOGOUT -------------------
+export async function logout() {
+    try {
+        await signOut(auth);
+        window.location.href = window.location.pathname.includes('pages') ? 'login.html' : './pages/login.html';
+    } catch (error) {
+        console.error("Logout Error:", error);
     }
 }
 
-// Initialize auth on page load
+// ------------------- UPDATE HEADER UI -------------------
+export function updateHeaderAuth(user) {
+    const loginBtn = document.getElementById('loginBtn');
+    const userDropdown = document.getElementById('userDropdown');
+    const usernameSpan = document.getElementById('username');
+    const dropdownContent = document.getElementById('dropdownContent');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const userBtn = document.getElementById('userBtn');
+
+    if (user) {
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (userDropdown) userDropdown.style.display = 'inline-block';
+        if (usernameSpan) usernameSpan.textContent = user.displayName || user.email.split('@')[0];
+
+        if (userBtn && !userBtn.dataset.listener) {
+            userBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isVisible = dropdownContent.style.display === 'block';
+                dropdownContent.style.display = isVisible ? 'none' : 'block';
+            });
+            userBtn.dataset.listener = "true";
+        }
+    } else {
+        if (loginBtn) loginBtn.style.display = 'inline-flex';
+        if (userDropdown) userDropdown.style.display = 'none';
+    }
+
+    if (logoutBtn) {
+        logoutBtn.onclick = (e) => {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) logout();
+        };
+    }
+}
+
+// ------------------- UPDATE PROFILE INFO -------------------
+export function updateProfileInfo(user) {
+    const userNameEl = document.getElementById('userName');
+    const userEmailEl = document.getElementById('userEmail');
+    const userAvatarEl = document.getElementById('userAvatar');
+
+    if (userNameEl) userNameEl.textContent = user.displayName || user.email.split('@')[0];
+    if (userEmailEl) userEmailEl.textContent = user.email;
+
+    if (userAvatarEl) {
+        if (user.photoURL) {
+            userAvatarEl.src = user.photoURL;
+        } else {
+            userAvatarEl.src = '../img/avatar.png';
+        }
+    }
+}
+
+// ------------------- CLEAR PROFILE INFO -------------------
+export function clearProfileInfo() {
+    const userNameEl = document.getElementById('userName');
+    const userEmailEl = document.getElementById('userEmail');
+    const userAvatarEl = document.getElementById('userAvatar');
+
+    if (userNameEl) userNameEl.textContent = 'userName';
+    if (userEmailEl) userEmailEl.textContent = 'username@example.com';
+    if (userAvatarEl) userAvatarEl.src = '../img/avatar.png';
+}
+
+// ------------------- GLOBAL CLICK LISTENER -------------------
+window.addEventListener('click', () => {
+    const content = document.getElementById('dropdownContent');
+    if (content) content.style.display = 'none';
+});
+
+document.addEventListener('DOMContentLoaded', initAuthListener);
+
+// responsive on nav
 document.addEventListener('DOMContentLoaded', () => {
-    checkAuth();
-    updateHeaderAuth();
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const nav = document.querySelector('.main-nav');
+
+    toggleBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+
+    // Optional: close menu when clicking a link (good UX on mobile)
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            const icon = toggleBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
 });

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
 :root {
@@ -15,6 +16,34 @@
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* ================= ANIMATIONS ================= */
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { transform: translateY(15px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes popUp {
+    from { transform: translateY(30px) scale(0.9); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ================= BODY ================= */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -22,6 +51,7 @@ body {
     background-color: #fff;
 }
 
+/* ================= CONTAINER ================= */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -29,6 +59,7 @@ body {
     padding: 0 15px;
 }
 
+/* ================= HEADER ================= */
 .header {
     padding: 20px 0;
     background-color: #fff;
@@ -61,6 +92,7 @@ body {
     font-size: 30px;
     font-weight: 700;
 }
+
 .btn-login {
     display: inline-flex;
     align-items: center;
@@ -78,12 +110,71 @@ body {
 .btn-login:hover {
     background: linear-gradient(135deg, #0056b3, #0099cc);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
+
 
 .btn-login i {
     font-size: 16px;
 }
+
+.user-menu {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #0099cc);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: white;
+  min-width: 140px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 2000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.user-menu:hover .dropdown-content {
+  display: none;
+}
+
+
+#dropdownContent.show {
+    display: block;
+}
+
 
 .btn {
     display: inline-block;
@@ -160,16 +251,17 @@ body {
     width: 100%;
 }
 
+/* ================= PAGE HEADER ================= */
 .page-header {
     background: #59b3e0;
     color: #ffffff;
     padding: 150px 0;
     text-align: center;
-    text-shadow: 0 5px 10px rgb(255, 145, 0);
-    font-size: 25px;
+    padding: 50px 0;
+    animation: fadeIn 0.8s ease;
 }
 
-
+/* ================= PODIUM ================= */
 .podium-container {
     padding: 50px 0 30px;
 }
@@ -186,25 +278,20 @@ body {
     border-radius: 10px;
     width: 180px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     padding: 20px 10px;
     position: relative;
+    animation: popUp 0.6s ease forwards;
 }
 
-.podium-card.first {
-    height: 250px;
-    border-top: 5px solid gold;
+.podium-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-.podium-card.second {
-    height: 220px;
-    border-top: 5px solid silver;
-}
-
-.podium-card.third {
-    height: 200px;
-    border-top: 5px solid #cd7f32;
-}
+.podium-card.first { height: 250px; border-top: 5px solid gold; animation-delay: 0.2s; }
+.podium-card.second { height: 220px; border-top: 5px solid silver; animation-delay: 0.4s; }
+.podium-card.third { height: 200px; border-top: 5px solid #cd7f32; animation-delay: 0.6s; }
 
 .podium-card img {
     width: 80px;
@@ -218,7 +305,7 @@ body {
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: #007bff;
+    background: var(--primary-color);
     color: #fff;
     width: 30px;
     height: 30px;
@@ -227,6 +314,7 @@ body {
     font-weight: bold;
 }
 
+/* ================= LEADERBOARD ================= */
 .leaderboard-container {
     padding-bottom: 50px;
 }
@@ -237,7 +325,7 @@ body {
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--box-shadow);
 }
 
 .leaderboard-table th,
@@ -247,7 +335,7 @@ body {
 }
 
 .leaderboard-table thead {
-    background-color: #d762ee;
+    background-color: var(--primary-color);
     color: #fff;
 }
 
@@ -256,7 +344,8 @@ body {
 }
 
 .leaderboard-table tbody tr:hover {
-    background-color: #edd7f8;
+    background-color: #e2e6ea;
+    transform: scale(1.01);
 }
 
 .profile-pic {
@@ -265,10 +354,12 @@ body {
     border-radius: 50%;
 }
 
+/* ================= FOOTER ================= */
 .footer {
-    background-color: #343a40;
+    background-color: var(--dark-color);
     color: #fff;
     padding: 40px 0 20px;
+    animation: fadeUp 0.8s ease;
 }
 
 .footer-content {
@@ -297,17 +388,22 @@ body {
 }
 
 .footer-section a {
-    color: #bbb;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 .footer-section a:hover {
-    color: #007bff;
+    color: var(--primary-color);
 }
 
 .footer-bottom {
     text-align: center;
     font-size: 14px;
     color: #bbb;
+}
+.footer-bottom a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.footer-bottom a:hover {
+    text-decoration: underline;
 }

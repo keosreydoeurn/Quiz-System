@@ -19,6 +19,10 @@
                 <i class="fas fa-graduation-cap"></i>
                 <h1>TechQuiz</h1>
             </div>
+
+             <button class="menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="../index.html">Home</a></li>
@@ -28,9 +32,24 @@
                     <li><a href="./help.html">Help</a></li>
                 </ul>
             </nav>
-            <a href="/pages/login.html" class="btn-login" id="loginBtn">
-                <i class="fas fa-sign-in-alt"></i> Login
-            </a>
+            <!-- Login / User Dropdown -->
+            <div class="user-menu" id="userMenu">
+                <a href="/pages/login.html" class="btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+
+                <div class="dropdown" id="userDropdown" style="display: none;">
+                    <button class="dropdown-btn" id="userBtn">
+                        <i class="fas fa-user"></i> <span id="username">User</span> <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="./profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
     <!-- Page Header -->
@@ -66,6 +85,9 @@
                         <option value="advanced">Advanced</option>
                     </select>
                 </div>
+                     <div class="createquiz">
+                    <a href="../pages/usercreate.html" class="btn-create">Create Quiz</a>
+                </div>
             </div>
         </div>
     </section>
@@ -86,7 +108,7 @@
                     <p>Test your knowledge of HTML5 elements, attributes, and semantic markup.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 10 Questions</span>
-                        <span><i class="far fa-clock"></i> 15 min</span>
+                        <span><i class="far fa-clock"></i> 2 min</span>
                     </div>
                 </div>
                 <div class="quiz-card-footer">
@@ -106,7 +128,7 @@
                     <p>Test your knowledge of HTML5 elements, attributes, and semantic markup.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 10 Questions</span>
-                        <span><i class="far fa-clock"></i> 10 min</span>
+                        <span><i class="far fa-clock"></i> 3 min</span>
                     </div>
                 </div>
                 <div class="quiz-card-footer">
@@ -126,7 +148,7 @@
                     <p>Test your knowledge of HTML5 elements, attributes, and semantic markup.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 15 Questions</span>
-                        <span><i class="far fa-clock"></i> 10 min</span>
+                        <span><i class="far fa-clock"></i> 5 min</span>
                     </div>
                 </div>
                 <div class="quiz-card-footer">
@@ -146,7 +168,7 @@
                     <p>Master CSS3 selectors, layouts, and animations with this challenging quiz.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 10 Questions</span>
-                        <span><i class="far fa-clock"></i> 15 min</span>
+                        <span><i class="far fa-clock"></i> 4 min</span>
                     </div>
                 </div>
                 <div class="quiz-card-footer">
@@ -165,11 +187,11 @@
                     <p>Master CSS3 selectors, layouts, and animations with this challenging quiz.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 15 Questions</span>
-                        <span><i class="far fa-clock"></i> 10 min</span>
+                        <span><i class="far fa-clock"></i> 4 min</span>
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="../pages/quizcss1" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizcss2.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -184,11 +206,11 @@
                     <p>Master CSS3 selectors, layouts, and animations with this challenging quiz.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 20 Questions</span>
-                        <span><i class="far fa-clock"></i> 15 min</span>
+                        <span><i class="far fa-clock"></i> 5 min</span>
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="../pages/quizcss1" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizcss3.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -204,11 +226,11 @@
                         flow.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 10 Questions</span>
-                        <span><i class="far fa-clock"></i> 10 min</span>
+                        <span><i class="far fa-clock"></i> 4 min</span>
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="quiz-js.html" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizjava1.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -224,11 +246,11 @@
                         flow.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 15 Questions</span>
-                        <span><i class="far fa-clock"></i> 10 min</span>
+                        <span><i class="far fa-clock"></i> 4 min</span>
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="quiz-js.html" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizjava2.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -245,11 +267,11 @@
                         flow.</p>
                     <div class="quiz-meta">
                         <span><i class="far fa-question-circle"></i> 20 Questions</span>
-                        <span><i class="far fa-clock"></i> 15 min</span>
+                        <span><i class="far fa-clock"></i> 5 min</span>
                     </div>
                 </div>
                 <div class="quiz-card-footer">
-                    <a href="quiz-js.html" class="btn-small">Start Quiz</a>
+                    <a href="../pages/quizjava3.html" class="btn-small">Start Quiz</a>
                 </div>
             </div>
 
@@ -260,7 +282,7 @@
         <div class="see-more-container">
             <button id="seeMoreBtn" class="btn btn-outline">See More</button>
         </div>
-        
+
     </section>
 
     <!-- Quiz Types Section -->
