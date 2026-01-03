@@ -15,6 +15,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const analytics = getAnalytics(app);
+let analytics;
+try {
+  analytics = getAnalytics(app);
+} catch (e) {
+  console.warn('Firebase analytics not available:', e);
+}
 
 export { app, auth };

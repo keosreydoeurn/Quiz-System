@@ -1,7 +1,195 @@
-// ================= QUIZ TIMER =================
-let totalTime = 2 * 60; // 10 minutes
-let timerInterval;
 
+// let totalTime = 10 * 60; // 10 minutes
+// let timerInterval;
+// let quizSubmitted = false; // Track if quiz has been submitted
+
+// window.addEventListener("DOMContentLoaded", () => {
+//     startTimer();
+//     handleReviewMode();
+//     setupOptionSelection();
+//     setupShowAnswerButtons();
+//     document.getElementById("submitBtn")?.addEventListener("click", submitQuiz);
+// });
+
+// // Start countdown timer
+// function startTimer() {
+//     const timeDisplay = document.getElementById("time");
+//     if (!timeDisplay) return;
+
+//     timeDisplay.style.position = "sticky";
+//     timeDisplay.style.top = "10px";
+//     timeDisplay.style.zIndex = "1000";
+//     timeDisplay.style.fontWeight = "700";
+
+//     timerInterval = setInterval(() => {
+//         const minutes = Math.floor(totalTime / 60);
+//         const seconds = totalTime % 60;
+//         timeDisplay.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+//         totalTime--;
+
+//         if (totalTime < 0) {
+//             clearInterval(timerInterval);
+//             alert("⏰ Time is up! Quiz will be submitted.");
+//             submitQuiz();
+//         }
+//     }, 1000);
+// }
+
+// // ================= SELECT OPTION =================
+// function setupOptionSelection() {
+//     const options = document.querySelectorAll(".option");
+//     options.forEach(option => {
+//         option.addEventListener("click", () => {
+//             if (localStorage.getItem("reviewMode") === "true") return;
+
+//             const allOptions = option.parentElement.querySelectorAll(".option");
+//             allOptions.forEach(opt => opt.classList.remove("selected"));
+
+//             option.classList.add("selected");
+//             const input = option.querySelector('input');
+//             if (input) input.checked = true;
+//         });
+//     });
+// }
+
+// // ================= SHOW ANSWER BUTTON =================
+// function setupShowAnswerButtons() {
+//     const showBtns = document.querySelectorAll(".show-answer-btn");
+//     showBtns.forEach(btn => {
+//         // Initially disable the button
+//         btn.disabled = true;
+//         btn.style.opacity = "0.5";
+//         btn.style.cursor = "not-allowed";
+//         btn.title = "Submit the quiz to reveal answers";
+
+//         btn.addEventListener("click", () => {
+//             // Only allow if quiz is submitted
+//             if (!quizSubmitted) {
+//                 alert("Please submit the quiz first to see answers.");
+//                 return;
+//             }
+
+//             const explanation = btn.nextElementSibling;
+//             if (explanation) {
+//                 explanation.style.display = explanation.style.display === "block" ? "none" : "block";
+//             }
+//         });
+//     });
+
+//     // Hide all explanations initially
+//     document.querySelectorAll(".answer-explanation").forEach(exp => exp.style.display = "none");
+// }
+
+// // Function to enable show-answer buttons after submission
+// function enableShowAnswerButtons() {
+//     const showBtns = document.querySelectorAll(".show-answer-btn");
+//     showBtns.forEach(btn => {
+//         btn.disabled = false;
+//         btn.style.opacity = "1";
+//         btn.style.cursor = "pointer";
+//         btn.title = "Click to reveal the answer";
+//     });
+// }
+
+// // ================= SUBMIT QUIZ =================
+// function submitQuiz() {
+//     clearInterval(timerInterval);
+//     quizSubmitted = true; // Mark quiz as submitted
+//     enableShowAnswerButtons(); // Enable show-answer buttons
+
+//     const correctAnswers = {
+//         q1: "a", q2: "c", q3: "b", q4: "b", q5: "b",
+//         q6: "b", q7: "c", q8: "a", q9: "b", q10: "b"
+//     };
+
+//     let score = 0;
+//     const userAnswers = {};
+
+//     for (const q in correctAnswers) {
+//         const inputRadio = document.querySelector(`input[name="${q}"]:checked`);
+//         const answer = inputRadio ? inputRadio.value : "";
+//         if (!answer) continue;
+
+//         userAnswers[q] = answer;
+//         if (answer.toLowerCase() === correctAnswers[q].toLowerCase()) score++;
+//     }
+
+//     const total = Object.keys(correctAnswers).length;
+//     const percentage = Math.round((score / total) * 100);
+
+//     const resultData = {
+//         score,
+//         total,
+//         percentage,
+//         date: new Date().toLocaleString(),
+//         userAnswers,
+//         correctAnswers,
+//         timeLeft: totalTime >= 0 ? totalTime : 0,
+//         quizPage: window.location.pathname.split("/").pop()
+//     };
+
+//     localStorage.setItem("latestResult", JSON.stringify(resultData));
+
+//     const history = JSON.parse(localStorage.getItem("quizHistory")) || [];
+//     history.push(resultData);
+//     localStorage.setItem("quizHistory", JSON.stringify(history));
+
+//     window.location.href = "result.html";
+// }
+
+// // ================= REVIEW MODE =================
+// function handleReviewMode() {
+//     if (localStorage.getItem("reviewMode") !== "true") return;
+
+//     const latestResult = JSON.parse(localStorage.getItem("latestResult"));
+//     if (!latestResult) return;
+
+//     const { userAnswers, correctAnswers } = latestResult;
+
+//     for (const q in correctAnswers) {
+//         const answer = userAnswers[q];
+//         if (!answer) continue;
+
+//         const inputRadio = document.querySelector(`input[name="${q}"][value="${answer}"]`);
+//         if (!inputRadio) continue;
+
+//         const quizDiv = inputRadio.closest(".quiz-question");
+//         inputRadio.checked = true;
+//         inputRadio.parentElement.classList.add("selected");
+
+//         // Border: blue=correct, red=wrong
+//         inputRadio.parentElement.style.border = answer.toLowerCase() === correctAnswers[q].toLowerCase() ? "2px solid blue" : "2px solid red";
+
+//         // Show explanation automatically
+//         const explanation = quizDiv.querySelector(".answer-explanation");
+//         if (explanation) explanation.style.display = "block";
+//     }
+
+//     // Disable all inputs
+//     document.querySelectorAll('input').forEach(input => input.disabled = true);
+
+//     // Add Back to Result button
+//     const container = document.querySelector(".quiz-container");
+//     if (container) {
+//         const backBtn = document.createElement("button");
+//         backBtn.textContent = "Back to Result";
+//         backBtn.className = "btn btn-outline";
+//         backBtn.addEventListener("click", () => window.location.href = "result.html");
+//         container.prepend(backBtn);
+//     }
+
+//     localStorage.removeItem("reviewMode");
+// }
+/***********************
+ * GLOBAL VARIABLES
+ ***********************/
+let totalTime = 10 * 60; // 10 minutes
+let timerInterval;
+let quizSubmitted = false;
+
+/***********************
+ * ON LOAD
+ ***********************/
 window.addEventListener("DOMContentLoaded", () => {
     startTimer();
     handleReviewMode();
@@ -10,7 +198,9 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("submitBtn")?.addEventListener("click", submitQuiz);
 });
 
-// Start countdown timer
+/***********************
+ * TIMER
+ ***********************/
 function startTimer() {
     const timeDisplay = document.getElementById("time");
     if (!timeDisplay) return;
@@ -34,42 +224,71 @@ function startTimer() {
     }, 1000);
 }
 
-// ================= SELECT OPTION =================
+/***********************
+ * OPTION SELECTION
+ ***********************/
 function setupOptionSelection() {
-    const options = document.querySelectorAll(".option");
-    options.forEach(option => {
+    document.querySelectorAll(".option").forEach(option => {
         option.addEventListener("click", () => {
             if (localStorage.getItem("reviewMode") === "true") return;
 
-            const allOptions = option.parentElement.querySelectorAll(".option");
-            allOptions.forEach(opt => opt.classList.remove("selected"));
+            option.parentElement
+                .querySelectorAll(".option")
+                .forEach(opt => opt.classList.remove("selected"));
 
             option.classList.add("selected");
-            const input = option.querySelector('input');
+            const input = option.querySelector("input");
             if (input) input.checked = true;
         });
     });
 }
 
-// ================= SHOW ANSWER BUTTON =================
+/***********************
+ * SHOW ANSWER BUTTONS
+ ***********************/
 function setupShowAnswerButtons() {
-    const showBtns = document.querySelectorAll(".show-answer-btn");
-    showBtns.forEach(btn => {
+    document.querySelectorAll(".show-answer-btn").forEach(btn => {
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+        btn.style.cursor = "not-allowed";
+        btn.title = "Submit quiz to view answers";
+
         btn.addEventListener("click", () => {
+            if (!quizSubmitted) {
+                alert("Please submit the quiz first.");
+                return;
+            }
             const explanation = btn.nextElementSibling;
             if (explanation) {
-                explanation.style.display = explanation.style.display === "block" ? "none" : "block";
+                explanation.style.display =
+                    explanation.style.display === "block" ? "none" : "block";
             }
         });
     });
 
-    // Hide all explanations initially
-    document.querySelectorAll(".answer-explanation").forEach(exp => exp.style.display = "none");
+    document
+        .querySelectorAll(".answer-explanation")
+        .forEach(exp => (exp.style.display = "none"));
 }
 
-// ================= SUBMIT QUIZ =================
+function enableShowAnswerButtons() {
+    document.querySelectorAll(".show-answer-btn").forEach(btn => {
+        btn.disabled = false;
+        btn.style.opacity = "1";
+        btn.style.cursor = "pointer";
+        btn.title = "Click to reveal answer";
+    });
+}
+
+/***********************
+ * SUBMIT QUIZ
+ ***********************/
 function submitQuiz() {
+    if (quizSubmitted) return;
+    quizSubmitted = true;
+
     clearInterval(timerInterval);
+    enableShowAnswerButtons();
 
     const correctAnswers = {
         q1: "a", q2: "c", q3: "b", q4: "b", q5: "b",
@@ -80,12 +299,13 @@ function submitQuiz() {
     const userAnswers = {};
 
     for (const q in correctAnswers) {
-        const inputRadio = document.querySelector(`input[name="${q}"]:checked`);
-        const answer = inputRadio ? inputRadio.value : "";
-        if (!answer) continue;
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (!selected) continue;
 
-        userAnswers[q] = answer;
-        if (answer.toLowerCase() === correctAnswers[q].toLowerCase()) score++;
+        userAnswers[q] = selected.value;
+        if (selected.value.toLowerCase() === correctAnswers[q]) {
+            score++;
+        }
     }
 
     const total = Object.keys(correctAnswers).length;
@@ -95,11 +315,11 @@ function submitQuiz() {
         score,
         total,
         percentage,
-        date: new Date().toLocaleString(),
         userAnswers,
         correctAnswers,
-        timeLeft: totalTime >= 0 ? totalTime : 0,
-        quizPage: window.location.pathname.split("/").pop()
+        timeLeft: Math.max(totalTime, 0),
+        date: new Date().toLocaleString(),
+        quizPage: location.pathname.split("/").pop()
     };
 
     localStorage.setItem("latestResult", JSON.stringify(resultData));
@@ -111,45 +331,49 @@ function submitQuiz() {
     window.location.href = "result.html";
 }
 
-// ================= REVIEW MODE =================
+/***********************
+ * REVIEW MODE
+ ***********************/
 function handleReviewMode() {
     if (localStorage.getItem("reviewMode") !== "true") return;
 
-    const latestResult = JSON.parse(localStorage.getItem("latestResult"));
-    if (!latestResult) return;
+    const result = JSON.parse(localStorage.getItem("latestResult"));
+    if (!result) return;
 
-    const { userAnswers, correctAnswers } = latestResult;
+    const { userAnswers, correctAnswers } = result;
 
     for (const q in correctAnswers) {
         const answer = userAnswers[q];
         if (!answer) continue;
 
-        const inputRadio = document.querySelector(`input[name="${q}"][value="${answer}"]`);
-        if (!inputRadio) continue;
+        const input = document.querySelector(
+            `input[name="${q}"][value="${answer}"]`
+        );
+        if (!input) continue;
 
-        const quizDiv = inputRadio.closest(".quiz-question");
-        inputRadio.checked = true;
-        inputRadio.parentElement.classList.add("selected");
+        input.checked = true;
+        input.parentElement.classList.add("selected");
+        input.parentElement.style.border =
+            answer === correctAnswers[q]
+                ? "2px solid blue"
+                : "2px solid red";
 
-        // Border: blue=correct, red=wrong
-        inputRadio.parentElement.style.border = answer.toLowerCase() === correctAnswers[q].toLowerCase() ? "2px solid blue" : "2px solid red";
+        const explanation = input
+            .closest(".quiz-question")
+            ?.querySelector(".answer-explanation");
 
-        // Show explanation automatically
-        const explanation = quizDiv.querySelector(".answer-explanation");
         if (explanation) explanation.style.display = "block";
     }
 
-    // Disable all inputs
-    document.querySelectorAll('input').forEach(input => input.disabled = true);
+    document.querySelectorAll("input").forEach(i => (i.disabled = true));
 
-    // Add Back to Result button
     const container = document.querySelector(".quiz-container");
     if (container) {
-        const backBtn = document.createElement("button");
-        backBtn.textContent = "Back to Result";
-        backBtn.className = "btn btn-outline";
-        backBtn.addEventListener("click", () => window.location.href = "result.html");
-        container.prepend(backBtn);
+        const btn = document.createElement("button");
+        btn.textContent = "Back to Result";
+        btn.className = "btn btn-outline";
+        btn.onclick = () => (window.location.href = "result.html");
+        container.prepend(btn);
     }
 
     localStorage.removeItem("reviewMode");

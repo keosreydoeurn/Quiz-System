@@ -1,6 +1,8 @@
+
 // ================= QUIZ TIMER =================
-let totalTime = 3 * 60; // 10 minutes
+let totalTime = 10 * 60; // 10 minutes
 let timerInterval;
+let quizSubmitted = false; // Track if quiz has been submitted
 
 window.addEventListener("DOMContentLoaded", () => {
     startTimer();
@@ -56,7 +58,19 @@ function attachOptionHandlers() {
 function attachShowAnswerHandlers() {
     const showButtons = document.querySelectorAll(".show-answer-btn");
     showButtons.forEach(btn => {
+        // Initially disable the button
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+        btn.style.cursor = "not-allowed";
+        btn.title = "Submit the quiz to reveal answers";
+
         btn.addEventListener("click", () => {
+            // Only allow if quiz is submitted
+            if (!quizSubmitted) {
+                alert("Please submit the quiz first to see answers.");
+                return;
+            }
+
             const explanation = btn.nextElementSibling;
             if (explanation) {
                 explanation.style.display = explanation.style.display === "block" ? "none" : "block";
@@ -65,9 +79,22 @@ function attachShowAnswerHandlers() {
     });
 }
 
+// Function to enable show-answer buttons after submission
+function enableShowAnswerButtons() {
+    const showButtons = document.querySelectorAll(".show-answer-btn");
+    showButtons.forEach(btn => {
+        btn.disabled = false;
+        btn.style.opacity = "1";
+        btn.style.cursor = "pointer";
+        btn.title = "Click to reveal the answer";
+    });
+}
+
 // ================= SUBMIT QUIZ =================
 function submitQuiz() {
     clearInterval(timerInterval);
+    quizSubmitted = true; // Mark quiz as submitted
+    enableShowAnswerButtons(); // Enable show-answer buttons
 
     const correctAnswers = {
         q1: "b",

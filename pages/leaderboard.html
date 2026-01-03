@@ -17,8 +17,6 @@
                 <i class="fas fa-graduation-cap"></i>
                 <h1>TechQuiz</h1>
             </div>
-
-            
             <nav class="main-nav">
                 <ul>
                     <li><a href="../index.html">Home</a></li>
@@ -66,14 +64,12 @@
                 <h3>Jane Doe</h3>
                 <p>95% - 10 Quizzes</p>
             </div>
-
             <div class="podium-card first">
                 <div class="rank">1</div>
                 <img src="images/user1.jpg" alt="John Smith">
                 <h3>John Smith</h3>
                 <p>98% - 12 Quizzes</p>
             </div>
-
             <div class="podium-card third">
                 <div class="rank">3</div>
                 <img src="images/user3.jpg" alt="Mary Johnson">
@@ -86,18 +82,35 @@
     <!-- Full Leaderboard Table -->
     <section class="leaderboard-container">
         <div class="container">
+            <!-- Simple form to add a result (saves to localStorage for testing) -->
+            <div class="add-result">
+                <form id="addResultForm">
+                    <label>
+                        Name: <input type="text" id="resName" required placeholder="Name">
+                    </label>
+                    <label>
+                        Score: <input type="number" id="resScore" required min="0" max="100" placeholder="Score">
+                    </label>
+                    <label>
+                        Total Quizzes: <input type="number" id="resTotal" required min="1" placeholder="Total">
+                    </label>
+                    <button type="submit" class="btn btn-small">Add Result</button>
+                </form>
+            </div>
+
             <table class="leaderboard-table">
                 <thead>
                     <tr>
                         <th>Rank</th>
-                        <th>Profile</th>
-                        <th>Name</th>
-                        <th>Score</th>
-                        <th>Quizzes Completed</th>
-                        <th>Badge</th>
+                        <th class="sortable" data-sort="name">Name <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="score">Score <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="total">Total Quizzes <i class="fas fa-sort"></i></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="leaderboardBody">
+                    <!-- Leaderboard rows will be added here dynamically -->
+                </tbody>
+                <!-- <tbody>
                     <tr>
                         <td>4</td>
                         <td><img class="profile-pic" src="images/user4.jpg" alt="David Lee"></td>
@@ -122,7 +135,7 @@
                         <td>7</td>
                         <td></td>
                     </tr>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
     </section>
@@ -156,7 +169,9 @@
             </div>
         </div>
     </footer>
-    <script type="module" src="../js/auth.js"></script>
+    <!-- <script type="module" src="../js/auth.js"></script> -->
+    <script type="module" src="../js/leaderboard.js"></script>
+
 </body>
 
 </html>
