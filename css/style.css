@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,21 +6,39 @@
 }
 
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #0056b3;
-    --dark-color: #343a40;
-    --light-color: #f8f9fa;
-    --success-color: #28a745;
-    --danger-color: #dc3545;
-    --border-radius: 5px;
-    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    /* Enhanced Blue-Purple Color Palette */
+    --primary-blue: #4A6FFF;
+    --dark-blue: #3A5FEF;
+    --light-blue: #6B8BFF;
+    --primary-purple: #9D4EDD;
+    --dark-purple: #8A2BE2;
+    --light-purple: #B57EDC;
+    --accent-purple: #C77DFF;
+    --accent-blue: #5E81FF;
+    
+    /* Gradients */
+    --gradient-blue-purple: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+    --gradient-purple-blue: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+    --gradient-dark: linear-gradient(135deg, var(--dark-blue), var(--dark-purple));
+    --gradient-light: linear-gradient(135deg, var(--light-blue), var(--light-purple));
+    --gradient-hero: linear-gradient(135deg, #4A6FFF 0%, #7B5FFF 50%, #9D4EDD 100%);
+    
+    /* Additional Colors */
+    --text-color: #2D3748;
+    --light-text: #F7FAFC;
+    --light-bg: #F8FAFF;
+    --card-bg: #FFFFFF;
+    --shadow: 0 10px 25px rgba(74, 111, 255, 0.15);
+    --shadow-hover: 0 20px 40px rgba(157, 78, 221, 0.25);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    overflow-x: hidden;
 }
 
 .container {
@@ -166,25 +185,6 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.btn {
-    display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    padding: 12px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
 .btn-small {
     display: inline-block;
     background-color: #007bff;
@@ -201,7 +201,6 @@ body {
     background-color: #0056b3;
     transform: translateY(-2px);
 }
-
 .main-nav ul {
     display: flex;
     list-style: none;
@@ -241,71 +240,221 @@ body {
     width: 100%;
 }
 
-.stats-row {
-    display: flex;
-    gap: 40px;
-    margin-top: 20px;
+.page-header {
+    background: #4f46e5;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
 }
 
-.stat-item h2 {
+.help-section {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.help-section h2 {
+    color: #2c3e50;
+    margin-bottom: 25px;
     font-size: 32px;
-    color: #007bff;
+    position: relative;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
 }
 
-.stat-item p {
-    font-size: 14px;
-    color: #007bff;
+.help-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: #007bff;
 }
-
+/* Hero Section - Fixed with proper gradient */
 .hero {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #fff 0%, #e4e8f0 100%);
+    padding: 100px 0;
+    background:  #59b3e0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(157, 78, 221, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74, 111, 255, 0.2) 0%, transparent 50%);
+    z-index: 1;
 }
 
 .hero .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content {
     flex: 1;
-    min-width: 300px;
-    padding-right: 30px;
-    animation: fadeInUp 1s ease forwards;
+    max-width: 600px;
 }
 
 .hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: #343a40;
-    line-height: 1.2;
+    font-size: 3.8rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
 .hero-content h1 span {
-    color: #007bff;
+    background: linear-gradient(90deg, #fed801, #f3f3f3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: block;
+    margin-top: 8px;
 }
 
 .hero-content p {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 30px;
-    max-width: 500px;
+    font-size: 1.25rem;
+    margin-bottom: 36px;
+    opacity: 0.95;
+    max-width: 520px;
+    line-height: 1.7;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgb(130, 54, 197);
+    color:rgb(241, 240, 243);
+    padding: 18px 42px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.25rem;
+    transition: var(--transition);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.4), transparent);
+    transition: left 0.7s ease;
+}
+
+.btn:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    border-color: rgba(189, 185, 185, 0.3);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.stats-row {
+    display: flex;
+    gap: 48px;
+    margin-top: 36px;
+}
+
+.stat-item {
+    text-align: center;
+    position: relative;
+    padding: 0 16px;
+}
+
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1px;
+}
+
+.stat-item h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #5bedfd, #f6f6f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.stat-item p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 500;
 }
 
 .hero-image {
     flex: 1;
-    min-width: 300px;
     text-align: center;
-    animation: fadeInUp 1s ease forwards;
+    position: relative;
+}
+
+.hero-image::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(157, 78, 221, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
 .hero-image img {
     max-width: 100%;
-    height: 350px;
-    border-radius: 10px;
+    height: auto;
+    border-radius: 24px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(157, 78, 221, 0.3);
+    transform: perspective(1200px) rotateY(-12deg) rotateX(5deg);
+    transition: var(--transition);
+    border: 8px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
+
+.hero-image img:hover {
+    transform: perspective(1200px) rotateY(0deg) rotateX(0deg);
+    box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.5),
+        0 0 120px rgba(74, 111, 255, 0.4);
+}
+
 
 .categories {
     padding: 80px 0;
@@ -316,7 +465,7 @@ body {
     text-align: center;
     margin-bottom: 50px;
     font-size: 36px;
-    color: #343a40;
+    color: #057bf0;
 }
 
 .category-grid {
@@ -327,7 +476,7 @@ body {
 }
 
 .category-card {
-    background: #fff;
+    background: #d9f3ff;
     border-radius: 10px;
     padding: 30px;
     text-align: center;
@@ -345,7 +494,7 @@ body {
 
 .category-card i {
     font-size: 48px;
-    color: #007bff;
+    color: #ffae00;
     margin-bottom: 20px;
 }
 
@@ -379,7 +528,7 @@ body {
 }
 
 .quiz-card {
-    background: #fff;
+    background: #effbff;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);

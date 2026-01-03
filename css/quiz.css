@@ -222,14 +222,16 @@ body {
 }
 
 .page-header {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    color: white;
-    padding: 80px 0;
+    background: #59b3e0;
+    color: #ffffff;
+    padding: 150px 0;
     text-align: center;
+    text-shadow: 0 5px 10px rgb(255, 145, 0);
 }
 
+
 .page-header h1 {
-    font-size: 40px;
+    font-size: 50px;
     margin-bottom: 15px;
 }
 
@@ -251,6 +253,7 @@ body {
     max-width: 400px;
     flex: 1;
     min-width: 250px;
+
 }
 
 .search-box input {
@@ -316,7 +319,7 @@ body {
 }
 
 .quiz-card {
-    background: #fff;
+    background: #e5f3f7;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -337,12 +340,12 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 15px 20px;
-    background-color: #f8f9fa;
+    background-color: #fdebdf;
     border-bottom: 1px solid #eee;
 }
 
 .quiz-category {
-    background-color: #007bff;
+    background-color: #fc9f42;
     color: white;
     padding: 3px 10px;
     border-radius: 15px;
@@ -432,7 +435,11 @@ body {
 
 #seeMoreBtn {
     display: inline-block;
+<<<<<<< HEAD
     background-color: #007bff;
+=======
+    background-color:#b244e9;
+>>>>>>> 96e242a056bf2eeda0615112045e1f8c040f6777
     color: #fff;
     padding: 12px 30px;
     border-radius: 50px;
@@ -469,7 +476,7 @@ body {
     margin: 0 5px;
     border-radius: 5px;
     background-color: #fff;
-    color: #343a40;
+    color: #3b4034;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s;
@@ -497,7 +504,11 @@ body {
     text-align: center;
     margin-bottom: 50px;
     font-size: 36px;
+<<<<<<< HEAD
     color: #343a40;
+=======
+    color:#067cf3;
+>>>>>>> 96e242a056bf2eeda0615112045e1f8c040f6777
 }
 
 .types-grid {
@@ -507,7 +518,7 @@ body {
 }
 
 .type-card {
-    background: #fff;
+    background: #ddf2f7;
     border-radius: 10px;
     padding: 30px;
     text-align: center;
@@ -541,8 +552,8 @@ body {
 }
 
 .cta-section {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    color: #fff;
+    background:rgb(255, 255, 255);
+    color: #080d23;
     padding: 80px 0;
     text-align: center;
 }
@@ -560,7 +571,11 @@ body {
 
 .btn {
     display: inline-block;
+<<<<<<< HEAD
     background-color: #007bff;
+=======
+    background-color:#05946e;
+>>>>>>> 96e242a056bf2eeda0615112045e1f8c040f6777
     color: #fff;
     padding: 12px 30px;
     border-radius: 50px;
