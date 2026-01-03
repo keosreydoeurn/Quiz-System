@@ -6,39 +6,21 @@
 }
 
 :root {
-    /* Enhanced Blue-Purple Color Palette */
-    --primary-blue: #4A6FFF;
-    --dark-blue: #3A5FEF;
-    --light-blue: #6B8BFF;
-    --primary-purple: #9D4EDD;
-    --dark-purple: #8A2BE2;
-    --light-purple: #B57EDC;
-    --accent-purple: #C77DFF;
-    --accent-blue: #5E81FF;
-    
-    /* Gradients */
-    --gradient-blue-purple: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-    --gradient-purple-blue: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
-    --gradient-dark: linear-gradient(135deg, var(--dark-blue), var(--dark-purple));
-    --gradient-light: linear-gradient(135deg, var(--light-blue), var(--light-purple));
-    --gradient-hero: linear-gradient(135deg, #4A6FFF 0%, #7B5FFF 50%, #9D4EDD 100%);
-    
-    /* Additional Colors */
-    --text-color: #2D3748;
-    --light-text: #F7FAFC;
-    --light-bg: #F8FAFF;
-    --card-bg: #FFFFFF;
-    --shadow: 0 10px 25px rgba(74, 111, 255, 0.15);
-    --shadow-hover: 0 20px 40px rgba(157, 78, 221, 0.25);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --border-radius: 5px;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--light-bg);
-    overflow-x: hidden;
+    color: #333;
+    background-color: #fff;
 }
 
 .container {
@@ -102,6 +84,62 @@ body {
 
 .btn-login i {
     font-size: 16px;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #0099cc);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: white;
+  min-width: 140px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 2000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.user-menu:hover .dropdown-content {
+  display: none;
+}
+
+#dropdownContent.show {
+    display: block;
 }
 
 .btn {
@@ -177,6 +215,7 @@ body {
 .main-nav .active a:after {
     width: 100%;
 }
+
 
 .page-header {
     background: #4f46e5;

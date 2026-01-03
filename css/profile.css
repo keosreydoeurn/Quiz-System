@@ -85,6 +85,62 @@ body {
     font-size: 16px;
 }
 
+.user-menu {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #0099cc);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: white;
+  min-width: 140px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 2000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.user-menu:hover .dropdown-content {
+  display: none;
+}
+
+#dropdownContent.show {
+    display: block;
+}
+
 .btn {
     display: inline-block;
     background-color: #007bff;
@@ -158,6 +214,7 @@ body {
 .main-nav .active a:after {
     width: 100%;
 }
+
 /* Profile Hero Section */
 .profile-hero {
     padding: 80px 0;
