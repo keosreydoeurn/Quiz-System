@@ -1,4 +1,3 @@
-/* ===== Base Styles ===== */
 * {
     margin: 0;
     padding: 0;
@@ -30,7 +29,6 @@ body {
     padding: 0 15px;
 }
 
-/* ===== Header & Navigation ===== */
 .header {
     padding: 20px 0;
     background-color: #fff;
@@ -63,47 +61,30 @@ body {
     font-size: 30px;
     font-weight: 700;
 }
-
-.main-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-.main-nav li {
-    margin-left: 30px;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: #343a40;
+.btn-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: #fff;
     font-weight: 500;
-    padding: 5px 0;
-    position: relative;
-    transition: color 0.3s;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.main-nav a:hover,
-.main-nav .active a {
-    color: #007bff;
+.btn-login:hover {
+    background: linear-gradient(135deg, #0056b3, #0099cc);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-.main-nav a:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #007bff;
-    transition: width 0.3s;
+.btn-login i {
+    font-size: 16px;
 }
 
-.main-nav a:hover:after,
-.main-nav .active a:after {
-    width: 100%;
-}
-
-/* ===== Button Styles ===== */
 .btn {
     display: inline-block;
     background-color: #007bff;
@@ -140,292 +121,57 @@ body {
     transform: translateY(-2px);
 }
 
-.btn-login {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 25px;
-    border-radius: 50px;
-    background: linear-gradient(135deg, #007bff, #00c6ff);
-    color: #fff;
-    font-weight: 500;
-    font-size: 14px;
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 30px;
+}
+
+.main-nav a {
     text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.btn-login:hover {
-    background: linear-gradient(135deg, #0056b3, #0099cc);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-.btn-login i {
-    font-size: 16px;
-}
-
-/* ===== User Menu ===== */
-.user-menu {
+    color: #343a40;
+    font-weight: 500;
+    padding: 5px 0;
     position: relative;
+    transition: color 0.3s;
 }
 
-.dropdown-btn {
-    background: linear-gradient(135deg, #007bff, #00c6ff);
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 50px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
+.main-nav a:hover,
+.main-nav .active a {
+    color:#007bff;
 }
 
-.dropdown-btn:hover {
-    background: linear-gradient(135deg, #0056b3, #0099cc);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-.dropdown-content {
+.main-nav a:after {
+    content: '';
     position: absolute;
-    top: 45px;
-    right: 0;
-    background-color: white;
-    min-width: 140px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    display: none;
-    z-index: 2000;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color:#007bff;
+    transition: width 0.3s;
 }
 
-.dropdown-content a {
-    display: block;
-    padding: 8px 12px;
-    color: #333;
-    text-decoration: none;
-}
-
-.dropdown-content a:hover {
-    background-color: #f0f0f0;
-}
-
-.user-menu:hover .dropdown-content {
-    display: none;
-}
-
-#dropdownContent.show {
-    display: block;
-}
-
-/* ===== Hero Section ===== */
-.hero {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #fff 0%, #e4e8f0 100%);
-}
-
-.hero .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.hero-content {
-    flex: 1;
-    min-width: 300px;
-    padding-right: 30px;
-    animation: fadeInUp 1s ease forwards;
-}
-
-.hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: #343a40;
-    line-height: 1.2;
-}
-
-.hero-content h1 span {
-    color: #007bff;
-}
-
-.hero-content p {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 30px;
-    max-width: 500px;
-}
-
-.stats-row {
-    display: flex;
-    gap: 40px;
-    margin-top: 20px;
-}
-
-.stat-item h2 {
-    font-size: 32px;
-    color: #007bff;
-}
-
-.stat-item p {
-    font-size: 14px;
-    color: #007bff;
-}
-
-.hero-image {
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
-    animation: fadeInUp 1s ease forwards;
-}
-
-.hero-image img {
-    max-width: 100%;
-    height: 350px;
-    border-radius: 10px;
-}
-
-/* ===== Categories Section ===== */
-.categories {
-    padding: 80px 0;
-    background-color: #fff;
-}
-
-.categories h2 {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 36px;
-    color: #343a40;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.category-card {
-    background: #fff;
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    animation: appear 5s linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-}
-
-.category-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-.category-card i {
-    font-size: 48px;
-    color: #007bff;
-    margin-bottom: 20px;
-}
-
-.category-card h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #343a40;
-}
-
-.category-card p {
-    color: #666;
-    margin-bottom: 20px;
-}
-
-/* ===== Featured Quizzes ===== */
-.featured-quizzes {
-    padding: 80px 0;
-    background-color: #f8f9fa;
-}
-
-.featured-quizzes h2 {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 36px;
-    color: #343a40;
-}
-
-.quiz-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.quiz-card {
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    animation: appear 5s linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-}
-
-.quiz-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-.quiz-card img {
+.main-nav a:hover:after,
+.main-nav .active a:after {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
 }
 
-.quiz-info {
-    padding: 20px;
-}
-
-.quiz-info h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #343a40;
-}
-
-.quiz-info p {
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.quiz-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    color: #777;
-    font-size: 14px;
-}
-
-.quiz-meta i {
-    margin-right: 5px;
-    color: #007bff;
-}
-
-/* ===== Page Header ===== */
 .page-header {
-    background: #59b3e0;
-    color: #ffffff;
-    padding: 150px 0;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    padding: 80px 0;
     text-align: center;
-    text-shadow: 0 5px 10px rgb(255, 145, 0);
 }
 
 .page-header h1 {
-    font-size: 50px;
+    font-size: 40px;
     margin-bottom: 15px;
 }
 
-/* ===== Quiz Filter ===== */
 .quiz-filter {
     background-color: #f8f9fa;
     padding: 30px 0;
@@ -455,7 +201,7 @@ body {
 }
 
 .search-box button {
-    background-color: #007bff;
+    background-color:#007bff;
     color: white;
     border: none;
     padding: 0 20px;
@@ -477,7 +223,6 @@ body {
     min-width: 180px;
 }
 
-/* ===== Quizzes Grid ===== */
 .quizzes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -486,7 +231,7 @@ body {
 }
 
 .quiz-card {
-    background: #e5f3f7;
+    background: #fff;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -504,12 +249,12 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 15px 20px;
-    background-color: #fdebdf;
+    background-color: #f8f9fa;
     border-bottom: 1px solid #eee;
 }
 
 .quiz-category {
-    background-color: #fc9f42;
+    background-color: #007bff;
     color: white;
     padding: 3px 10px;
     border-radius: 15px;
@@ -556,13 +301,42 @@ body {
     font-size: 16px;
 }
 
+.quiz-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #777;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.quiz-meta i {
+    margin-right: 5px;
+    color: #007bff;
+}
+
 .quiz-card-footer {
     padding: 15px 20px;
     border-top: 1px solid #eee;
     text-align: right;
 }
 
-/* ===== See More Button ===== */
+.btn-small {
+    display: inline-block;
+    background-color:#007bff;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-small:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
 .see-more-container {
     text-align: center;
     margin-top: 20px;
@@ -570,7 +344,7 @@ body {
 
 #seeMoreBtn {
     display: inline-block;
-    background-color: #b244e9;
+    background-color:#007bff;
     color: #fff;
     padding: 12px 30px;
     border-radius: 50px;
@@ -582,12 +356,16 @@ body {
     margin: 0 auto;
 }
 
+.quiz-card {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
 .quiz-card.hidden {
     opacity: 0;
     display: none !important;
 }
 
-/* ===== Pagination ===== */
 .pagination {
     display: flex;
     justify-content: center;
@@ -603,7 +381,7 @@ body {
     margin: 0 5px;
     border-radius: 5px;
     background-color: #fff;
-    color: #3b4034;
+    color: #343a40;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s;
@@ -622,7 +400,6 @@ body {
     padding: 0 15px;
 }
 
-/* ===== Quiz Types ===== */
 .quiz-types {
     padding: 80px 0;
     background-color: #f8f9fa;
@@ -632,7 +409,7 @@ body {
     text-align: center;
     margin-bottom: 50px;
     font-size: 36px;
-    color: #067cf3;
+    color:#343a40;
 }
 
 .types-grid {
@@ -642,7 +419,7 @@ body {
 }
 
 .type-card {
-    background: #ddf2f7;
+    background: #fff;
     border-radius: 10px;
     padding: 30px;
     text-align: center;
@@ -664,7 +441,7 @@ body {
 .type-card h3 {
     font-size: 20px;
     margin-bottom: 15px;
-    color: #343a40;
+    color:#343a40;
 }
 
 .type-card p {
@@ -672,16 +449,15 @@ body {
     font-size: 16px;
 }
 
-/* ===== CTA Section ===== */
 .cta-section {
-    background: rgb(255, 255, 255);
-    color: #080d23;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: #fff;
     padding: 80px 0;
     text-align: center;
 }
 
 .cta-section h2 {
-    font-size: 36px;
+    font-size: 36px; 
     margin-bottom: 15px;
 }
 
@@ -691,9 +467,26 @@ body {
     margin: 0 auto 30px;
 }
 
-/* ===== Footer ===== */
+.btn {
+    display: inline-block;
+    background-color:#007bff;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color:#0056b3;
+    transform: translateY(-2px);
+}
+
 .footer {
-    background-color: #343a40;
+    background-color:#343a40;
     color: #fff;
     padding: 60px 0 0;
 }
@@ -719,7 +512,7 @@ body {
     bottom: 0;
     width: 50px;
     height: 2px;
-    background-color: #007bff;
+    background-color:#007bff;
 }
 
 .footer-section p {
@@ -742,7 +535,7 @@ body {
 }
 
 .footer-section a:hover {
-    color: #007bff;
+    color:#007bff;
 }
 
 .footer-bottom {
@@ -751,180 +544,6 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 14px;
     color: #bbb;
-}
-
-/* ===== Animations ===== */
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: scale(0.4);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* ===== Mobile Responsive ===== */
-@media screen and (max-width: 767px) {
-    /* Header and Navigation */
-    .header .container {
-        padding: 15px;
-        flex-wrap: wrap;
-    }
-
-    .logo h1 {
-        font-size: 24px;
-    }
-
-    .main-nav {
-        order: 3;
-        width: 100%;
-        margin-top: 15px;
-        display: none;
-    }
-
-    .main-nav.active {
-        display: block;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        background: #fff;
-        border-radius: 5px;
-        padding: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .main-nav li {
-        margin: 5px 0;
-    }
-
-    .main-nav a {
-        padding: 10px;
-    }
-
-    /* Mobile menu toggle button */
-    .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: var(--primary-color);
-        cursor: pointer;
-        padding: 5px 10px;
-    }
-
-    /* Hero Section */
-    .hero {
-        padding: 40px 0;
-        text-align: center;
-    }
-
-    .hero .container {
-        flex-direction: column;
-    }
-
-    .hero-content {
-        padding-right: 0;
-        margin-bottom: 30px;
-    }
-
-    .hero h1 {
-        font-size: 32px;
-        line-height: 1.3;
-    }
-
-    .hero p {
-        font-size: 16px;
-        margin: 0 auto 20px;
-    }
-
-    .hero-image img {
-        height: auto;
-        max-width: 100%;
-    }
-
-    /* Categories */
-    .category-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Featured Quizzes */
-    .quiz-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Page Header */
-    .page-header {
-        padding: 100px 0;
-    }
-
-    .page-header h1 {
-        font-size: 36px;
-    }
-
-    /* Filter Options */
-    .filter-options {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .search-box {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    /* Quizzes Grid */
-    .quizzes-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Stats Row */
-    .stats-row {
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-    }
-
-    /* Quiz Types */
-    .types-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 992px) {
@@ -944,24 +563,35 @@ body {
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+    .main-nav {
+        display: none;
+    }
+
     .hero-content h1 {
-        font-size: 32px;
+        font-size: 40px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .top-bar .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-info {
+        margin-bottom: 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px; 
     }
 
     .btn {
         padding: 10px 20px;
-    }
-
-    .quiz-types h2 {
-        font-size: 28px;
-    }
-
-    .cta-section h2 {
-        font-size: 28px;
-    }
-
-    .cta-section p {
-        font-size: 16px;
     }
 }

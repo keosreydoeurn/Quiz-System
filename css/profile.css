@@ -168,62 +168,6 @@ body {
     font-size: 16px;
 }
 
-.user-menu {
-  position: relative;
-}
-
-.dropdown-btn {
-  background: linear-gradient(135deg, #007bff, #00c6ff);
-  color: white;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 50px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-}
-
-.dropdown-btn:hover {
-  background: linear-gradient(135deg, #0056b3, #0099cc);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.dropdown-content {
-  position: absolute;
-  top: 45px;
-  right: 0;
-  background-color: white;
-  min-width: 140px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-  display: none;
-  z-index: 2000;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 8px 12px;
-  color: #333;
-  text-decoration: none;
-}
-
-.dropdown-content a:hover {
-  background-color: #f0f0f0;
-}
-
-.user-menu:hover .dropdown-content {
-  display: none;
-}
-
-#dropdownContent.show {
-    display: block;
-}
-
 .btn {
     display: inline-block;
     background-color: #007bff;
@@ -301,63 +245,38 @@ body {
 
 /* Profile Hero Section */
 .profile-hero {
-    padding: 80px 0;
-   background:  #59b3e0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-
     padding: 100px 0 60px;
     margin-top: 60px;
     animation: fadeUp 0.8s ease;
-
-    position: relative;
-    overflow: hidden;
-}
-
-.profile-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-
 }
 
 .profile-header {
-    position: relative;
-    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .profile-avatar {
     display: flex;
     align-items: center;
     gap: 30px;
-    margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
 .avatar-circle {
     position: relative;
-
     width: 120px;
     height: 120px;
     animation: pop 0.6s ease;
-
-    width: 120px;
-    height: 120px;
-    animation: pop 0.6s ease;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid white;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.1);
-
 }
 
 .avatar-circle img {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.3);
     object-fit: cover;
     background: white;
 }
@@ -366,121 +285,16 @@ body {
     transform: scale(1.05);
 }
 
-/* ========== Dark Mode ========== */
-body.dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-}
-
-body.dark-mode .header {
-    background-color: #1f1f1f;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-}
-
-body.dark-mode .main-nav a {
-    color: #e0e0e0;
-}
-
-body.dark-mode .main-nav a:hover,
-body.dark-mode .main-nav .active a {
-    color: #4dabf7;
-}
-
-body.dark-mode .btn-login,
-body.dark-mode .dropdown-btn,
-body.dark-mode .btn,
-body.dark-mode .btn-small {
-    background: linear-gradient(135deg, #4dabf7, #1c7ed6);
-    color: #fff;
-}
-
-body.dark-mode .btn-login:hover,
-body.dark-mode .dropdown-btn:hover,
-body.dark-mode .btn:hover,
-body.dark-mode .btn-small:hover {
-    background: linear-gradient(135deg, #1c7ed6, #1971c2);
-}
-
-body.dark-mode .profile-hero {
-    background: linear-gradient(135deg, #1e1e2f, #2e2e42);
-    color: #e0e0e0;
-}
-
-body.dark-mode .stat-card {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-body.dark-mode .profile-content {
-    background: #1a1a1a;
-}
-
-body.dark-mode .profile-tabs {
-    background: #2c2c2c;
-}
-
-body.dark-mode .tab-btn {
-    color: #bbb;
-}
-
-body.dark-mode .tab-btn.active {
-    background: #4dabf7;
-    color: #fff;
-}
-
-body.dark-mode .overview-card,
-body.dark-mode .history-container,
-body.dark-mode .achievements-container,
-body.dark-mode .settings-container,
-body.dark-mode .badge-card,
-body.dark-mode .settings-card {
-    background: #1f1f1f;
-    color: #e0e0e0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-body.dark-mode .overview-card h3,
-body.dark-mode .stat-card div h3,
-body.dark-mode .badge-card h4,
-body.dark-mode .settings-card h3 {
-    color: #fff;
-}
-
-body.dark-mode .form-group input,
-body.dark-mode .form-group select {
-    background: #2c2c2c;
-    color: #e0e0e0;
-    border-color: #444;
-}
-
-body.dark-mode .history-table th,
-body.dark-mode .history-table td {
-    color: #e0e0e0;
-    border-color: #333;
-}
-
-body.dark-mode .activity-item {
-    background: #2c2c2c;
-}
-
-body.dark-mode .activity-item:hover {
-    background: #3a3a3a;
-}
-
-body.dark-mode .score-circle {
-    background: #4dabf7;
-}
-
-
 .avatar-edit {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
+    bottom: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: rgb(0, 106, 255);
+    background: #667eea;
+    border: 3px solid white;
     color: white;
-    border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -489,45 +303,43 @@ body.dark-mode .score-circle {
 }
 
 .avatar-edit:hover {
-    background: rgb(0, 166, 255);
+    background: #764ba2;
     transform: scale(1.1);
 }
 
 .profile-info h1 {
     font-size: 2.5rem;
-    margin-bottom: 8px;
-    font-weight: 800;
+    margin: 0 0 10px;
+    color: white;
 }
 
 .user-email {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     opacity: 0.9;
-    margin-bottom: 12px;
+    margin: 0 0 10px;
 }
 
 .member-since {
+    font-size: 0.95rem;
+    opacity: 0.8;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.95rem;
-    opacity: 0.8;
 }
 
 .profile-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    background: rgba(247, 247, 247, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
     display: flex;
     align-items: center;
-
     gap: 20px;
     transition: var(--transition);
     cursor: pointer;
@@ -537,38 +349,23 @@ body.dark-mode .score-circle {
 .stat-card:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-8px) scale(1.03);
-
-    gap: 15px;
-    padding: 15px;
-    background: rgb(251, 251, 251);
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    color: rgb(17, 29, 140);
-}
-
-.stat-card:hover {
-    background: rgb(234, 165, 138);
-    transform: translateY(-5px);
-
 }
 
 .stat-card i {
     font-size: 2.5rem;
-    background: linear-gradient(45deg, hsl(48, 100%, 50%), #fafafa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: white;
 }
 
-.stat-card h3 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 4px;
+.stat-card div h3 {
+    font-size: 2.2rem;
+    margin: 0;
+    color: white;
 }
 
-.stat-card p {
-    font-size: 0.9rem;
-    opacity: 0.8;
+.stat-card div p {
+    margin: 5px 0 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
 }
 
 /* Profile Content */
@@ -585,12 +382,7 @@ body.dark-mode .score-circle {
     background: white;
     padding: 15px;
     border-radius: 15px;
-
     box-shadow: var(--box-shadow);
-
-    box-shadow: var(--box-shadow);
-
-    box-shadow: 0 5px 15px rgba(246, 245, 245, 0.05);
 }
 
 .tab-btn {
@@ -652,7 +444,7 @@ body.dark-mode .score-circle {
 }
 
 .overview-card {
-    background: rgb(215, 239, 242);
+    background: white;
     border-radius: 15px;
     padding: 30px;
     box-shadow: var(--box-shadow);
@@ -815,7 +607,7 @@ body.dark-mode .score-circle {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background: #fde6ff;
+    background: #f8f9fa;
     border-radius: 10px;
     transition: var(--transition);
 }
@@ -840,7 +632,7 @@ body.dark-mode .score-circle {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #03a40b;
+    background: #667eea;
     color: white;
     display: flex;
     align-items: center;
@@ -851,7 +643,7 @@ body.dark-mode .score-circle {
 
 /* History Tab */
 .history-container {
-    background: rgb(218, 239, 243);
+    background: white;
     border-radius: 15px;
     padding: 30px;
     box-shadow: var(--box-shadow);
@@ -894,7 +686,7 @@ body.dark-mode .score-circle {
 }
 
 .history-table th {
-    background: #409efc;
+    background: #f8f9fa;
     padding: 15px;
     text-align: left;
     font-weight: 600;
@@ -922,7 +714,6 @@ body.dark-mode .score-circle {
     font-weight: 600;
     display: inline-block;
 }
-
 
 .category-badge.html {
     background: #E44D26;
@@ -972,15 +763,6 @@ body.dark-mode .score-circle {
 .btn-small.danger:hover {
     background: #c82333;
 }
-
-.btn-small{
-    border: none;
-}
-.category-badge.html { background: #E44D26; color: white; }
-.category-badge.css { background: #264DE4; color: white; }
-.category-badge.js { background: #F7DF1E; color: #333; }
-.category-badge.react { background: #61DAFB; color: #333; }
-
 
 /* Achievements Tab */
 .achievements-container {
@@ -1038,7 +820,7 @@ body.dark-mode .score-circle {
 }
 
 .badge-card {
-    background: rgb(223, 234, 247);
+    background: white;
     border-radius: 15px;
     padding: 25px;
     text-align: center;
@@ -1105,7 +887,7 @@ body.dark-mode .score-circle {
 
 /* Settings Tab */
 .settings-container {
-    background: rgb(226, 238, 243);
+    background: white;
     border-radius: 15px;
     padding: 30px;
     box-shadow: var(--box-shadow);
