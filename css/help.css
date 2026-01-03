@@ -160,10 +160,12 @@ body {
 }
 
 .page-header {
-    background: #4f46e5;
-    color: #fff;
+    background: #59b3e0;
+    color: #ffffff;
+    padding: 150px 0;
     text-align: center;
-    padding: 50px 0;
+    text-shadow: 0 5px 10px rgb(255, 145, 0);
+    font-size: 25px;
 }
 
 .help-section {
