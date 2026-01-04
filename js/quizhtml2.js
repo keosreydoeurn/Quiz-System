@@ -1,6 +1,5 @@
-
 // ================= QUIZ TIMER =================
-let totalTime = 10 * 60; // 10 minutes
+let totalTime = 3 * 60; // 3 minutes
 let timerInterval;
 let quizSubmitted = false; // Track if quiz has been submitted
 
@@ -12,15 +11,10 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("submitQuizBtn")?.addEventListener("click", submitQuiz);
 });
 
-// Start countdown timer
+// ================= START TIMER =================
 function startTimer() {
     const timeDisplay = document.getElementById("time");
     if (!timeDisplay) return;
-
-    timeDisplay.style.position = "sticky";
-    timeDisplay.style.top = "10px";
-    timeDisplay.style.zIndex = "1000";
-    timeDisplay.style.fontWeight = "700";
 
     timerInterval = setInterval(() => {
         const minutes = Math.floor(totalTime / 60);
@@ -36,12 +30,12 @@ function startTimer() {
     }, 1000);
 }
 
-// ================= SELECT OPTION HANDLERS =================
+// ================= OPTION SELECTION =================
 function attachOptionHandlers() {
     const optionDivs = document.querySelectorAll(".option");
     optionDivs.forEach(option => {
         option.addEventListener("click", () => {
-            if (localStorage.getItem("reviewMode") === "true") return;
+            if (quizSubmitted || localStorage.getItem("reviewMode") === "true") return;
 
             const siblings = option.parentElement.querySelectorAll(".option");
             siblings.forEach(sib => sib.classList.remove("selected"));
@@ -54,32 +48,32 @@ function attachOptionHandlers() {
     });
 }
 
-// ================= SHOW ANSWER HANDLERS =================
+// ================= SHOW ANSWER BUTTONS =================
 function attachShowAnswerHandlers() {
     const showButtons = document.querySelectorAll(".show-answer-btn");
     showButtons.forEach(btn => {
-        // Initially disable the button
         btn.disabled = true;
         btn.style.opacity = "0.5";
         btn.style.cursor = "not-allowed";
         btn.title = "Submit the quiz to reveal answers";
 
         btn.addEventListener("click", () => {
-            // Only allow if quiz is submitted
             if (!quizSubmitted) {
                 alert("Please submit the quiz first to see answers.");
                 return;
             }
 
-            const explanation = btn.nextElementSibling;
+            const quizDiv = btn.closest(".quiz-question");
+            const explanation = quizDiv.querySelector(".answer-explanation");
             if (explanation) {
                 explanation.style.display = explanation.style.display === "block" ? "none" : "block";
             }
+
+            highlightAnswers(quizDiv);
         });
     });
 }
 
-// Function to enable show-answer buttons after submission
 function enableShowAnswerButtons() {
     const showButtons = document.querySelectorAll(".show-answer-btn");
     showButtons.forEach(btn => {
@@ -90,11 +84,39 @@ function enableShowAnswerButtons() {
     });
 }
 
+// ================= HIGHLIGHT ANSWERS =================
+function highlightAnswers(quizDiv) {
+    const result = JSON.parse(localStorage.getItem("latestResult"));
+    if (!result) return;
+
+    const qName = quizDiv.querySelector("input")?.name;
+    if (!qName) return;
+
+    const correct = result.correctAnswers[qName];
+
+    quizDiv.querySelectorAll('input[type="radio"]').forEach(input => {
+        const div = input.parentElement;
+        div.style.border = "2px solid #ddd"; // reset
+        if (input.value === correct) div.style.border = "2px solid green";
+        if (input.checked && input.value !== correct) div.style.border = "2px solid red";
+    });
+
+    const textInput = quizDiv.querySelector('input[type="text"]');
+    if (textInput) {
+        textInput.style.border =
+            textInput.value.trim().toLowerCase() === correct.toLowerCase()
+                ? "2px solid green"
+                : "2px solid red";
+    }
+}
+
 // ================= SUBMIT QUIZ =================
 function submitQuiz() {
+    if (quizSubmitted) return; // prevent multiple submissions
+
     clearInterval(timerInterval);
-    quizSubmitted = true; // Mark quiz as submitted
-    enableShowAnswerButtons(); // Enable show-answer buttons
+    quizSubmitted = true;
+    enableShowAnswerButtons();
 
     const correctAnswers = {
         q1: "b",
@@ -113,15 +135,15 @@ function submitQuiz() {
     const userAnswers = {};
 
     for (const q in correctAnswers) {
-        const inputElem = document.querySelector(`input[name="${q}"]`);
-        if (inputElem && inputElem.type === "text") {
-            userAnswers[q] = inputElem.value.trim();
-            if (userAnswers[q].toLowerCase() === correctAnswers[q].toLowerCase()) score++;
-        } else {
-            const selected = document.querySelector(`input[name="${q}"]:checked`);
-            if (!selected) continue;
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        const textInput = document.querySelector(`input[name="${q}"].text-answer`);
+
+        if (selected) {
             userAnswers[q] = selected.value;
-            if (selected.value === correctAnswers[q]) score++;
+            if (selected.value.toLowerCase() === correctAnswers[q].toLowerCase()) score++;
+        } else if (textInput) {
+            userAnswers[q] = textInput.value.trim();
+            if (userAnswers[q].toLowerCase() === correctAnswers[q].toLowerCase()) score++;
         }
     }
 
@@ -145,7 +167,11 @@ function submitQuiz() {
     history.push(resultData);
     localStorage.setItem("quizHistory", JSON.stringify(history));
 
-    window.location.href = "result.html";
+    // Disable all inputs after submit
+    document.querySelectorAll('.option input[type="radio"], .text-answer').forEach(i => i.disabled = true);
+
+    // Optionally redirect to result page
+    // window.location.href = "result.html";
 }
 
 // ================= REVIEW MODE =================
@@ -155,6 +181,9 @@ function handleReviewMode() {
     const latestResult = JSON.parse(localStorage.getItem("latestResult"));
     if (!latestResult) return;
 
+    quizSubmitted = true;
+    enableShowAnswerButtons();
+
     const { userAnswers, correctAnswers } = latestResult;
 
     for (const q in correctAnswers) {
@@ -162,30 +191,32 @@ function handleReviewMode() {
         if (!userValue) continue;
 
         const inputElem = document.querySelector(`input[name="${q}"][value="${userValue}"]`);
-        const textInput = document.querySelector(`input[name="${q}"]`);
+        const textInput = document.querySelector(`input[name="${q}"].text-answer`);
         let quizDiv;
 
         if (inputElem) {
             inputElem.checked = true;
             inputElem.parentElement.classList.add("selected");
+            inputElem.parentElement.style.border = userValue === correctAnswers[q] ? "2px solid green" : "2px solid red";
+
             quizDiv = inputElem.closest(".quiz-question");
-            // Border color for correct/wrong
-            inputElem.parentElement.style.border = userValue === correctAnswers[q] ? "2px solid blue" : "2px solid red";
+
+            const correctInput = document.querySelector(`input[name="${q}"][value="${correctAnswers[q]}"]`);
+            if (correctInput) correctInput.parentElement.style.border = "2px solid green";
         } else if (textInput) {
             textInput.value = userValue;
+            textInput.style.border = userValue.toLowerCase() === correctAnswers[q].toLowerCase() ? "2px solid green" : "2px solid red";
             quizDiv = textInput.closest(".quiz-question");
-            textInput.style.border = userValue.toLowerCase() === correctAnswers[q].toLowerCase() ? "2px solid blue" : "2px solid red";
         }
 
-        // Show explanation
         if (quizDiv) {
             const explanation = quizDiv.querySelector(".answer-explanation");
             if (explanation) explanation.style.display = "block";
         }
     }
 
-    // Disable all inputs
-    document.querySelectorAll('.option input[type="radio"], .text-answer').forEach(input => input.disabled = true);
+    // Disable all inputs in review mode
+    document.querySelectorAll('.option input[type="radio"], .text-answer').forEach(i => i.disabled = true);
 
     localStorage.removeItem("reviewMode");
 }

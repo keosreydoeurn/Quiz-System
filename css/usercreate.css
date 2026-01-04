@@ -127,21 +127,3 @@ h1 {
     display: inline-block;
     margin-top: 16px;
 }
-
-/* ====== Responsive ====== */
-@media (max-width: 600px) {
-    .create-quiz-container {
-        padding: 24px;
-        margin: 16px;
-    }
-
-    .form-control, .option-row input[type="text"] {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .btn, .add-option, .remove-question, .add-question {
-        font-size: 13px;
-        padding: 8px 12px;
-    }
-}

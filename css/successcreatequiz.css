@@ -124,21 +124,3 @@ h1, h2 {
 .btn-secondary:hover {
     background: #1976D2;
 }
-
-/* ====== Responsive ====== */
-@media (max-width: 600px) {
-    .quiz-container {
-        padding: 24px;
-        margin: 16px;
-    }
-
-    .btn {
-        padding: 10px 18px;
-        font-size: 14px;
-    }
-
-    .question-card p,
-    .quiz-details p {
-        font-size: 14px;
-    }
-}

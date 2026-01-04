@@ -82,22 +82,6 @@
     <!-- Full Leaderboard Table -->
     <section class="leaderboard-container">
         <div class="container">
-            <!-- Simple form to add a result (saves to localStorage for testing) -->
-            <div class="add-result">
-                <form id="addResultForm">
-                    <label>
-                        Name: <input type="text" id="resName" required placeholder="Name">
-                    </label>
-                    <label>
-                        Score: <input type="number" id="resScore" required min="0" max="100" placeholder="Score">
-                    </label>
-                    <label>
-                        Total Quizzes: <input type="number" id="resTotal" required min="1" placeholder="Total">
-                    </label>
-                    <button type="submit" class="btn btn-small">Add Result</button>
-                </form>
-            </div>
-
             <table class="leaderboard-table">
                 <thead>
                     <tr>
@@ -169,7 +153,8 @@
             </div>
         </div>
     </footer>
-    <!-- <script type="module" src="../js/auth.js"></script> -->
+    
+    <script type="module" src="../js/auth.js"></script>
     <script type="module" src="../js/leaderboard.js"></script>
 
 </body>
